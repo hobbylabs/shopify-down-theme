@@ -484,6 +484,11 @@
 </style>
 
 <script>
+  // trigger a resize event once the window is loaded, it refresh the Flickity slider on resize
+  window.onload = function(){
+    window.dispatchEvent(new Event('resize'));
+  }
+
   var elem = document.querySelector('.featured-cards .carousel');
   var flkty = new Flickity( elem, {
     contain: true,
