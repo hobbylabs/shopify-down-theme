@@ -1,0 +1,1044 @@
+<div class="container-fluid">
+	<div class="row">
+		<div {% if section.settings.show_special_offers %} class="column-left" {% else %} class="column-left-no-offers" {% endif %}>
+			<h2 id="banner-title"> {{ section.settings.title }} </h2>
+			<div id="banner-message"> {{ section.settings.message }} </div>
+		</div>
+		<div {% if section.settings.show_special_offers %} class="column-right" {% else %} class="column-right-no-offers" {% endif %}>
+      {% if section.settings.show_special_offers and collections[section.settings.feature_collection] != blank and collections[section.settings.feature_collection].products_count != 0 %}
+        <h2 id="offer-title"> {{ section.settings.offer-title }} </h2>
+        <div class="featured-cards">
+          <div class="carousel">
+              {% for product in collections[section.settings.feature_collection].products %}
+              <div class="carousel-cell">
+                <div class="product-card">
+                  {% comment %} <div class="badge">Hot</div> {% endcomment %}
+                  <div class="product-tumb">
+                    <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
+                  </div>
+                  <div class="product-details">
+                    <h4><a href="#">{{ product.title }}</a></h4>
+                    <div class="product-bottom-details">
+                      <div class="product-price" style="overflow:auto">
+                        <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
+                        <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                      </div>
+                      <div class="go-to-button">
+                        <a href="{{ product.url}}" class="go-to-product-button">
+                          {% render 'icon-arrow' %}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+		</div>
+	</div>
+</div>
+
+
+<style>
+
+  {% assign banner_title_font = section.settings.banner_title_font %}
+  {{ banner_title_font | font_face }}
+  
+  {% assign banner_message_font = section.settings.banner_message_font %}
+  {{ banner_message_font | font_face }}
+  
+  {% assign offer_title_font = section.settings.offer_title_font %}
+  {{ offer_title_font | font_face }}
+  
+  {% assign offers_product_title_font = section.settings.offers_product_title_font %}
+  {{ offers_product_title_font | font_face }}
+  
+  {% assign offers_product_price_font = section.settings.offers_product_price_font %}
+  {{ offers_product_price_font | font_face }}
+  
+  {% assign offers_product_price_small_font = section.settings.offers_product_price_small_font %}
+  {{ offers_product_price_small_font | font_face }}
+
+  .featured-cards {
+    padding-bottom: 0px;
+    padding: 0px;
+    margin-top: 25px;
+  }
+
+  .featured-cards .carousel-cell{
+    border-radius: 16px;
+    margin: auto;
+    margin: 4px;
+    width: calc(50% - 0px);
+    background: #fff0;
+  }
+
+  .carousel-cell {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .flickity-slider {
+    transform: scale(0.98);
+  }
+    
+  .flickity-page-dots .dot {
+    background: {{ section.settings.navigation_color }};
+  }
+    
+  .flickity-button-icon {
+    color: {{ section.settings.navigation_color }};
+  }
+
+  .flickity-button {
+    position: absolute;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
+    border: none;
+    color: #3330;
+}
+
+  .flickity-prev-next-button {
+    width: 44px;
+    top: 75%;
+    height: 50%;
+    border-radius: 0%;
+    transform: translateY(-100%);
+  }
+
+  button.previous:active{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+  }
+
+  button.previous:hover{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+  }
+
+  button.next:active{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+  }
+
+  button.next:hover{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+  }
+
+  .flickity-prev-next-button.previous {
+    left: -0px;
+  }
+
+  .flickity-prev-next-button.next {
+    right: -0px;
+  }
+
+
+  .hot-offers-container {
+    background-color: #C2C2C2;
+  }
+
+  .row {
+    display: flex;
+    height: inherit;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 36px 50px;
+  }
+
+  .column-left {
+    flex: 60%;
+    align-self: {{ section.settings.banner_alignment_vertically }};
+    padding: {{ section.settings.banner_padding_top }}px {{ section.settings.banner_padding_right }}px {{ section.settings.banner_padding_bottom }}px {{ section.settings.banner_padding_left }}px;
+  }
+
+  .column-right {
+    flex: 40%;
+    align-self: {{ section.settings.offers_alignment_vertically }};
+    padding: {{ section.settings.offers_padding_top }}px {{ section.settings.offers_padding_right }}px {{ section.settings.offers_padding_bottom }}px {{ section.settings.offers_padding_left }}px;
+  }
+
+  .column-left-no-offers {
+    flex: 100%;
+  }
+
+  .column-right-no-offers {
+    flex: 0%;
+  }
+
+  .container-fluid {
+    background-image: url("{{ section.settings.bg_image.src | img_url: "master" }}");
+    background-size: cover;
+    min-height: {{ section.settings.height }}vh;
+    display: flex;
+    justify-content:center;
+  }
+
+  #banner-title {
+    font-size: calc(var(--font-heading-scale) * {{ section.settings.banner_title_size }}rem);
+    text-align:{{ section.settings.left_col_title_alignment }};
+    color: {{ section.settings.banner_title_color }};
+    margin: auto;
+  }
+
+  #offer-title {
+    font-size: calc(var(--font-heading-scale) * {{ section.settings.offer_size }}rem);
+    font-family: {{ offer_title_font.family }};
+    font-style: {{ offer_title_font.style }};
+    font-weight: {{ offer_title_font.weight }};
+    text-align:{{ section.settings.offer_title_alignment }};
+    color: {{ section.settings.offer-color }};
+    margin: auto;
+  }
+
+  #banner-message {
+    font-size: calc(var(--font-heading-scale) * {{ section.settings.banner_message_size }}rem);
+    font-family: {{ banner_message_font.family }};
+    font-style: {{ banner_message_font.style }};
+    font-weight: {{ banner_message_font.weight }};
+    color: {{ section.settings.banner_message_color }};
+    margin: auto;
+    align-self: center;
+    text-align:{{ section.settings.left_col_message_alignment }};
+  }
+
+  h2 p {
+    margin: auto;
+    font-family: {{ banner_title_font.family }};
+    font-style: {{ banner_title_font.style }};
+    font-weight: {{ banner_title_font.weight }};
+  }
+
+  /* Product Card */
+  .product-card {
+    width: auto;
+    border-radius: 16px;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 2px 7px #dfdfdf;
+    background: #fafafa00;
+  }
+
+  .product-details h4 {
+    white-space: normal;
+    font-size: 14px;
+    color: #fff;
+  } 
+
+  .badge {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 700;
+      background: red;
+      color: #fff;
+      padding: 3px 10px;
+  }
+
+  .product-tumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;
+    padding: 0px;
+    background: #f0f0f0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  .product-tumb img {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 0 1px 2px #dfdfdf;
+  }
+
+  .product-details {
+    padding: 0px 10px 10px 10px;
+  }
+
+  .product-catagory {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #ccc;
+      margin-bottom: 18px;
+  }
+
+  .product-details h4 {
+    line-height: normal;
+    height: 34px;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  .flickity-enabled.is-draggable .flickity-viewport {
+    cursor: initial;
+  }
+
+  .product-details h4 a {
+    font-size: calc(var(--font-heading-scale) * {{ section.settings.product_title_size }}rem);
+    font-family: {{ offers_product_title_font.family }};
+    font-style: {{ offers_product_title_font.style }};
+    font-weight: {{ offers_product_title_font.weight }};
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-transform: uppercase;
+    color: {{ section.settings.products_title_color }};
+    text-decoration: none;
+    transition: 0.3s;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: default;
+  }
+
+  .product-details h4 a:hover {
+      {% comment %} color: #fbb72c; {% endcomment %}
+  }
+
+  .product-details p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 18px;
+      color: #999;
+  }
+
+  .product-bottom-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    height: 60px;
+  }
+
+  .product-bottom-details div {
+      float: left;
+      width: 100%;
+  }
+
+  .product-price {
+    color: {{ section.settings.products_price_color }};
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    line-height: normal;
+  }
+
+  .product-price small {
+      font-size: 80%;
+      font-size: calc(var(--font-heading-scale) * {{ section.settings.product_small_price_size }}rem);
+      font-family: {{ offers_product_price_small_font.family }};
+      font-style: {{ offers_product_price_small_font.style }};
+      font-weight: {{ offers_product_price_small_font.weight }};
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-right: 5px;
+      color: {{ section.settings.products_price_no_discount_color }};
+  }
+
+  .product-price .big-price {
+    width:100%;
+    font-size: calc({{ section.settings.product_big_price_size }}rem);
+    font-family: {{ offers_product_price_font.family }};
+    font-style: {{ offers_product_price_font.style }};
+    font-weight: {{ offers_product_price_font.weight }};
+  }
+
+  .ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .go-to-button {
+    display: block;
+    text-align: -webkit-right;
+  }
+
+  .go-to-product-button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    background: {{ section.settings.products_button_color }};
+    color: {{ section.settings.products_icon_color }};
+    {% comment %} cursor: auto; {% endcomment %}
+  }
+
+
+  .go-to-product-button:hover {
+    background: {{ section.settings.products_hover_button_color }};
+    color: {{ section.settings.products_hover_icon_color }};
+  }
+
+  .go-to-product-button:active {
+    background: {{ section.settings.products_hover_button_color }};
+    color: {{ section.settings.products_hover_icon_color }};
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+    .column-left {
+      flex: 100%;
+      padding: {{ section.settings.mobile_banner_padding_top }}px {{ section.settings.mobile_banner_padding_right }}px {{ section.settings.mobile_banner_padding_bottom }}px {{ section.settings.mobile_banner_padding_left }}px;
+      align-self: {{ section.settings.mobile_banner_alignment_vertically }};
+    }
+
+    .column-right {
+      flex: 100%;
+      padding: {{ section.settings.mobile_offers_padding_top }}px {{ section.settings.mobile_offers_padding_right }}px {{ section.settings.mobile_offers_padding_bottom }}px {{ section.settings.mobile_offers_padding_left }}px;
+      align-self: {{ section.settings.mobile_offers_alignment_vertically }};
+    }
+
+    .featured-cards .carousel-cell{
+      border-radius: 16px;
+      margin: auto;
+      margin: 4px;
+      width: calc(100% - 0px);
+      padding:0 auto;
+    }
+
+    #banner-message {
+      font-size: calc(var(--font-heading-scale) * {{ section.settings.mobile_banner_message_size }}rem);
+      text-align:{{ section.settings.mobile_left_col_message_alignment }};
+    }
+
+    #banner-title {
+      font-size: calc(var(--font-heading-scale) * {{ section.settings.mobile_banner_title_size }}rem);
+      text-align:{{ section.settings.mobile_left_col_title_alignment }};
+    }
+
+    #offer-title {
+      font-size: calc(var(--font-heading-scale) * {{ section.settings.offer_size }}rem);
+      text-align:{{ section.settings.mobile_offer_title_alignment }};
+    }
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    .featured-cards .carousel-cell{
+      border-radius: 16px;
+      margin: auto;
+      margin: 4px;
+      width: calc(100% - 0px);
+      background: #fff0;
+    }
+  }
+
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .featured-cards .carousel-cell{
+      border-radius: 16px;
+      margin: auto;
+      margin: 4px;
+      width: calc(49% - 0px);
+    }
+  }
+
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .featured-cards .carousel-cell{
+      border-radius: 16px;
+      margin: auto;
+      margin: 4px;
+      width: calc(49% - 0px);
+    }
+  }
+
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .featured-cards .carousel-cell{
+      border-radius: 16px;
+      margin: auto;
+      margin: 4px;
+      width: calc(32% - 0px);
+    }
+  }
+
+</style>
+
+<script>
+  var elem = document.querySelector('.featured-cards .carousel');
+  var flkty = new Flickity( elem, {
+    contain: true,
+    imagesLoaded: true,
+    lazyLoad: 2,
+    wrapAround: false,
+    pageDots: false,
+    autoPlay: 3000,
+    groupCells:true,
+    prevNextButtons: true,
+    rightToLeft: false,
+  });
+  {% if request.design_mode %}
+  document.addEventListener("shopify:section:load", function(event) {
+    var elem = document.querySelector('.featured-cards .carousel');
+    var flkty = new Flickity( elem, {
+    contain: true,
+    imagesLoaded: true,
+    lazyLoad: 2,
+    wrapAround: true,
+    pageDots: false,
+    groupCells:2,
+    }); 
+  });
+  {% endif %}
+</script>
+
+
+{% schema %}
+{
+  "name": "Banner With Products",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_special_offers",
+      "label": "Show special offers",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Image"
+    },
+    {
+      "type": "number",
+      "id": "height",
+      "label": "Height(vh)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Banner Layout"
+    },
+    {
+      "type": "select",
+      "id": "banner_alignment_vertically",
+      "label": "Banner Vertical Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_banner_alignment_vertically",
+      "label": "Mobile Banner Vertical Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "number",
+      "id": "banner_padding_top",
+      "label": "Top(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "banner_padding_right",
+      "label": "Right(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "banner_padding_bottom",
+      "label": "Bottom(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "banner_padding_left",
+      "label": "Left(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_padding_top",
+      "label": "Mobile Top(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_padding_right",
+      "label": "Mobile Right(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_padding_bottom",
+      "label": "Mobile Bottom(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_padding_left",
+      "label": "Mobile Left(px)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Offers Layout"
+    },
+    {
+      "type": "select",
+      "id": "offers_alignment_vertically",
+      "label": "Offers Vertical Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_offers_alignment_vertically",
+      "label": "Mobile Offers Vertical Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "number",
+      "id": "offers_padding_top",
+      "label": "Top(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "offers_padding_right",
+      "label": "Right(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "offers_padding_bottom",
+      "label": "Bottom(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "offers_padding_left",
+      "label": "Left(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_offers_padding_top",
+      "label": "Mobile Top(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_offers_padding_right",
+      "label": "Mobile Right(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_offers_padding_bottom",
+      "label": "Mobile Bottom(px)",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "mobile_offers_padding_left",
+      "label": "Mobile Left(px)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Banner Title"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "font_picker",
+      "id": "banner_title_font",
+      "label": "Banner Title Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "color",
+      "id": "banner_title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "number",
+      "id": "banner_title_size",
+      "label": "Banner Title Size(rem)",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_title_size",
+      "label": "Mobile Banner Title Size(rem)",
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "left_col_title_alignment",
+      "label": "Title alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_left_col_title_alignment",
+      "label": "Mobile title alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Banner Message"
+    },
+    {
+      "type": "richtext",
+      "id": "message",
+      "label": "Message"
+    },
+    {
+      "type": "font_picker",
+      "id": "banner_message_font",
+      "label": "Banner Message Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "color",
+      "id": "banner_message_color",
+      "label": "Message Color",
+      "default": "#000000"
+    },
+    {
+      "type": "number",
+      "id": "banner_message_size",
+      "label": "Banner Message Size(rem)",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "mobile_banner_message_size",
+      "label": "Mobile Banner Message Size(rem)",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "left_col_message_alignment",
+      "label": "Message alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_left_col_message_alignment",
+      "label": "Mobile message alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "text",
+      "id": "offer-title",
+      "label": "Offer Title"
+    },
+    {
+      "type": "font_picker",
+      "id": "offer_title_font",
+      "label": "Offer Title Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "number",
+      "id": "offer_size",
+      "label": "Offer Title Size(rem)",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "offer-padding",
+      "label": "Offer Pading(px)",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "offer-color",
+      "label": "Offer Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "offer_title_alignment",
+      "label": "Offer Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_offer_title_alignment",
+      "label": "Mobile Offer Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "collection",
+      "id": "feature_collection",
+      "label": "Chose Collection to show on slideshow"
+    },
+    {
+      "type": "color",
+      "id": "navigation_color",
+      "label": "Change color of the pagination|navigation|scrollbar"
+    },
+    {
+      "type": "header",
+      "content": "Product Layout"
+    },
+    {
+      "type": "font_picker",
+      "id": "offers_product_title_font",
+      "label": "Product Title Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "number",
+      "id": "product_title_size",
+      "label": "Product Title Size(rem)",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "products_title_color",
+      "label": "Change color of title",
+      "default": "#fff"
+    },
+    {
+      "type": "font_picker",
+      "id": "offers_product_price_font",
+      "label": "Product Big Price Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "number",
+      "id": "product_big_price_size",
+      "label": "Product Price Size(rem)",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "products_price_color",
+      "label": "Change color of price",
+      "default": "#fed700"
+    },
+    {
+      "type": "font_picker",
+      "id": "offers_product_price_small_font",
+      "label": "Product Small Price Font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "number",
+      "id": "product_small_price_size",
+      "label": "Product Small Price Size(rem)",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "products_price_no_discount_color",
+      "label": "Change color of price without discount",
+      "default": "#848484"
+    },
+    {
+      "type": "color",
+      "id": "products_button_color",
+      "label": "Change color of button",
+      "default": "#495057"
+    },
+    {
+      "type": "color",
+      "id": "products_hover_button_color",
+      "label": "Change color for hovered button",
+      "default": "#fed700"
+    },
+    {
+      "type": "color",
+      "id": "products_icon_color",
+      "label": "Change color of icon",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "products_hover_icon_color",
+      "label": "Change color for hovered icon",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Banners",
+      "name": "Banner With Products"
+    }
+  ]
+}
+{% endschema %}
