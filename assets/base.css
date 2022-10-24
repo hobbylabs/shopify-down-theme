@@ -56,6 +56,7 @@
 }
 
 .color-background-2,
+.color-background-3,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
@@ -72,6 +73,7 @@
 }
 
 .color-background-2,
+.color-background-2,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
@@ -87,6 +89,7 @@
 }
 
 .color-background-2 .button--secondary,
+.color-background-3 .button--secondary,
 .color-accent-1 .button--secondary,
 .color-accent-2 .button--secondary {
   --color-button: var(--color-background);
@@ -106,6 +109,7 @@
 }
 
 .color-background-2 .button--tertiary,
+.color-background-3 .button--tertiary,
 .color-inverse .button--tertiary,
 .color-accent-1 .button--tertiary,
 .color-accent-2 .button--tertiary {
@@ -121,6 +125,7 @@
 }
 
 .color-background-2,
+.color-background-3,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
@@ -131,7 +136,8 @@
 
 :root,
 .color-background-1,
-.color-background-2 {
+.color-background-2,
+.color-background-3 {
   --color-card-hover: var(--color-base-text);
 }
 
@@ -318,6 +324,7 @@ html.no-js .no-js-hidden {
 body,
 .color-background-1,
 .color-background-2,
+.color-background-3,
 .color-inverse,
 .color-accent-1,
 .color-accent-2 {
