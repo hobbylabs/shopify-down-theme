@@ -57,6 +57,13 @@
       },
       {
         "type": "color",
+        "id": "colors_text_op1",
+        "default": "#121212",
+        "label": "t:settings_schema.colors.settings.colors_text_op1.label",
+        "info": "t:settings_schema.colors.settings.colors_text_op1.info"
+      },
+      {
+        "type": "color",
         "id": "colors_outline_button_labels",
         "default": "#121212",
         "label": "t:settings_schema.colors.settings.colors_outline_button_labels.label",
