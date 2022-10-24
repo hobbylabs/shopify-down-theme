@@ -14,7 +14,7 @@
 }
 
 .color-background-3 {
-  --color-foreground: var(--color-base-text);
+  --color-foreground: var(--color-base-text-op1);
   --color-background: var(--color-base-background-3);
   --gradient-background: var(--gradient-base-background-3);
 }
