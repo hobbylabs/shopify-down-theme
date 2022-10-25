@@ -16,34 +16,32 @@
               </svg>
             </button>
             <!-- Carousel Items -->
-            <section class="carousel">
-              <div class="carousel">
-                {% for product in collections[section.settings.feature_collection].products %}
-                <div class="carousel-cell">
-                  <div class="product-card">
-                    {% comment %} <div class="badge">Hot</div> {% endcomment %}
-                    <div class="product-tumb">
-                      <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
-                    </div>
-                    <div class="product-details">
-                      <h4><a href="#">{{ product.title }}</a></h4>
-                      <div class="product-bottom-details">
-                        <div class="product-price" style="overflow:auto">
-                          <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                          <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                        </div>
-                        <div class="go-to-button">
-                          <a href="{{ product.url}}" class="go-to-product-button">
-                            {% render 'icon-arrow' %}
-                          </a>
-                        </div>
+            <div class="carousel">
+              {% for product in collections[section.settings.feature_collection].products %}
+              <div class="carousel-cell">
+                <div class="product-card">
+                  {% comment %} <div class="badge">Hot</div> {% endcomment %}
+                  <div class="product-tumb">
+                    <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
+                  </div>
+                  <div class="product-details">
+                    <h4><a href="#">{{ product.title }}</a></h4>
+                    <div class="product-bottom-details">
+                      <div class="product-price" style="overflow:auto">
+                        <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
+                        <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                      </div>
+                      <div class="go-to-button">
+                        <a href="{{ product.url}}" class="go-to-product-button">
+                          {% render 'icon-arrow' %}
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                {% endfor %}
+              </div>
+              {% endfor %}
             </div>
-            </section>
             <!-- Right Button -->
             <button type="button" class="arrows right-arrow" aria-label="Arrow Right">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
