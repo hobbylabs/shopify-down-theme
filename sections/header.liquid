@@ -141,7 +141,7 @@
                 <nav class="menu-drawer__navigation">
                   <ul class="menu-drawer__menu has-submenu list-menu" role="list">
                     {%- for link in section.settings.menu.links -%}
-                      <li>
+                      <li style="min-height:{{ section.settings.menu_nav_item_height }}px">
                         {%- if link.links != blank -%}
                           <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                             <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
@@ -876,6 +876,16 @@
       "default": true,
       "label": "t:sections.header.settings.enable_sticky_header.label",
       "info": "t:sections.header.settings.enable_sticky_header.info"
+    },
+    {
+      "type": "range",
+      "id": "menu_nav_item_height",
+      "min": 42,
+      "max": 250,
+      "step": 1,
+      "default": 42,
+      "unit": "px",
+      "label": "Menu Item Height"
     },
     {
       "type": "header",
