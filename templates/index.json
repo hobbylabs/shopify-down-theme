@@ -4,7 +4,7 @@
       "type": "products-banner",
       "settings": {
         "show_special_offers": true,
-        "bg_image": "shopify:\/\/shop_images\/hp1.webp",
+        "bg_image": "shopify:\/\/shop_images\/self-serve-coffee-shop.jpg",
         "height": 60,
         "banner_alignment_vertically": "center",
         "mobile_banner_alignment_vertically": "center",
