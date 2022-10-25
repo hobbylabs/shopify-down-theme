@@ -155,6 +155,7 @@
           "menu_type_desktop": "mega",
           "show_line_separator": false,
           "enable_sticky_header": true,
+          "menu_nav_item_height": 142,
           "mobile_logo_position": "left",
           "margin_bottom": 0,
           "padding_top": 0,
