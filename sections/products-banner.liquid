@@ -8,47 +8,19 @@
       {% if section.settings.show_special_offers and collections[section.settings.feature_collection] != blank and collections[section.settings.feature_collection].products_count != 0 %}
         <h2 id="offer-title"> {{ section.settings.offer-title }} </h2>
         <div class="featured-cards">
-          <section class="carousel-wrapper">
-            <!-- Left Button -->
-            <button type="button" class="arrows left-arrow arrow-inactive" aria-label="Arrow Left">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-                <path d="M192 448c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l137.4 137.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448z" />
-              </svg>
-            </button>
-            <!-- Carousel Items -->
-            <div class="carousel">
-              {% for product in collections[section.settings.feature_collection].products %}
-              <div class="carousel-cell">
-                <div class="product-card">
-                  {% comment %} <div class="badge">Hot</div> {% endcomment %}
-                  <div class="product-tumb">
-                    <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
-                  </div>
-                  <div class="product-details">
-                    <h4><a href="#">{{ product.title }}</a></h4>
-                    <div class="product-bottom-details">
-                      <div class="product-price" style="overflow:auto">
-                        <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                        <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                      </div>
-                      <div class="go-to-button">
-                        <a href="{{ product.url}}" class="go-to-product-button">
-                          {% render 'icon-arrow' %}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
+          <div class="carousel">
+            <div class="carousel-inner">
+                <div style="background-color: orange;" class="carousel-item"><h1>First slide</h1></div>
+                <div style="background-color: greenyellow;"  class="carousel-item"><h1>Second slide</h1></div>
+                <div style="background-color: rgb(37, 150, 255);" class="carousel-item"><h1>Third slide</h1></div>
+                <div style="background-color: rgb(192, 192, 192);" class="carousel-item"><h1>Fourth slide</h1></div>
             </div>
-            <!-- Right Button -->
-            <button type="button" class="arrows right-arrow" aria-label="Arrow Right" id="next">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-                <path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z" />
-              </svg>
-            </button>
-          </section>
+            <div class="carousel-controls">
+                <span class="prev"></span>
+                <span class="next"></span>
+            </div>
+            <div class="carousel-indicators"></div>
+        </div>
           {% comment %} <div class="carousel">
               {% for product in collections[section.settings.feature_collection].products %}
               <div class="carousel-cell">
@@ -84,73 +56,84 @@
 
 <style>
 
-  .carousel-wrapper {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5em;
-    max-width: 800px;
-    width: 90%;
-  }
-  .wrapped-container {
-    display: flex;
-    overflow: hidden;
-    width: 95%;
-    justify-content: center;
-  }
-  .carousel {
-    width: 100%;
+  .carousel-inner{
     height: 100%;
-    position: relative;
-    overflow-y: hidden;
+    /* min-width: 400%; */
     display: flex;
-    gap: 1em;
-    scrollbar-width: none;
-  }
-  .carousel {
-  }
-  .arrows {
-    width: 20px;
-    height: 45px;
-    outline: none;
-    border: none;
-    background-color: #5e4c5a;
-    border-radius: 5px;
+    transition: all ease .5s;
+}
+
+.carousel-item{
+    flex: 1;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    align-self: center;
-    opacity: 1;
+}
+
+.carousel-item h1{
+    opacity: .5;
+}
+
+.carousel-controls .prev{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('prev.svg');
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
     cursor: pointer;
-    transition: all 0.1s ease;
-    padding: 0;
-    pointer-events: all;
-  }
-  .arrows:hover {
-    background-color: #5e4c5a;
-    transform: scale(1.1);
-  }
-  .arrows svg {
-    width: 1.5em;
-    height: 1.5em;
-    fill: white;
-  }
-  .arrow-inactive {
-    opacity: 0.5;
-    cursor: auto;
-  }
-  .arrow-inactive:hover {
-    transform: none;
-  }
-  .carousel-item {
-    width: 200px;
-    height: 300px;
-  }
-  .carousel-item img {
-    border-radius: 10pt;
-  }
-  .carousel-wrapper ::-webkit-scrollbar {
-    height: 0px;
-  }
+    opacity: .5;
+}
+
+.carousel-controls .next{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('next.svg');
+    background-position: center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.prev:hover, .next:hover{
+    opacity: 1;
+}
+
+.carousel-indicators{
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.carousel-indicators span{
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 4px;
+    border-radius: 2px;
+    opacity: .5;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.carousel-indicators span.active{
+    opacity: 1;
+}
 
   {% assign banner_title_font = section.settings.banner_title_font %}
   {{ banner_title_font | font_face }}
@@ -593,122 +576,173 @@
 </style>
 
 <script>
-  function scrollEv(leftArrow, rightArrow, carousel) {
-    if (carousel.scrollLeft <= 0) {
-      leftArrow.classList.add("arrow-inactive");
-    } else {
-      leftArrow.classList.remove("arrow-inactive");
-    }
-    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.offsetWidth - 1) {
-      rightArrow.classList.add("arrow-inactive");
-    } else {
-      rightArrow.classList.remove("arrow-inactive");
-    }
-  }
-  function clicleftArrow(carousel, rectList) {
-    let shiftScroll;
-    for (let i = 0; i < rectList.length; i++) {
-      if (carousel.scrollLeft > rectList[rectList.length - 1]) {
-        shiftScroll = rectList[rectList.length - 1];
-      } else if (
-        carousel.scrollLeft > rectList[i] &&
-        carousel.scrollLeft <= rectList[i + 1]
-      ) {
-        shiftScroll = rectList[i];
-      }
-    }
-    carousel.scrollTo({
-      left: shiftScroll,
-      behavior: "smooth"
-    });
-  }
-  function clickRight(carousel, rectList) {
-    let shiftScroll;
-    for (let i = 0; i < rectList.length; i++) {
-      if (
-        carousel.scrollLeft >= rectList[i] - 1 &&
-        carousel.scrollLeft < rectList[i + 1]
-      ) {
-        shiftScroll = rectList[i + 1];
-      }
-    }
-    carousel.scrollTo({
-      left: shiftScroll,
-      behavior: "smooth"
-    });
-  }
-  function listRectCarousel(carouselNumber, carousels) {
-    let divs = carousels[carouselNumber].getElementsByClassName("carousel-cell");
-    let rectList = [];
-    let rectGauche = carousels[carouselNumber].getBoundingClientRect().left;
-    for (let i = 0; i < divs.length; i++) {
-      let rect = divs[i].getBoundingClientRect();
-      rectList.push(rect.left - rectGauche);
-    }
-    for (let i = rectList.length - 1; i >= 0; i--) {
-      rectList[i] = rectList[i] - rectList[0];
-    }
-    return rectList;
-  }
+  let carousel = document.querySelector('.carousel');
 
-// Start autoplaying automatically
-var autoplayInterval = setInterval(function() {
-
-  // Get element via id and click next
-  document.getElementById("next").click();
+  let carouselInner = document.querySelector('.carousel-inner');
   
- 
-}, 1000); // Do this every 1 second, increase this!
-
-// Stop function added to button
-function stopAutoplay() {
-
-// Stop the autoplay
-clearInterval(autoplayInterval);
-
-}
-
-  function autoSlidePosLeft(carouselNumber, carousels, leftArrows) {
-    let rectList = listRectCarousel(carouselNumber, carousels);
-    leftArrows[carouselNumber].addEventListener("click", () => {
-      clicleftArrow(carousels[carouselNumber], rectList);
-    });
-  }
-  function autoSlidePosRight(carouselNumber, carousels, rightArrows) {
-    let rectList = listRectCarousel(carouselNumber, carousels);
-    rightArrows[carouselNumber].addEventListener("click", () => {
-      clickRight(carousels[carouselNumber], rectList);
-    });
-  }
-  window.onload = () => {
-    let leftArrows = document.getElementsByClassName("left-arrow");
-    let rightArrows = document.getElementsByClassName("right-arrow");
-    let carousels = document.getElementsByClassName("carousel");
-    for (let i = 0; i < leftArrows.length; i++) {
-      autoSlidePosLeft(i, carousels, leftArrows);
-      window.onresize = () => {
-        autoSlidePosLeft(i, carousels, leftArrows);
+  let prev = document.querySelector('.carousel-controls .prev');
+  
+  let next = document.querySelector('.carousel-controls .next');
+  
+  let slides =  document.querySelectorAll('.carousel-inner .carousel-item');
+  
+  let totalSlides = slides.length;
+  
+  let step = 100 / totalSlides;
+  
+  let activeSlide = 0;
+  
+  let activeIndicator = 0;
+  
+  let direction = -1;
+  
+  let jump = 1;
+  
+  let interval = 2000;
+  
+  let time;
+  
+  
+  
+  //Init carousel
+  carouselInner.style.minWidth = (totalSlides * 100) + '%';
+  loadIndicators();
+  loop(true);
+  
+  
+  //Carousel events
+  
+  next.addEventListener('click',()=>{
+      slideToNext();
+  });
+  
+  prev.addEventListener('click',()=>{
+      slideToPrev();
+  });
+  
+  carouselInner.addEventListener('transitionend',()=>{
+      if(direction === -1){
+          if(jump > 1){
+              for(let i = 0; i < jump; i++){
+                  activeSlide++;
+                  carouselInner.append(carouselInner.firstElementChild);
+              }
+          }else{
+              activeSlide++;
+              carouselInner.append(carouselInner.firstElementChild);
+          }
+      }else if(direction === 1){
+          if(jump > 1){
+              for(let i = 0; i < jump; i++){
+                  activeSlide--;
+                  carouselInner.prepend(carouselInner.lastElementChild);
+              }
+          }else{
+              activeSlide--;
+              carouselInner.prepend(carouselInner.lastElementChild);
+          }
       };
-    }
-    for (let i = 0; i < rightArrows.length; i++) {
-      autoSlidePosRight(i, carousels, rightArrows);
-      window.onresize = () => {
-        autoSlidePosRight(i, carousels, rightArrows);
-      };
-    }
-    for (let i = 0; i < carousels.length; i++) {
-      carousels[i].addEventListener("scroll", () => {
-        scrollEv(leftArrows[i], rightArrows[i], carousels[i]);
+  
+      carouselInner.style.transition = 'none';
+      carouselInner.style.transform = 'translateX(0%)';
+      setTimeout(()=>{
+          jump = 1;
+          carouselInner.style.transition = 'all ease .5s';
       });
-    }
-    for (let i = 0; i < carousels.length; i++) {
-      scrollEv(leftArrows[i], rightArrows[i], carousels[i]);
-      window.onresize = () => {
-        scrollEv(leftArrows[i], rightArrows[i], carousels[i]);
-      };
-    }
-    
+      updateIndicators();
+  });
+  
+  document.querySelectorAll('.carousel-indicators span').forEach(item=>{
+      item.addEventListener('click',(e)=>{
+          let slideTo = parseInt(e.target.dataset.slideTo);
+          
+          let indicators = document.querySelectorAll('.carousel-indicators span');
+  
+          indicators.forEach((item,index)=>{
+              if(item.classList.contains('active')){
+                  activeIndicator = index
+              }
+          })
+  
+          if(slideTo - activeIndicator > 1){
+              jump = slideTo - activeIndicator;
+              step = jump * step;
+              slideToNext();
+          }else if(slideTo - activeIndicator === 1){
+              slideToNext();
+          }else if(slideTo - activeIndicator < 0){
+  
+              if(Math.abs(slideTo - activeIndicator) > 1){
+                  jump = Math.abs(slideTo - activeIndicator);
+                  step = jump * step;
+                  slideToPrev();
+              }
+                  slideToPrev();
+          }
+          step = 100 / totalSlides; 
+      })
+  });
+  
+  carousel.addEventListener('mouseover',()=>{
+      loop(false);
+  })
+  
+  carousel.addEventListener('mouseout',()=>{
+      loop(true);
+  })
+  
+  //Carousel functions
+  
+  function loadIndicators(){
+      slides.forEach((slide,index)=>{
+          if(index === 0){
+              document.querySelector('.carousel-indicators').innerHTML +=
+              `<span data-slide-to="${index}" class="active"></span>`;
+          }else{
+              document.querySelector('.carousel-indicators').innerHTML +=
+              `<span data-slide-to="${index}"></span>`;
+          }
+      }); 
   };
+  
+  function updateIndicators(){
+      if(activeSlide > (totalSlides - 1)){
+          activeSlide = 0;
+      }else if(activeSlide < 0){
+          activeSlide = (totalSlides - 1);
+      }
+      document.querySelector('.carousel-indicators span.active').classList.remove('active');
+      document.querySelectorAll('.carousel-indicators span')[activeSlide].classList.add('active');
+  };
+  
+  function slideToNext(){
+      if(direction === 1){
+          direction = -1;
+          carouselInner.prepend(carouselInner.lastElementChild);
+      };
+      
+      carousel.style.justifyContent = 'flex-start';
+      carouselInner.style.transform = `translateX(-${step}%)`;
+  };
+  
+  function slideToPrev(){
+      if(direction === -1){
+          direction = 1;
+          carouselInner.append(carouselInner.firstElementChild);
+      };
+      carousel.style.justifyContent = 'flex-end'
+      carouselInner.style.transform = `translateX(${step}%)`;
+  };
+  
+  function loop(status){
+      if(status === true){
+          time = setInterval(()=>{
+              slideToNext();
+          },interval);
+      }else{
+          clearInterval(time);
+      }
+  }
   // trigger a resize event once the window is loaded, it refresh the Flickity slider on resize
   {% comment %} window.onload = function(){
     window.dispatchEvent(new Event('resize'));
