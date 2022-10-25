@@ -110,8 +110,35 @@
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "80a45f82-b990-4159-b577-ce12812b8d5a": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Plăci de dezvoltare",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "placi-de-dezvoltare",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -122,6 +149,7 @@
   "order": [
     "f3738064-f21d-443a-b19a-662fc06bd6fc",
     "featured_collection",
-    "3af2f1bc-a43b-4213-abae-767da6109712"
+    "3af2f1bc-a43b-4213-abae-767da6109712",
+    "80a45f82-b990-4159-b577-ce12812b8d5a"
   ]
 }
