@@ -72,7 +72,7 @@
     height: 100%;
     min-width: 200%; 
     display: flex;
-    transition: all ease 3s;
+    transition: all ease 1s;
 }
 
 .carousel-item{
@@ -87,7 +87,7 @@
 }
 
 .carousel-item h1{
-    opacity: .5;
+    opacity: 1;
 }
 
 .carousel-controls .prev{
@@ -103,7 +103,7 @@
     background-size: auto 100%;
     background-repeat: no-repeat;
     cursor: pointer;
-    opacity: .5;
+    opacity: ;
 }
 
 .carousel-controls .next{
@@ -612,7 +612,7 @@
   
   let jump = 1;
   
-  let interval = 2000;
+  let interval = 3000;
   
   let time;
   
@@ -661,7 +661,7 @@
       carouselInner.style.transform = 'translateX(0%)';
       setTimeout(()=>{
           jump = 1;
-          carouselInner.style.transition = 'all ease .5s';
+          carouselInner.style.transition = 'all ease 1s';
       });
       updateIndicators();
   });
