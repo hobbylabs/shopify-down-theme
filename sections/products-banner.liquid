@@ -519,7 +519,7 @@
     slide: '.carousel-cell'
   });
 
-  var elem = document.querySelector('.featured-cards .carousel');
+  {% comment %} var elem = document.querySelector('.featured-cards .carousel');
   var flkty = new Flickity( elem, {
     contain: true,
     imagesLoaded: true,
@@ -546,7 +546,7 @@
       rightToLeft: false,
     }); 
   });
-  {% endif %}
+  {% endif %} {% endcomment %}
 </script>
 
 
