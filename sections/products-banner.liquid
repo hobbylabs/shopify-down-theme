@@ -505,12 +505,15 @@
   document.addEventListener("shopify:section:load", function(event) {
     var elem = document.querySelector('.featured-cards .carousel');
     var flkty = new Flickity( elem, {
-    contain: true,
-    imagesLoaded: true,
-    lazyLoad: 2,
-    wrapAround: true,
-    pageDots: false,
-    groupCells:2,
+      contain: true,
+      imagesLoaded: true,
+      lazyLoad: 2,
+      wrapAround: false,
+      pageDots: false,
+      autoPlay: 3000,
+      groupCells:true,
+      prevNextButtons: true,
+      rightToLeft: false,
     }); 
   });
   {% endif %}
