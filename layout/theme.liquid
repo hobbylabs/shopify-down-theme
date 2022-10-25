@@ -298,7 +298,7 @@
     {%- endif -%}
 
 
-    <script>
+    {% comment %} <script>
       let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
       console.log(items)
       items.forEach(item => {
@@ -313,6 +313,6 @@
       });
       
       });
-    </script>
+    </script> {% endcomment %}
   </body>
 </html>
