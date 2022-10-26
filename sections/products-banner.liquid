@@ -748,7 +748,7 @@
       carouselInner.style.transform = `translateX(${step}%)`;
   };
   
-  function loop(status){
+  {% comment %} function loop(status){
       if(status === true){
           time = setInterval(()=>{
               slideToNext();
@@ -756,7 +756,7 @@
       }else{
           clearInterval(time);
       }
-  }
+  } {% endcomment %}
   // trigger a resize event once the window is loaded, it refresh the Flickity slider on resize
   {% comment %} window.onload = function(){
     window.dispatchEvent(new Event('resize'));
