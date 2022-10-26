@@ -50,7 +50,7 @@
         "feature_collection": "oferta-zilei",
         "navigation_color": "",
         "offers_product_title_font": "helvetica_n4",
-        "product_title_size": 1,
+        "product_title_size": 1.4,
         "products_title_color": "#ffffff",
         "offers_product_price_font": "helvetica_n4",
         "product_big_price_size": 2,
