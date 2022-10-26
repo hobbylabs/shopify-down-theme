@@ -412,7 +412,7 @@ button.next:hover{
 
   .product-details h4 {
     line-height: normal;
-    height: 34px;
+    {% comment %} height: 34px; {% endcomment %}
     margin: 10px 0px 10px 0px;
     display: flex;
     align-items: center;
@@ -548,15 +548,6 @@ button.next:hover{
       align-self: {{ section.settings.mobile_offers_alignment_vertically }};
     }
 
-    .featured-cards .carousel-item1{
-      border-radius: 16px;
-      margin: 8px 32px;
-      min-width: calc(100% - 0px);
-      padding:0 auto;
-      overflow-y: hidden;
-      box-shadow: 0 2px 7px #dfdfdf;
-    }
-
     #banner-message {
       font-size: calc(var(--font-heading-scale) * {{ section.settings.mobile_banner_message_size }}rem);
       text-align:{{ section.settings.mobile_left_col_message_alignment }};
@@ -575,43 +566,18 @@ button.next:hover{
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
   @media only screen and (min-width: 600px) {
-    .featured-cards .carousel-item1{
-      border-radius: 16px;
-      margin: auto;
-      margin: 4px;
-      min-width: calc(100% - 0px);
-      background: #fff0;
-    }
   }
 
   /* Medium devices (landscape tablets, 768px and up) */
   @media only screen and (min-width: 768px) {
-    .featured-cards .carousel-item1{
-      border-radius: 16px;
-      margin: auto;
-      margin: 4px;
-      min-width: calc(48% - 0px);
-    }
   }
 
   /* Large devices (laptops/desktops, 992px and up) */
   @media only screen and (min-width: 992px) {
-    .featured-cards .carousel-item1{
-      border-radius: 16px;
-      margin: auto;
-      margin: 4px;
-      min-width: calc(48% - 0px);
-    }
   }
 
   /* Extra large devices (large laptops and desktops, 1200px and up) */
   @media only screen and (min-width: 1200px) {
-    .featured-cards .carousel-item1{
-      border-radius: 16px;
-      margin: auto;
-      margin: 4px;
-      min-width: calc(32% - 0px);
-    }
   }
 
 </style>
