@@ -37,11 +37,6 @@
             "show_dynamic_checkout": true
           }
         },
-        "4083da6d-74ef-47c3-b21b-f464da617c9c": {
-          "type": "shopify:\/\/apps\/back-in-stock-restock-alerts\/blocks\/product-restore-email\/b190bced-3b7b-47da-a05f-6ea4821c3a77",
-          "settings": {
-          }
-        },
         "description": {
           "type": "description",
           "settings": {
@@ -97,7 +92,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "4083da6d-74ef-47c3-b21b-f464da617c9c",
         "description",
         "collapsible-row-0",
         "collapsible-row-1",
