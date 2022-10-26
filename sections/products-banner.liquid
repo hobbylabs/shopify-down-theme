@@ -11,7 +11,7 @@
           <div class="carousel">
             <div class="carousel-inner">
               {% for product in collections[section.settings.feature_collection].products %}
-                <div class="carousel-cell carousel-item">
+                <div class="carousel-cell">
                   <div class="product-card">
                     {% comment %} <div class="badge">Hot</div> {% endcomment %}
                     <div class="product-tumb">
@@ -107,7 +107,7 @@
 }
 
 .carousel-item h1{
-    opacity: 1;
+    {% comment %} opacity: 1; {% endcomment %}
 }
 
 .flickity-button-icon {
@@ -638,7 +638,7 @@ button.next:hover{
   
   let next = document.querySelector('.carousel-controls .next');
   
-  let slides =  document.querySelectorAll('.carousel-inner .carousel-item');
+  let slides =  document.querySelectorAll('.carousel-inner .carousel-cell');
   
   let totalSlides = slides.length;
   
