@@ -682,7 +682,7 @@ button.next:hover{
   //Init carousel
   checkMediaQuery();
   loadIndicators();
-  loop(false);
+  loop(true);
 
   window.addEventListener('resize', checkMediaQuery);
   
@@ -812,13 +812,13 @@ button.next:hover{
   };
   
   function loop(status){
-      if(status === true){
+      {% comment %} if(status === true){
           time = setInterval(()=>{
               slideToNext();
           },interval);
       }else{
           clearInterval(time);
-      }
+      } {% endcomment %}
   }
 </script>
 
