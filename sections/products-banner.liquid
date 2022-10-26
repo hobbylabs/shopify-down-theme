@@ -12,7 +12,7 @@
             <div class="carousel-inner">
               {% for product in collections[section.settings.feature_collection].products %}
                 <div class="carousel-cell">
-                  <div class="product-card">
+                  <div class="carousel-item">
                     {% comment %} <div class="badge">Hot</div> {% endcomment %}
                     <div class="product-tumb">
                       <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
