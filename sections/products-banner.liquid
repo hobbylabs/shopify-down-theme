@@ -651,14 +651,13 @@ button.next:hover{
     } else {
       carouselInner.style.minWidth = (totalSlides * 32) + '%';
     }
+
+      //Init carousel
+  loadIndicators();
+  loop(true);
   }
 
   window.addEventListener('resize', checkMediaQuery);
-  
-  //Init carousel
-  
-  loadIndicators();
-  loop(true);
   
   
   //Carousel events
