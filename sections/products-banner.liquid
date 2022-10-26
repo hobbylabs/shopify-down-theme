@@ -66,24 +66,13 @@
     display: flex;
     justify-content: flex-start;
     border-radius: 13px;
-
-    {% comment %} height: 100%;
-    width: 100%;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    max-width: 678px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    border-radius: 13px; {% endcomment %}
 }
 
-  .carousel-inner{
+.carousel-inner{
     height: 100%;
-    {% comment %} width: inherit;  {% endcomment %}
+    /* min-width: 400%; */
     display: flex;
-    transition: all ease 1s;
+    transition: all ease .5s;
 }
 
 .carousel-item{
@@ -93,12 +82,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin:10px;
-
-}
-
-.carousel-item h1{
-    {% comment %} opacity: 1; {% endcomment %}
 }
 
 .flickity-button-icon {
