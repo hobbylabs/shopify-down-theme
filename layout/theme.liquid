@@ -238,9 +238,6 @@
     }
     </script>
 
-    {{ 'flickity.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'flickity.js' | asset_url}}" async></script>
-
     {{ 'purejscarousel.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'purejscarousel.js' | asset_url}}" async></script>
   </head>
@@ -301,7 +298,7 @@
     {%- endif -%}
 
 
-    {% comment %} <script>
+    <script>
       let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
       console.log(items)
       items.forEach(item => {
@@ -316,6 +313,6 @@
       });
       
       });
-    </script> {% endcomment %}
+    </script>
   </body>
 </html>
