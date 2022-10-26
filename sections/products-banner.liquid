@@ -9,12 +9,30 @@
         <h2 id="offer-title"> {{ section.settings.offer-title }} </h2>
         <div class="featured-cards">
           <div class="carousel">
-            <div class="carousel-inner">
-                <div style="background-color: orange;" class="carousel-item"><h1>First slide</h1></div>
-                <div style="background-color: greenyellow;"  class="carousel-item"><h1>Second slide</h1></div>
-                <div style="background-color: rgb(37, 150, 255);" class="carousel-item"><h1>Third slide</h1></div>
-                <div style="background-color: rgb(192, 192, 192);" class="carousel-item"><h1>Fourth slide</h1></div>
-            </div>
+            {% for product in collections[section.settings.feature_collection].products %}
+              <div class="carousel-cell">
+                <div class="product-card">
+                  {% comment %} <div class="badge">Hot</div> {% endcomment %}
+                  <div class="product-tumb">
+                    <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
+                  </div>
+                  <div class="product-details">
+                    <h4><a href="#">{{ product.title }}</a></h4>
+                    <div class="product-bottom-details">
+                      <div class="product-price" style="overflow:auto">
+                        <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
+                        <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                      </div>
+                      <div class="go-to-button">
+                        <a href="{{ product.url}}" class="go-to-product-button">
+                          {% render 'icon-arrow' %}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
             <div class="carousel-controls">
                 <span class="prev"></span>
                 <span class="next"></span>
