@@ -24,11 +24,11 @@
                           <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
                           <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
                         </div>
-                        <div class="go-to-button">
-                          <a href="{{ product.url}}" class="go-to-product-button">
-                            {% render 'icon-arrow' %}
-                          </a>
-                        </div>
+                      </div>
+                      <div class="go-to-button">
+                        <a href="{{ product.url}}" class="go-to-product-button">
+                          {% render 'icon-arrow' %}
+                        </a>
                       </div>
                     </div>
                   </div>
