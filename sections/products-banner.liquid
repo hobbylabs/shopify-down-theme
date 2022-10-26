@@ -15,7 +15,7 @@
                   <div class="product-card">
                     {% comment %} <div class="badge">Hot</div> {% endcomment %}
                     <div class="product-tumb">
-                      <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
+                      <img src="{{ product.featured_image | image_url }}" loading="lazy" width="100" height="100"/>
                     </div>
                     <div class="product-details">
                       <h4><a href="#">{{ product.title }}</a></h4>
