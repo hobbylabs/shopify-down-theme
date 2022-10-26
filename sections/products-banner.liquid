@@ -477,7 +477,7 @@ button.next:hover{
 
   .product-price small {
       font-size: 80%;
-      font-size: calc(var(--font-heading-scale) * {{ section.settings.product_small_price_size }}rem);
+      {% comment %} font-size: calc(var(--font-heading-scale) * {{ section.settings.product_small_price_size }}rem); {% endcomment %}
       font-family: {{ offers_product_price_small_font.family }};
       font-style: {{ offers_product_price_small_font.style }};
       font-weight: {{ offers_product_price_small_font.weight }};
