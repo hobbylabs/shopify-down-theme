@@ -90,7 +90,7 @@
 
   .carousel-inner{
     height: 100%;
-    width: inherit; 
+    {% comment %} width: inherit;  {% endcomment %}
     display: flex;
     transition: all ease 1s;
 }
@@ -253,7 +253,7 @@ button.next:hover{
     border-radius: 16px;
     margin: auto;
     margin: 4px;
-    min-width: calc(48% - 0px);
+    {% comment %} min-width: calc(48% - 0px); {% endcomment %}
     background: #fff0;
     
     flex: 1;
@@ -262,7 +262,6 @@ button.next:hover{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin:10px;
   }
 
   .carousel-cell {
