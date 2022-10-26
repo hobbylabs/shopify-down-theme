@@ -640,7 +640,7 @@ button.next:hover{
   const mediaQueryMin1200 = window.matchMedia('(min-width: 1200px)');
 
   function checkMediaQuery() {
-    if(mediaQueryMin1200.matches){
+    {% comment %} if(mediaQueryMin1200.matches){
       console.log('Media Query Matched!5');
       carouselInner.style.minWidth = (totalSlides * 33.33) + '%';
     } else if(mediaQueryMin992.matches) {
@@ -655,7 +655,8 @@ button.next:hover{
     }  else {
       console.log('Media Query Matched!1');
       carouselInner.style.minWidth = (totalSlides * 100) + '%';
-    }
+    } {% endcomment %}
+    carouselInner.style.minWidth = (totalSlides * 100) + '%';
   }
 
   //Init carousel
