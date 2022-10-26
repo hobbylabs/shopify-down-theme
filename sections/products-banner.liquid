@@ -797,39 +797,6 @@ button.next:hover{
           clearInterval(time);
       }
   }
-  // trigger a resize event once the window is loaded, it refresh the Flickity slider on resize
-  {% comment %} window.onload = function(){
-    window.dispatchEvent(new Event('resize'));
-  }
-
-  var elem = document.querySelector('.featured-cards .carousel');
-  var flkty = new Flickity( elem, {
-    contain: true,
-    imagesLoaded: true,
-    lazyLoad: 2,
-    wrapAround: false,
-    pageDots: false,
-    autoPlay: 3000,
-    groupCells:true,
-    prevNextButtons: true,
-    rightToLeft: false,
-  });
-  {% if request.design_mode %}
-  document.addEventListener("shopify:section:load", function(event) {
-    var elem = document.querySelector('.featured-cards .carousel');
-    var flkty = new Flickity( elem, {
-      contain: true,
-      imagesLoaded: true,
-      lazyLoad: 2,
-      wrapAround: false,
-      pageDots: false,
-      autoPlay: 3000,
-      groupCells:true,
-      prevNextButtons: true,
-      rightToLeft: false,
-    }); 
-  });
-  {% endif %} {% endcomment %}
 </script>
 
 
