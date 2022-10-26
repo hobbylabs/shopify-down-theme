@@ -619,7 +619,7 @@ button.next:hover{
   
   let next = document.querySelector('.carousel-controls .next');
   
-  let slides =  document.querySelectorAll('.carousel-inner .carousel-cell');
+  let slides =  document.querySelectorAll('.carousel-inner .carousel-item');
   
   let totalSlides = slides.length;
   
@@ -640,7 +640,7 @@ button.next:hover{
   
   
   //Init carousel
-  {% comment %} carouselInner.style.minWidth = (totalSlides * 100) + '%'; {% endcomment %}
+  carouselInner.style.minWidth = (totalSlides * 100) + '%';
   loadIndicators();
   loop(true);
   
