@@ -171,7 +171,7 @@ button.next:hover{
     height: 32px;
     width: 32px;
     position: absolute;
-    left: 12px;
+    left: 0px;
     top: 50%;
     transform: translateY(-50%);
     background-image: url({{ 'prev.svg' | asset_url }});
@@ -187,7 +187,7 @@ button.next:hover{
     height: 32px;
     width: 32px;
     position: absolute;
-    right: 12px;
+    right: 0px;
     top: 50%;
     transform: translateY(-50%);
     background-image: url({{ 'next.svg' | asset_url }});
@@ -788,7 +788,7 @@ button.next:hover{
       carouselInner.style.transform = `translateX(${step}%)`;
   };
   
-  {% comment %} function loop(status){
+  function loop(status){
       if(status === true){
           time = setInterval(()=>{
               slideToNext();
@@ -796,7 +796,7 @@ button.next:hover{
       }else{
           clearInterval(time);
       }
-  } {% endcomment %}
+  }
   // trigger a resize event once the window is loaded, it refresh the Flickity slider on resize
   {% comment %} window.onload = function(){
     window.dispatchEvent(new Event('resize'));
