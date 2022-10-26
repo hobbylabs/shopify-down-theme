@@ -659,7 +659,7 @@ button.next:hover{
   
   
   //Init carousel
-  carouselInner.style.minWidth = (totalSlides * 49) + '%';
+  {% comment %} carouselInner.style.minWidth = (totalSlides * 100) + '%'; {% endcomment %}
   loadIndicators();
   loop(true);
   
