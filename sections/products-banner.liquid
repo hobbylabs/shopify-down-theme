@@ -392,7 +392,7 @@ button.next:hover{
     border-top-right-radius: 16px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    box-shadow: 0 1px 2px #dfdfdf;
+    {% comment %} box-shadow: 0 1px 2px #d7fdfdf; {% endcomment %}
   }
 
   .product-details {
@@ -553,6 +553,8 @@ button.next:hover{
       margin: 4px;
       min-width: calc(100% - 0px);
       padding:0 auto;
+      overflow-y: hidden;
+      box-shadow: 0 2px 7px #dfdfdf;
     }
 
     #banner-message {
