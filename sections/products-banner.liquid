@@ -642,13 +642,13 @@ button.next:hover{
   function checkMediaQuery() {
     if(mediaQueryMin1200.matches){
       console.log('Media Query Matched!5');
-      carouselInner.style.minWidth = (totalSlides * 32) + '%';
+      carouselInner.style.minWidth = (totalSlides * 33.33) + '%';
     } else if(mediaQueryMin992.matches) {
       console.log('Media Query Matched!4');
-      carouselInner.style.minWidth = (totalSlides * 48) + '%';
+      carouselInner.style.minWidth = (totalSlides * 50) + '%';
     } else if(mediaQueryMin768.matches) {
       console.log('Media Query Matched!3');
-      carouselInner.style.minWidth = (totalSlides * 48) + '%';
+      carouselInner.style.minWidth = (totalSlides * 50) + '%';
     }  else if(mediaQueryMin600.matches) {
       console.log('Media Query Matched!2');
       carouselInner.style.minWidth = (totalSlides * 100) + '%';
