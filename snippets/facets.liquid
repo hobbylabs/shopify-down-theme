@@ -45,29 +45,50 @@
             {%- if filter_type == 'vertical' -%}
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
-          
+
+                {% for catalog_collection in catalog_collection_list %}
+                  <div >{{ catalog_collection.title }}</div>
+                  {%- assign isFound = false -%}
                   {% for link in catalog_menu.links %}
-                    {% for catalog_collection in catalog_collection_list %}
-                      <div >{{ catalog_collection.title }}</div>
-                      <div >links: </div>
-                      {% for ll in link.links %}
-                        {% if ll.title == catalog_collection.title %}
-                          <div >link found: {{ ll.title }}</div>
-                          {% break %}
-                        {% endif %}
-                      {% endfor %}
-                      {% assign catalog_link = link.links | where: "title", "{{catalog_collection.title}}" %}
-                      <div >"catalog_link" {{ catalog_link.size }}</div>
-                      {% for cl in catalog_link%}
-                        <div >found link: {{ cl.title }}</div>
-                      {% endfor %}
+                    
+                    {% for ll in link.links %}
+                      {% if ll.title == catalog_collection.title %}
+                        <div >link found: {{ ll.title }}</div>
+                        {%- assign isFound = true -%}
+                        {% break %}
+                      {% endif %}
                     {% endfor %}
 
+                    {% if isFound %}
+                      
+                      {%- if link.links != empty -%}
+                        <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+                        {% for sublink1 in link.links %}
+                          <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
+                          {% comment %} {{ sublink1.links }} {% endcomment %}
+                          {%- if sublink1.links != empty -%}
+                            {% for sublink2 in sublink1.links %}
+                              <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
+                              {%- if sublink2.links != empty -%}
+                                {% for sublink3 in sublink2.links %}
+                                  <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}" style="padding-left:30px;">{{ sublink3.title | link_to: sublink3.url }}</div>
+                                {% endfor %}
+                              {%- endif -%}
+                            {% endfor %}
+                          {%- endif -%}
+                        {% endfor %}
+                      {%- endif -%}
 
-
-
-                    
+                      {% break %}
+                    {% endif %}
                   {% endfor %}
+
+
+                  
+                  
+                {% endfor %}
+          
+                  
                 {% comment %} </ul> {% endcomment %}
               </div>
               <div class="active-facets active-facets-desktop">
