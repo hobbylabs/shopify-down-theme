@@ -49,8 +49,7 @@
                   {% for link in catalog_menu.links %}
                     {% for catalog_collection in catalog_collection_list %}
                       <div >{{ catalog_collection.title }}</div>
-                      <div >{{ link.title }}</div>
-                      {% assign catalog_link = link.links | where: "title", "{{ catalog_collection.title }}" %}
+                      {% assign catalog_link = link.links | where: "{{ catalog_collection.title }}" %}
                       <div >{{ catalog_link.title }}</div>
                     {% endfor %}
 
