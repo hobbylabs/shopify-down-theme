@@ -61,7 +61,8 @@
         "products_button_color": "#495057",
         "products_hover_button_color": "#0071e3",
         "products_icon_color": "#ffffff",
-        "products_hover_icon_color": "#ffffff"
+        "products_hover_icon_color": "#ffffff",
+        "carousel_button_icon_color": "#0071e3"
       }
     },
     "featured_collection": {
@@ -214,4 +215,4 @@
     "94ae25b9-03da-4603-8d72-376081f9a40e",
     "pagefly-home"
   ]
-} 
+}
