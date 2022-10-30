@@ -48,7 +48,6 @@
         "offer_title_alignment": "left",
         "mobile_offer_title_alignment": "center",
         "feature_collection": "oferta-zilei",
-        "navigation_color": "",
         "offers_product_title_font": "helvetica_n4",
         "product_title_size": 1.4,
         "products_title_color": "#ffffff",
@@ -63,6 +62,7 @@
         "products_icon_color": "#ffffff",
         "products_hover_icon_color": "#ffffff",
         "carousel_button_icon_color": "#495057",
+        "carousel_background_color": "rgba(0,0,0,0)",
         "carousel_button_icon_ocacity": 70
       }
     },
