@@ -125,7 +125,7 @@
       background-size: auto 100%;
       background-repeat: no-repeat;
       cursor: pointer;
-      opacity: .5;
+      opacity: calc({{ section.settings.carousel_button_icon_ocacity }}/100);
   }
 
   .prev:hover, .next:hover{
@@ -1245,12 +1245,12 @@
     {
       "type": "range",
       "id": "carousel_button_icon_ocacity",
-      "min": 0,
-      "max": 1,
-      "step": 0.1,
+      "min": 10,
+      "max": 100,
+      "step": 5,
       "unit": "%",
       "label": "Navigator buttins opacity color",
-      "default": 0.5
+      "default": 50
     }
   ],
   "presets": [
