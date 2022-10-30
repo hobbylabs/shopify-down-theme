@@ -42,11 +42,11 @@
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
               <div class="categories-wrapper" style="height:100px; background:aliceblue;">
-                <ul>
+                {% comment %} <ul> {% endcomment %}
                   {% for link in linklists.main-menu.links %}
                     <li>{{ link.title | link_to: link.url }}</li>
                   {% endfor %}
-                </ul>
+                {% comment %} </ul> {% endcomment %}
               </div>
               <div class="active-facets active-facets-desktop">
                 <div class="active-facets-vertical-filter">
