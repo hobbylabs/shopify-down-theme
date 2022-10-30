@@ -16,10 +16,6 @@
                     {% comment %} <div class="badge">Hot</div> {% endcomment %}
                     <div class="product-tumb">
                       <img src="{{ product.featured_image | image_url }}" loading="lazy" width="100" height="100"/>
-                    </div>
-                    <div class="product-details">
-                      <h4><a href="{{ product.url}}">{{ product.title }}</a></h4>
-
                       <div class="card__badge {{ settings.badge_position }}">
                         {%- if product.available == false -%}
                           <span
@@ -37,7 +33,9 @@
                           </span>
                         {%- endif -%}
                       </div>
-
+                    </div>
+                    <div class="product-details">
+                      <h4><a href="{{ product.url}}">{{ product.title }}</a></h4>
                       <div class="product-bottom-details">
                         <div class="product-price" style="overflow:auto">
                           <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
