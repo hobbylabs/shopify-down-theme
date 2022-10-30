@@ -320,6 +320,10 @@
     font-size: 14px;
     color: #fff;
     min-height: 65px;
+    line-height: normal;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    align-items: center;
   } 
 
   {% comment %} .badge {
@@ -374,14 +378,6 @@
       margin-bottom: 18px;
   }
 
-  .product-details h4 {
-    line-height: normal;
-    {% comment %} height: 34px; {% endcomment %}
-    margin: 10px 0px 10px 0px;
-    display: flex;
-    align-items: center;
-  }
-
   .flickity-enabled.is-draggable .flickity-viewport {
     cursor: initial;
   }
@@ -421,9 +417,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid #eee;
+    {% comment %} border-top: 1px solid #eee; {% endcomment %}
     padding-top: 10px;
-    {% comment %} height: 60px; {% endcomment %}
   }
 
   .product-bottom-details div {
