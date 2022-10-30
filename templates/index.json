@@ -62,7 +62,8 @@
         "products_hover_button_color": "#0071e3",
         "products_icon_color": "#ffffff",
         "products_hover_icon_color": "#ffffff",
-        "carousel_button_icon_color": "#0071e3"
+        "carousel_button_icon_color": "#0071e3",
+        "carousel_button_icon_ocacity": 15
       }
     },
     "featured_collection": {
