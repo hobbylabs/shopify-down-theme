@@ -47,14 +47,14 @@
                 {% comment %} <ul> {% endcomment %}
                 {% assign used_parrent_category = "" | split: "," %}
                 {% for catalog_collection in catalog_collection_list %}
-                  <div >{{ catalog_collection.title }}</div>
-                  {%- assign isFound = false -%}
+                  {% comment %} <div >{{ catalog_collection.title }}</div> {% endcomment %}
+                  {% assign isFound = false %}
                   {% for link in catalog_menu.links %}
                     
                     {% for ll in link.links %}
                       {% if ll.title == catalog_collection.title %}
-                        <div >link found: {{ ll.title }}</div>
-                        {%- assign isFound = true -%}
+                        {% comment %} <div >link found: {{ ll.title }}</div> {% endcomment %}
+                        {% assign isFound = true %}
                         {% break %}
                       {% endif %}
                     {% endfor %}
