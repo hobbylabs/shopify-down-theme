@@ -49,14 +49,14 @@
                   {% for link in catalog_menu.links %}
                     {% for catalog_collection in catalog_collection_list %}
                       <div >{{ catalog_collection.title }}</div>
-                      <div >"links"</div>
+                      <div >links: </div>
                       {% for ll in link.links%}
-                        <div >{{ ll.title }}</div>
+                        <div >link: {{ ll.title }}</div>
                       {% endfor %}
                       {% assign catalog_link = link.links | where: "title", "{{ catalog_collection.title }}" %}
                       <div >"catalog_link" {{ catalog_link.size }}</div>
                       {% for cl in catalog_link%}
-                        <div >{{ cl.title }}</div>
+                        <div >found link: {{ cl.title }}</div>
                       {% endfor %}
                     {% endfor %}
 
