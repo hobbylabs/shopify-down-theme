@@ -50,8 +50,11 @@
                     {% for catalog_collection in catalog_collection_list %}
                       <div >{{ catalog_collection.title }}</div>
                       <div >links: </div>
-                      {% for ll in link.links%}
-                        <div >link: {{ ll.title }}</div>
+                      {% for ll in link.links %}
+                        {% if ll.title == catalog_collection.title %}
+                          <div >link found: {{ ll.title }}</div>
+                          {% break %}
+                        {% endif %}
                       {% endfor %}
                       {% assign catalog_link = link.links | where: "title", "{{catalog_collection.title}}" %}
                       <div >"catalog_link" {{ catalog_link.size }}</div>
