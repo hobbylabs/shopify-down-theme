@@ -41,13 +41,13 @@
             {%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
-              <div class="categories-wrapper" style="height:100px; background:aliceblue;">
+              <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
                   {% for link in linklists.main-menu.links %}
                     {%- if link.title == 'Catalog' and link.links != empty -%}
                       {% for sublink1 in link.links %}
                         <div>{{ sublink1.title | link_to: sublink1.url }}</div>
-                        {{ sublink1.links }}
+                        {% comment %} {{ sublink1.links }} {% endcomment %}
                         {%- if sublink1.links != empty -%}
                           {% for sublink2 in sublink1.links %}
                             <div>{{ sublink2.title | link_to: sublink2.url }}</div>
