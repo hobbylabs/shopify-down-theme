@@ -199,14 +199,6 @@
     justify-content: center;
   }
 
-  .flickity-slider {
-    transform: scale(0.98);
-  }
-    
-  .flickity-page-dots .dot {
-    background: {{ section.settings.navigation_color }};
-  }
-
   .hot-offers-container {
     background-color: #C2C2C2;
   }
@@ -293,15 +285,12 @@
     margin: auto;
     position: relative;
     box-shadow: 0px 1px 10px 1px hwb(0deg 100% 0% / 50%);
-    background: #fafafa00;
-
+    background: {{ section.settings.carousel_background_color }}; 
     flex: 1;
-    {% comment %} height: 100%; {% endcomment %}
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    {% comment %} margin:10px; {% endcomment %}
 
   }
 
@@ -1150,11 +1139,6 @@
       "label": "Chose Collection to show on slideshow"
     },
     {
-      "type": "color",
-      "id": "navigation_color",
-      "label": "Change color of the pagination|navigation|scrollbar"
-    },
-    {
       "type": "header",
       "content": "Product Layout"
     },
@@ -1241,6 +1225,12 @@
       "id": "carousel_button_icon_color",
       "label": "Change navigator buttons color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "carousel_background_color",
+      "label": "Carousel background color",
+      "default": "#fafa00"
     },
     {
       "type": "range",
