@@ -702,13 +702,13 @@
   };
   
   function loop(status) {
-    {% comment %} if(status === true){
+    if(status === true){
         time = setInterval(()=>{
             slideToNext();
         },interval);
     }else{
         clearInterval(time);
-    } {% endcomment %}
+    }
   }
 </script>
 
