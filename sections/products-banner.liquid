@@ -153,7 +153,7 @@
       opacity: 1;
   }
 
-  #icon-path {
+  {% comment %} #icon-path {
     fill: green;
  }
 
@@ -163,7 +163,7 @@
 
  path{
   fill: green;
-}
+} {% endcomment %}
 
   {% assign banner_title_font = section.settings.banner_title_font %}
   {{ banner_title_font | font_face }}
