@@ -55,103 +55,107 @@
     display: flex;
     justify-content: flex-start;
     border-radius: 13px;
-}
+  }
 
-.carousel-inner{
-    height: 100%;
-    /* min-width: 400%; */
-    display: flex;
-    transition: all ease .5s;
-}
+  .carousel-inner{
+      height: 100%;
+      /* min-width: 400%; */
+      display: flex;
+      transition: all ease .5s;
+  }
 
-button.previous:active{
-  color: {{ section.settings.products_hover_button_color }};
-  background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
-}
+  button.previous:active{
+    color: {{ section.settings.products_hover_button_color }};
+    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+  }
 
-button.previous:hover{
-  color: {{ section.settings.products_hover_button_color }};;
-  background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
-}
+  button.previous:hover{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+  }
 
-button.next:active{
-  color: {{ section.settings.products_hover_button_color }};;
-  background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
-}
+  button.next:active{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+  }
 
-button.next:hover{
-  color: {{ section.settings.products_hover_button_color }};;
-  background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
-}
+  button.next:hover{
+    color: {{ section.settings.products_hover_button_color }};;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+  }
 
-.carousel-controls {
-  position: absolute;
-  background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
-  border: none;
-  color: #3330;
-  min-width: 100%;
-  top: 50%;
-}
-
-.carousel-controls .prev{
-    display: inline-block;
-    height: 32px;
-    width: 32px;
+  .carousel-controls {
     position: absolute;
-    left: 0px;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
+    border: none;
+    color: #3330;
+    min-width: 100%;
     top: 50%;
-    transform: translateY(-50%);
-    background-image: url({{ 'prev.svg' | asset_url }});
-    background-position: center;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    opacity: .5;
-}
+  }
 
-.carousel-controls .next{
-    display: inline-block;
-    height: 32px;
-    width: 32px;
+  .carousel-controls .prev{
+      display: inline-block;
+      height: 32px;
+      width: 32px;
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url({{ 'prev.svg' | asset_url }});
+      background-position: center;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      opacity: .5;
+  }
+
+  .carousel-controls .next{
+      display: inline-block;
+      height: 32px;
+      width: 32px;
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url({{ 'next.svg' | asset_url }});
+      background-position: center;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      opacity: .5;
+  }
+
+  .prev:hover, .next:hover{
+      opacity: 1;
+  }
+
+  .carousel-indicators{
+    display: none;
     position: absolute;
-    right: 0px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-image: url({{ 'next.svg' | asset_url }});
-    background-position: center;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    opacity: .5;
-}
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
 
-.prev:hover, .next:hover{
-    opacity: 1;
-}
+  .carousel-indicators span{
+      display: inline-block;
+      background-color: white;
+      width: 4px;
+      height: 4px;
+      border-radius: 2px;
+      opacity: .5;
+      cursor: pointer;
+      margin: 3px;
+  }
 
-.carousel-indicators{
-  display: none;
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
+  .carousel-indicators span.active{
+      opacity: 1;
+  }
 
-.carousel-indicators span{
-    display: inline-block;
-    background-color: white;
-    width: 4px;
-    height: 4px;
-    border-radius: 2px;
-    opacity: .5;
-    cursor: pointer;
-    margin: 3px;
-}
-
-.carousel-indicators span.active{
-    opacity: 1;
-}
+  #icon-path {
+    fill: green;
+ }
 
   {% assign banner_title_font = section.settings.banner_title_font %}
   {{ banner_title_font | font_face }}
@@ -563,22 +567,6 @@ button.next:hover{
   const mediaQueryMin1200 = window.matchMedia('(min-width: 1200px)');
 
   function checkMediaQuery() {
-    {% comment %} if(mediaQueryMin1200.matches){
-      console.log('Media Query Matched!5');
-      carouselInner.style.minWidth = (totalSlides * 33.33) + '%';
-    } else if(mediaQueryMin992.matches) {
-      console.log('Media Query Matched!4');
-      carouselInner.style.minWidth = (totalSlides * 50) + '%';
-    } else if(mediaQueryMin768.matches) {
-      console.log('Media Query Matched!3');
-      carouselInner.style.minWidth = (totalSlides * 50) + '%';
-    }  else if(mediaQueryMin600.matches) {
-      console.log('Media Query Matched!2');
-      carouselInner.style.minWidth = (totalSlides * 100) + '%';
-    }  else {
-      console.log('Media Query Matched!1');
-      carouselInner.style.minWidth = (totalSlides * 100) + '%';
-    } {% endcomment %}
     carouselInner.style.minWidth = (totalSlides * 100) + '%';
   }
 
@@ -591,7 +579,6 @@ button.next:hover{
   
   
   //Carousel events
-  
   next.addEventListener('click',()=>{
       slideToNext();
   });
@@ -672,7 +659,6 @@ button.next:hover{
   })
   
   //Carousel functions
-  
   function loadIndicators(){
       slides.forEach((slide,index)=>{
           if(index === 0){
@@ -714,14 +700,14 @@ button.next:hover{
       carouselInner.style.transform = `translateX(${step}%)`;
   };
   
-  function loop(status){
-      {% comment %} if(status === true){
-          time = setInterval(()=>{
-              slideToNext();
-          },interval);
-      }else{
-          clearInterval(time);
-      } {% endcomment %}
+  function loop(status) {
+    if(status === true){
+        time = setInterval(()=>{
+            slideToNext();
+        },interval);
+    }else{
+        clearInterval(time);
+    }
   }
 </script>
 
