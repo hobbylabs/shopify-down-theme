@@ -45,8 +45,13 @@
                 {% comment %} <ul> {% endcomment %}
                   {% for link in linklists.main-menu.links %}
                     {%- if link.title == 'Catalog' and link.links != empty -%}
-                      {% for link_level1 in link.links %}
-                        <div>{{ link_level1.title | link_to: link_level1.url }}</div>
+                      {% for sublink1 in link.links %}
+                        <div>{{ sublink1.title | link_to: sublink1.url }}</div>
+                        {%- if sublink1.links != empty -%}
+                          {% for sublink2 in sublink1.links %}
+                            <div>{{ sublink2.title | link_to: sublink2.url }}</div>
+                          {% endfor %}
+                        {%- endif -%}
                       {% endfor %}
                     {%- endif -%}
                   {% endfor %}
