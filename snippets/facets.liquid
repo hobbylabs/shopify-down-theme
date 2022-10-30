@@ -44,7 +44,9 @@
               <div class="categories-wrapper" style="height:100px; background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
                   {% for link in linklists.main-menu.links %}
-                    <li>{{ link.title | link_to: link.url }}</li>
+                    {%- if link.title == 'Catalog' and link.links != empty -%}
+                      <li>{{ link.title | link_to: link.url }}</li>
+                    {%- endif -%}
                   {% endfor %}
                 {% comment %} </ul> {% endcomment %}
               </div>
