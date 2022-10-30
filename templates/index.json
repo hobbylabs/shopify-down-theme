@@ -22,7 +22,7 @@
         "offers_padding_right": 0,
         "offers_padding_bottom": 0,
         "offers_padding_left": 0,
-        "mobile_offers_padding_top": 0,
+        "mobile_offers_padding_top": 30,
         "mobile_offers_padding_right": 0,
         "mobile_offers_padding_bottom": 0,
         "mobile_offers_padding_left": 0,
