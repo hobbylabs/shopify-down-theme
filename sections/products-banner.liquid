@@ -20,6 +20,15 @@
                     <div class="product-details">
                       <h4><a href="{{ product.url}}">{{ product.title }}</a></h4>
 
+              
+
+                      <div class="product-bottom-details">
+                        <div class="product-price" style="overflow:auto">
+                          <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                          <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
+                        </div>
+                      </div>
+
                       <div class="card__badge {{ settings.badge_position }}">
                         {%- if product.available == false -%}
                           <span
@@ -37,18 +46,11 @@
                           </span>
                         {%- endif -%}
                       </div>
-
-                      <div class="product-bottom-details">
-                        <div class="product-price" style="overflow:auto">
-                          <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                          <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                        </div>
-                      </div>
-                      <div class="go-to-button">
+                      {% comment %} <div class="go-to-button">
                         <a href="{{ product.url}}" class="go-to-product-button">
                           {% render 'icon-arrow' %}
                         </a>
-                      </div>
+                      </div> {% endcomment %}
                     </div>
                   </div>
                 </div>
