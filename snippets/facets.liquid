@@ -44,7 +44,8 @@
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
                   {% for link in linklists.main-menu.links %}
-                    {%- if link.title == 'Catalog' and link.links != empty -%}
+                    <div class="categories-level" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+
                       {% for sublink1 in link.links %}
                         <div class="categories-level-1" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                         {% comment %} {{ sublink1.links }} {% endcomment %}
@@ -59,7 +60,6 @@
                           {% endfor %}
                         {%- endif -%}
                       {% endfor %}
-                    {%- endif -%}
                   {% endfor %}
                 {% comment %} </ul> {% endcomment %}
               </div>
