@@ -7,6 +7,7 @@
     - enable_sorting: {Boolean} Show sorting when true
     - filter_type: {String} Type of filter
     - catalog_menu: {linklist} Menu containing the catalog
+    - catalog_collection_list: {collection[]} Catalog parrent categories
 
     Usage:
     {% render 'facets', results: collection, enable_filtering: true, enable_sorting: true, filter_type: 'vertical' %}
@@ -44,6 +45,11 @@
             {%- if filter_type == 'vertical' -%}
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
+                {% for catalog_collection in catalog_collection_list %}
+                  <div >{{ catalog_collection.title }}</div>
+
+                {% endfor %}
+
                   {% for link in catalog_menu.links %}
                     {%- if link.title == 'Catalog' and link.links != empty -%}
                       <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
