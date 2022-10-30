@@ -132,11 +132,9 @@
       opacity: 1;
   }
 
-  .carousel-controls svg {
-  fill: blue;
+  .carousel-controls svg path {
+    fill: {{ section.settings.products_button_color }};
   }
-
-  {% comment %} .prev path{fill:green !important;} {% endcomment %}
 
   .carousel-indicators{
     display: none;
