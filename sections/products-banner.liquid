@@ -16,7 +16,7 @@
                     {% comment %} <div class="badge">Hot</div> {% endcomment %}
                     <div class="product-tumb">
                       <img src="{{ product.featured_image | image_url }}" loading="lazy" width="100" height="100"/>
-                      <div class="card__badge position {{ settings.badge_position }}">
+                      <div class="card__badge position ellipsis {{ settings.badge_position }}">
                         {%- if product.available == false -%}
                           <span
                             id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}"
