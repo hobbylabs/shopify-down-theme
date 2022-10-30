@@ -51,7 +51,7 @@
                         {% comment %} {{ sublink1.links }} {% endcomment %}
                         {%- if sublink1.links != empty -%}
                           {% for sublink2 in sublink1.links %}
-                            <div class="categories-level-2{% if sublink2.active %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
+                            <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
                             {%- if sublink2.links != empty -%}
                               {% for sublink3 in sublink2.links %}
                                 <div class="categories-level-3{% if sublink3.active %} subcategory-current-link{% endif %}" style="padding-left:30px;">{{ sublink3.title | link_to: sublink3.url }}</div>
