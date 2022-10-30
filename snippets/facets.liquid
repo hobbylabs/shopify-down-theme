@@ -54,11 +54,10 @@
                         <div >{{ ll.title }}</div>
                       {% endfor %}
                       {% assign catalog_link = link.links | where: "title", "{{ catalog_collection.title }}" %}
-                      <div >"catalog_link"</div>
+                      <div >"catalog_link" {{ catalog_link.length }}</div>
                       {% for cl in catalog_link%}
                         <div >{{ cl.title }}</div>
                       {% endfor %}
-                      <div >{{ catalog_link.length }}</div>
                     {% endfor %}
 
 
