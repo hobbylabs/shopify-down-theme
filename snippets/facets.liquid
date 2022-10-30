@@ -45,7 +45,7 @@
             {%- if filter_type == 'vertical' -%}
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
-
+                {% assign used_parrent_category = "" | split: "," %}
                 {% for catalog_collection in catalog_collection_list %}
                   <div >{{ catalog_collection.title }}</div>
                   {%- assign isFound = false -%}
@@ -59,25 +59,31 @@
                       {% endif %}
                     {% endfor %}
 
-                    {% if isFound %}
+                    {% if isFound%}
+                      {% if used_parrent_category contains link.title %}
                       
-                      {%- if link.links != empty -%}
-                        <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
-                        {% for sublink1 in link.links %}
-                          <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
-                          {% comment %} {{ sublink1.links }} {% endcomment %}
-                          {%- if sublink1.links != empty -%}
-                            {% for sublink2 in sublink1.links %}
-                              <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
-                              {%- if sublink2.links != empty -%}
-                                {% for sublink3 in sublink2.links %}
-                                  <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}" style="padding-left:30px;">{{ sublink3.title | link_to: sublink3.url }}</div>
-                                {% endfor %}
-                              {%- endif -%}
-                            {% endfor %}
-                          {%- endif -%}
-                        {% endfor %}
-                      {%- endif -%}
+                      {%- else -%}
+
+                        {% assign use_title = link.title | split: ", " %}
+                        {% assign used_parrent_category = used_parrent_category | concat: use_title %}
+                        {%- if link.links != empty -%}
+                          <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+                          {% for sublink1 in link.links %}
+                            <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
+                            {% comment %} {{ sublink1.links }} {% endcomment %}
+                            {%- if sublink1.links != empty -%}
+                              {% for sublink2 in sublink1.links %}
+                                <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
+                                {%- if sublink2.links != empty -%}
+                                  {% for sublink3 in sublink2.links %}
+                                    <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}" style="padding-left:30px;">{{ sublink3.title | link_to: sublink3.url }}</div>
+                                  {% endfor %}
+                                {%- endif -%}
+                              {% endfor %}
+                            {%- endif -%}
+                          {% endfor %}
+                        {%- endif -%}
+                      {% endif %}
 
                       {% break %}
                     {% endif %}
