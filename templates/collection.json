@@ -44,7 +44,9 @@
         "padding_bottom": 36,
         "catalog_menu": "main-menu",
         "catalog_collection_list": [
-
+          "placi-de-dezvoltare",
+          "senzori-și-module",
+          "motoare-și-drivere"
         ]
       }
     }
