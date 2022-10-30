@@ -41,33 +41,6 @@
             </div>
             <div class="carousel-indicators"></div>
         </div>
-          {% comment %} <div class="carousel">
-              {% for product in collections[section.settings.feature_collection].products %}
-              <div class="carousel-cell">
-                <div class="product-card">
-                  {% comment %} <div class="badge">Hot</div> {% endcomment %}
-                  <div class="product-tumb">
-                    <img data-flickity-lazyload="{{ product.featured_image | image_url }}"/>
-                  </div>
-                  <div class="product-details">
-                    <h4><a href="#">{{ product.title }}</a></h4>
-                    <div class="product-bottom-details">
-                      <div class="product-price" style="overflow:auto">
-                        <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                        <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                      </div>
-                      <div class="go-to-button">
-                        <a href="{{ product.url}}" class="go-to-product-button">
-                          {% render 'icon-arrow' %}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-          </div> {% endcomment %}
-        </div>
       {% endif %}
 		</div>
 	</div>
@@ -91,25 +64,6 @@
     transition: all ease .5s;
 }
 
-.flickity-button-icon {
-  color: {{ section.settings.navigation_color }};
-}
-
-.flickity-button {
-  position: absolute;
-  background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
-  border: none;
-  color: #3330;
-}
-
-.flickity-prev-next-button {
-  width: 44px;
-  top: 75%;
-  height: 50%;
-  border-radius: 0%;
-  transform: translateY(-100%);
-}
-
 button.previous:active{
   color: {{ section.settings.products_hover_button_color }};
   background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
@@ -128,14 +82,6 @@ button.next:active{
 button.next:hover{
   color: {{ section.settings.products_hover_button_color }};;
   background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
-}
-
-.flickity-prev-next-button.previous {
-  left: -0px;
-}
-
-.flickity-prev-next-button.next {
-  right: -0px;
 }
 
 .carousel-controls {
