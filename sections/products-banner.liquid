@@ -130,11 +130,10 @@
 
   .prev:hover, .next:hover{
       opacity: 1;
-      fill: {{ section.settings.products_hover_button_color }};
   }
 
   .carousel-controls svg path {
-    fill: {{ section.settings.products_hover_button_color }};
+    fill: {{ section.settings.carousel_button_icon_color }};
   }
 
   .carousel-indicators{
@@ -1235,6 +1234,12 @@
       "type": "color",
       "id": "products_hover_icon_color",
       "label": "Change color for hovered icon",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "carousel_button_icon_color",
+      "label": "Change navigator buttons color",
       "default": "#ffffff"
     }
   ],
