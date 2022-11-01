@@ -84,6 +84,7 @@ else
                           {% endif %}
                         {% endfor %}
                         {% if isFoundActive %}
+                          {% break %}
                         {% else %}
                           {% assign foundActiveLinkOnParrent="" %}
                         {% endif %}
