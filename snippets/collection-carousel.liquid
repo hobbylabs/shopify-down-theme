@@ -19,6 +19,8 @@
   - products_button_color: {Color}
   - products_icon_color: {Color}
   - products_hover_icon_color: {Color}
+  - carousel_card_shadow_ocacity: {Number}
+  - carousel_card_shadow_color: {Color}
 
   Usage:
   {% render 'collection-carousel', enable_filtering: true, enable_sorting: true, filter_type: 'vertical' %}
@@ -205,7 +207,7 @@
     border-radius: 16px;
     margin: auto;
     position: relative;
-    box-shadow: 0 1px 10px 1px hwb(0deg 100% 0% / 50%);
+    box-shadow: 0 1px 10px 1px{{ carousel_card_shadow_color }}{{ carousel_card_shadow_ocacity }};
     background: {{ carousel_background_color }};
     flex: 1;
     display: flex;
