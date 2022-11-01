@@ -55,9 +55,9 @@ else
                       {% if ll.title == catalog_collection.title %}
                       
                         {%- comment -%} Add found title to list if missing {%- endcomment -%}
-                        {% if found_top_categories contains ll.title %}
+                        {% if found_top_categories contains link.title %}
                         {%- else -%}
-                          {% assign use_title = ll.title | split: ", " %}
+                          {% assign use_title = link.title | split: ", " %}
                           {% assign found_top_categories = found_top_categories | concat: use_title %}
                         {% endif %}
 
