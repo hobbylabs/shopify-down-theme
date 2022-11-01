@@ -92,7 +92,7 @@ else
                       {% endif %}
                     {% endfor %} 
 
-                    {{foundActiveLinkOnParrent}}
+                    {%- comment -%} {{foundActiveLinkOnParrent}} {%- endcomment -%}
 
                     {% if isFound %}
                       {% if used_parrent_category contains link.title %}
