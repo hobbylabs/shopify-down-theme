@@ -45,20 +45,20 @@ else
             {%- if filter_type == 'vertical' -%}
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
-                {% assign used_parrent_category = "" | split: "," %}
-                {% assign found_parrent_category = "" | split: "," %}
+                {% assign used_top_categories = "" | split: "," %}
+                {% assign found_top_categories = "" | split: "," %}
                 {% assign foundActiveLinkOnParrent = "" %}
 
                 {% for catalog_collection in catalog_collection_list %}
                   {% for link in catalog_menu.links %}
                     {% for ll in link.links %}
                       {% if ll.title == catalog_collection.title %}
-
+                      
                         {%- comment -%} Add found title to list if missing {%- endcomment -%}
-                        {% if found_parrent_category contains ll.title %}
+                        {% if found_top_categories contains ll.title %}
                         {%- else -%}
                           {% assign use_title = ll.title | split: ", " %}
-                          {% assign found_parrent_category = found_parrent_category | concat: use_title %}
+                          {% assign found_top_categories = found_top_categories | concat: use_title %}
                         {% endif %}
 
                         {% assign isFoundActive = false %}
@@ -117,11 +117,11 @@ else
                     {% comment %} Check if active link is pressent on this menu branch sublevels  {% endcomment %}
                     {%- comment -%} <div >link found: {{ ll.title }}</div> {%- endcomment -%}
                     <p>check:{{ link.title }}</p>
-                    {% if found_parrent_category contains link.title %}
-                      {% if used_parrent_category contains link.title %}
+                    {% if found_top_categories contains link.title %}
+                      {% if used_top_categories contains link.title %}
                       {%- else -%}
                         {% assign use_title = link.title | split: ", " %}
-                        {% assign used_parrent_category = used_parrent_category | concat: use_title %}
+                        {% assign used_top_categories = used_top_categories | concat: use_title %}
                         {%- if link.links != empty -%}
                           {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
