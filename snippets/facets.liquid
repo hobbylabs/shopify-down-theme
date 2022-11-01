@@ -46,13 +46,8 @@ else
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
                 {% assign used_parrent_category = "" | split: "," %}
+                {% assign foundActiveLinkOnParrent = "" %}
                 {% for catalog_collection in catalog_collection_list %}
-                  {% comment %} <div >{{ catalog_collection.title }}</div> {% endcomment %}
-                  {% assign isFound = false %}
-                  {% assign foundActiveLinkOnParrent = "" %}
-
-
-
                   {% for link in catalog_menu.links %}
                     {% for ll in link.links %}
                       {% if ll.title == catalog_collection.title %}
@@ -97,9 +92,12 @@ else
 
                     <p>found:{{foundActiveLinkOnParrent}}</p></br></br>
                   {% endfor %}
+                {% endfor %}
 
 
-                  
+                {% for catalog_collection in catalog_collection_list %}
+                  {% comment %} <div >{{ catalog_collection.title }}</div> {% endcomment %}
+                  {% assign isFound = false %}
                   {% for link in catalog_menu.links %}
                     {% comment %} Look for catalog collections is are pressent in menu {% endcomment %}
                     {% comment %} Check if active link is pressent on this menu branch sublevels  {% endcomment %}
