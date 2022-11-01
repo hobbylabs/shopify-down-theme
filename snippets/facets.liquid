@@ -55,44 +55,44 @@ else
                     {% comment %} Look for catalog collections is are pressent in menu {% endcomment %}
                     {% comment %} Check if active link is pressent on this menu branch sublevels  {% endcomment %}
                     {%- comment -%} <div >link found: {{ ll.title }}</div> {%- endcomment -%}
-                    {% for ll in link.links 
-                       if ll.title == catalog_collection.title 
-                         assign isFound = true 
-                         assign isFoundActive = false 
-                         for llSublink1 in ll.links 
-                            assign foundActiveLinkOnParrent = llSublink1.url 
-                            if llSublink1.current 
-                              assign isFoundActive = true 
-                              break 
-                            else
-                              for llSublink2 in llSublink1.links
-                                if llSublink2.current
-                                  assign isFoundActive = true 
-                                  break 
-                                else
-                                  for llSublink3 in llSublink1.links
-                                    if llSublink3.current
-                                      assign isFoundActive = true 
-                                      break 
-                                    else
-                                    endif
-                                  endfor
-                                endif 
-                              endfor
-                              if isFoundActive
-                                break
-                              endif 
-                            endif 
-                          endfor 
-                          if isFoundActive
-                          else
-                            assign foundActiveLinkOnParrent=""
-                          endif  
-                         break 
-                       endif 
-                    endfor %}
+                    {% for ll in link.links %}
+                      {% if ll.title == catalog_collection.title %}
+                        {% assign isFound = true %}
+                        {% assign isFoundActive = false %}
+                        {% for llSublink1 in ll.links %}
+                          {% assign foundActiveLinkOnParrent = llSublink1.url %}
+                          {% if llSublink1.current %}
+                            {% assign isFoundActive = true %}
+                            {% break %}
+                          {% else %}
+                            {% for llSublink2 in llSublink1.links %}
+                              {% if llSublink2.current %}
+                                {% assign isFoundActive = true %}
+                                {% break %}
+                              {% else %}
+                                {% for llSublink3 in llSublink1.links %}
+                                  {% if llSublink3.current %}
+                                    {% assign isFoundActive = true %} 
+                                    {% break %}
+                                  {% else %}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %} 
+                            {% endfor %}
+                            {% if isFoundActive %}
+                              {% break %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if isFoundActive %}
+                        {% else %}
+                          {% assign foundActiveLinkOnParrent="" %}
+                        {% endif %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %} 
 
-                    
+                    console.log(foundActiveLinkOnParrent);
 
                     {% if isFound%}
                       {% if used_parrent_category contains link.title %}
