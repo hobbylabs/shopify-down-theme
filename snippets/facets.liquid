@@ -116,7 +116,7 @@ else
                     {% comment %} Look for catalog collections is are pressent in menu {% endcomment %}
                     {% comment %} Check if active link is pressent on this menu branch sublevels  {% endcomment %}
                     {%- comment -%} <div >link found: {{ ll.title }}</div> {%- endcomment -%}
-                    <p>check:{{ found_parrent_category }}</p>
+                    <p>check:{{ link.title }}</p>
                     {% if found_parrent_category contains link.title %}
                       {% if used_parrent_category contains link.title %}
                       {%- else -%}
