@@ -1,4 +1,27 @@
-{%- style -%}
+<div class="container-fluid">
+  <div class="row">
+    <div {% if section.settings.show_special_offers %}class="column-left"{% else %} class="column-left-no-offers"{% endif %}>
+      <h2 id="banner-title">
+        {{ section.settings.title }}
+      </h2>
+      <div id="banner-message">
+        {{ section.settings.message }}
+      </div>
+    </div>
+
+    <div {% if section.settings.show_special_offers %}class="column-right"{% else %} class="column-right-no-offers"{% endif %}>
+      {% if section.settings.show_special_offers and collections[section.settings.feature_collection] != blank and collections[section.settings.feature_collection].products_count != 0 %}
+        <h2 id="offer-title">
+          {{ section.settings.offer-title }}
+        </h2>
+        {% render 'collection-carousel', feature_collection: section.settings.feature_collection, navigator_icon_color: section.settings.products_button_color, products_hover_button_color: section.settings.products_hover_button_color, carousel_button_icon_ocacity: section.settings.carousel_button_icon_ocacity, carousel_button_icon_color: section.settings.carousel_button_icon_color, offers_product_title_font: section.settings.offers_product_title_font, offers_product_price_font: section.settings.offers_product_price_font, offers_product_price_small_font: section.settings.offers_product_price_small_font, carousel_background_color: section.settings.carousel_background_color, product_title_size: section.settings.product_title_size, products_title_color: section.settings.products_title_color, products_price_color: section.settings.products_price_color, products_price_no_discount_color: section.settings.products_price_no_discount_color, product_big_price_size: section.settings.product_big_price_size, products_button_color: section.settings.products_button_color, products_icon_color: section.settings.products_icon_color, products_hover_icon_color: section.settings.products_hover_icon_color %}
+      {% endif %} 
+    </div>
+  </div>
+</div>
+
+
+<style>
   {% assign banner_title_font = section.settings.banner_title_font %}
   {{ banner_title_font | font_face }}
 
