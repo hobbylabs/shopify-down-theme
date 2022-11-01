@@ -46,12 +46,21 @@ else
               <div class="categories-wrapper" style="background:aliceblue;">
                 {% comment %} <ul> {% endcomment %}
                 {% assign used_parrent_category = "" | split: "," %}
+                {% assign found_parrent_category = "" | split: "," %}
                 {% assign foundActiveLinkOnParrent = "" %}
+
                 {% for catalog_collection in catalog_collection_list %}
                   {% for link in catalog_menu.links %}
                     {% for ll in link.links %}
                       {% if ll.title == catalog_collection.title %}
-                        {% assign isFound = true %}
+
+                        {%- comment -%} Add found title to list if missing {%- endcomment -%}
+                        {% if found_parrent_category contains ll.title %}
+                        {%- else -%}
+                          {% assign use_title = ll.title | split: ", " %}
+                          {% assign found_parrent_category = found_parrent_category | concat: use_title %}
+                        {% endif %}
+
                         {% assign isFoundActive = false %}
                         {% for llSublink1 in ll.links %}
                           {% assign foundActiveLinkOnParrent = llSublink1.url %}
@@ -102,14 +111,13 @@ else
 
                 {% for catalog_collection in catalog_collection_list %}
                   {% comment %} <div >{{ catalog_collection.title }}</div> {% endcomment %}
-                  {% assign isFound = false %}
+                  {%- comment -%} {% assign isFound = false %} {%- endcomment -%}
                   {% for link in catalog_menu.links %}
                     {% comment %} Look for catalog collections is are pressent in menu {% endcomment %}
                     {% comment %} Check if active link is pressent on this menu branch sublevels  {% endcomment %}
                     {%- comment -%} <div >link found: {{ ll.title }}</div> {%- endcomment -%}
                     
-
-                    {% if isFound %}
+                    {% if found_parrent_category contains link.title %}
                       {% if used_parrent_category contains link.title %}
                       {%- else -%}
                         {% assign use_title = link.title | split: ", " %}
@@ -117,7 +125,7 @@ else
                         {%- if link.links != empty -%}
                           {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
-                            {{sublink1.url}}</br>
+                            {{ sublink1.url }}</br>
                             {%- if sublink1.url == foundActiveLinkOnParrent -%}
                               <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                               {{ sublink1.links }}
