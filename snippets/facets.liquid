@@ -126,8 +126,8 @@ else
                         {%- if link.links != empty -%}
                           {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
-                            {{ sublink1.url }}</br>
                             <p>sublink1:{{ sublink1.url }}</p>
+                            <p>sublink1:{{ foundActiveLinkOnParrent }}</p>
                             {%- if sublink1.url == foundActiveLinkOnParrent -%}
                               <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                               {{ sublink1.links }}
