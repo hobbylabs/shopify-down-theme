@@ -560,12 +560,14 @@
   };
 
   function loop(status) {
-    if (status === true) {
-      time = setInterval(() => {
-        slideToNext();
-      }, interval);
-    } else {
-      clearInterval(time);
-    }
+    {%- comment -%}
+      if (status === true) {
+        time = setInterval(() => {
+          slideToNext();
+        }, interval);
+      } else {
+        clearInterval(time);
+      }
+    {%- endcomment -%}
   }
 </script>
