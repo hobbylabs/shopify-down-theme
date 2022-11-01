@@ -42,12 +42,7 @@
                 <a href="{{ product.url}}">{{ product.title }}</a>
               </h4>
 
-              <div class="product-bottom-details">
-                <div class="product-price" style="overflow:auto">
-                  <small class="ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                  <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                </div>
-              </div>
+
 
               <div class="bottom-part">
                 <div class="card__badge {{ settings.badge_position }}">
@@ -60,6 +55,13 @@
                       {{- 'products.product.on_sale' | t -}}
                     </span>
                   {%- endif -%}
+                </div>
+              </div>
+
+              <div class="product-bottom-details">
+                <div class="product-price" style="overflow:auto">
+                  <small class="ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                  <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
                 </div>
               </div>
 
