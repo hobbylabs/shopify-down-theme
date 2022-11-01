@@ -1,0 +1,571 @@
+{% comment %}
+    Renders collection carousel
+
+    Accepts:
+    - feature_collection: {Object} Collection
+    - navigator_icon_color: {Color} Color for carousel navigation icon
+    - products_hover_button_color: {Color}
+    - carousel_button_icon_ocacity: {Number}
+    - carousel_button_icon_color: {Color} 
+    - offers_product_title_font: {Font}
+    - offers_product_price_font: {Font}
+    - offers_product_price_small_font: {Font}
+    - carousel_background_color: {Color}
+    - product_title_size: {Number}
+    - products_title_color: {Color}
+    - products_price_color: {Color}
+    - products_price_no_discount_color: {Color}
+    - product_big_price_size: {Number}
+    - products_button_color: {Color}
+    - products_icon_color: {Color}
+    - products_hover_icon_color: {Color}
+
+    Usage:
+    {% render 'collection-carousel', enable_filtering: true, enable_sorting: true, filter_type: 'vertical' %}
+{% endcomment %}
+
+<div class="featured-cards">
+    <div class="carousel">
+        <div class="carousel-inner">
+        {% for product in collections[feature_collection].products %}
+            <div class="carousel-item">
+            <div class="product-card">
+                {% comment %} <div class="badge">Hot</div> {% endcomment %}
+                <div class="product-tumb">
+                <img src="{{ product.featured_image | image_url }}" loading="lazy" width="100" height="100"/>
+                </div>
+                <div class="product-details">
+                <h4><a href="{{ product.url}}">{{ product.title }}</a></h4>
+                <div class="product-bottom-details">
+                    <div class="product-price" style="overflow:auto">
+                    <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
+                    <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
+                    </div>
+                </div>
+
+                <div class="card__badge {{ settings.badge_position }}">
+                    {%- if product.available == false -%}
+                    <span
+                        id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}"
+                        class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                    >
+                        {{- 'products.product.sold_out' | t -}}
+                    </span>
+                    {%- elsif product.compare_at_price > product.price and product.available -%}
+                    <span
+                        id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}"
+                        class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                    >
+                        {{- 'products.product.on_sale' | t -}}
+                    </span>
+                    {%- endif -%}
+                </div>
+                {% comment %} <div class="go-to-button">
+                    <a href="{{ product.url}}" class="go-to-product-button">
+                    {% render 'icon-arrow' %}
+                    </a>
+                </div> {% endcomment %}
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+    </div>
+        <div class="carousel-controls">
+            <span class="prev">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 16a.997.997 0 01-.707-.293l-5-5a.999.999 0 010-1.414l5-5a.999.999 0 111.414 1.414L8.414 10l4.293 4.293A.999.999 0 0112 16z" fill="{{ navigator_icon_color }}"/></svg>
+            </span>
+            <span class="next">
+            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" fill="{{ navigator_icon_color }}"/></svg>
+            </span>
+        </div>
+        <div class="carousel-indicators"></div>
+    </div>
+
+<style>
+    .carousel{
+        width: inherit;
+        overflow-x: hidden;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        border-radius: 13px;
+    }
+
+    .carousel-inner{
+        height: 100%;
+        /* min-width: 400%; */
+        display: flex;
+        transition: all ease .5s;
+    }
+
+    button.previous:active{
+        color: {{ products_hover_button_color }};
+        background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+    }
+
+    button.previous:hover{
+        color: {{ products_hover_button_color }};;
+        background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
+    }
+
+    button.next:active{
+        color: {{ products_hover_button_color }};;
+        background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+    }
+
+    button.next:hover{
+        color: {{ products_hover_button_color }};;
+        background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
+    }
+
+    .carousel-controls {
+        position: absolute;
+        background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
+        border: none;
+        color: #3330;
+        min-width: 100%;
+        top: 50%;
+    }
+    
+    .carousel-controls .prev{
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        opacity: calc({{ carousel_button_icon_ocacity }}/100);
+    }
+
+    .carousel-controls .next{
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        opacity: calc({{ carousel_button_icon_ocacity }}/100);
+    }
+
+    .prev:hover, .next:hover{
+        opacity: 1;
+    }
+
+    .carousel-controls svg path {
+        fill: {{ carousel_button_icon_color }};
+    }
+
+    .carousel-indicators{
+        display: none;
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .carousel-indicators span{
+        display: inline-block;
+        background-color: white;
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        opacity: .5;
+        cursor: pointer;
+        margin: 3px;
+    }
+
+    .carousel-indicators span.active{
+        opacity: 1;
+    }
+    
+    {% assign offers_product_title_font = offers_product_title_font %}
+    {{ offers_product_title_font | font_face }}
+    
+    {% assign offers_product_price_font = offers_product_price_font %}
+    {{ offers_product_price_font | font_face }}
+    
+    {% assign offers_product_price_small_font = offers_product_price_small_font %}
+    {{ offers_product_price_small_font | font_face }}
+
+    /* Product Card */
+    .product-card {
+        width: 100%;
+        border-radius: 16px;
+        margin: auto;
+        position: relative;
+        box-shadow: 0px 1px 10px 1px hwb(0deg 100% 0% / 50%);
+        background: {{ carousel_background_color }}; 
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .product-details h4 {
+        white-space: normal;
+        font-size: 14px;
+        color: #fff;
+        line-height: normal;
+        margin: 10px 0px 10px 0px;
+        display: flex;
+        align-items: center;
+    } 
+
+    .badge {
+        margin-top: 10px;
+    }
+
+    .product-tumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        {% comment %} min-height: 20vh; {% endcomment %}
+        padding: 0px;
+        background: #f0f0f0;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .product-tumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 181px;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .product-details {
+        padding: 0px 10px;
+        width: 50%;
+    }
+
+  .product-details h4 a {
+    font-size: calc(var(--font-heading-scale) * {{ product_title_size }}rem);
+    font-family: {{ offers_product_title_font.family }};
+    font-style: {{ offers_product_title_font.style }};
+    font-weight: {{ offers_product_title_font.weight }};
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-transform: uppercase;
+    color: {{ products_title_color }};
+    text-decoration: none;
+    transition: 0.3s;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: default;
+  }
+
+  .product-details h4 a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    {% comment %} color: #fbb72c; {% endcomment %}
+  }
+
+  .product-details p {
+      font-size: 15px;
+      line-height: 22px;
+      margin-bottom: 18px;
+      color: #999;
+  }
+
+  .product-bottom-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+
+  .product-bottom-details div {
+      float: left;
+      width: 100%;
+  }
+
+  .product-price {
+    color: {{ products_price_color }};
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    line-height: normal;
+  }
+
+  .product-price small {
+      font-size: 80%;
+      font-family: {{ offers_product_price_small_font.family }};
+      font-style: {{ offers_product_price_small_font.style }};
+      font-weight: {{ offers_product_price_small_font.weight }};
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-right: 5px;
+      color: {{ products_price_no_discount_color }};
+      margin: 0 1rem 0 0;
+  }
+
+  .product-price .big-price {
+    width:auto;
+    font-size: calc({{ product_big_price_size }}rem);
+    font-family: {{ offers_product_price_font.family }};
+    font-style: {{ offers_product_price_font.style }};
+    font-weight: {{ offers_product_price_font.weight }};
+  }
+
+    .featured-cards {
+        padding-bottom: 0px;
+        padding: 0px;
+        margin-top: 25px;
+    }
+
+    .featured-cards .carousel-item{
+        border-radius: 16px;
+        margin: 8px 32px;
+        background: #fff0;        
+        flex: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hot-offers-container {
+        background-color: #C2C2C2;
+    }
+
+    .ellipsis {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .go-to-button {
+        display: block;
+        {% comment %} text-align: -webkit-right; {% endcomment %}
+        padding: 0.8rem 0rem;
+        min-width: 100%;
+      }
+    
+      .go-to-product-button {
+        width: 100%;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius:17px;
+        background: {{ products_button_color }};
+        color: {{ products_icon_color }};
+        {% comment %} cursor: auto; {% endcomment %}
+      }
+    
+    
+      .go-to-product-button:hover {
+        background: {{ products_hover_button_color }};
+        color: {{ products_hover_icon_color }};
+      }
+    
+      .go-to-product-button:active {
+        background: {{ products_hover_button_color }};
+        color: {{ products_hover_icon_color }};
+      }    
+</style>
+
+<script>
+    let carousel = document.querySelector('.carousel');
+  
+    let carouselInner = document.querySelector('.carousel-inner');
+    
+    let prev = document.querySelector('.carousel-controls .prev');
+    
+    let next = document.querySelector('.carousel-controls .next');
+    
+    let slides =  document.querySelectorAll('.carousel-inner .carousel-item');
+    
+    let totalSlides = slides.length;
+    
+    let step = 100 / totalSlides;
+    
+    let activeSlide = 0;
+    
+    let activeIndicator = 0;
+    
+    let direction = -1;
+    
+    let jump = 1;
+    
+    let interval = 3000;
+    
+    let time;
+    
+    const mediaQueryMax600 = window.matchMedia('(max-width: 600px)');
+    const mediaQueryMin600 = window.matchMedia('(min-width: 600px)');
+    const mediaQueryMin768 = window.matchMedia('(min-width: 768px)');
+    const mediaQueryMin992 = window.matchMedia('(min-width: 992px)');
+    const mediaQueryMin1200 = window.matchMedia('(min-width: 1200px)');
+  
+    function checkMediaQuery() {
+      carouselInner.style.minWidth = (totalSlides * 100) + '%';
+    }
+  
+    //Init carousel
+    checkMediaQuery();
+    loadIndicators();
+    loop(true);
+  
+    window.addEventListener('resize', checkMediaQuery);
+    
+    
+    //Carousel events
+    next.addEventListener('click',()=>{
+        slideToNext();
+    });
+    
+    prev.addEventListener('click',()=>{
+        slideToPrev();
+    });
+    
+    carouselInner.addEventListener('transitionend',()=>{
+        if(direction === -1){
+            if(jump > 1){
+                for(let i = 0; i < jump; i++){
+                    activeSlide++;
+                    carouselInner.append(carouselInner.firstElementChild);
+                }
+            }else{
+                activeSlide++;
+                carouselInner.append(carouselInner.firstElementChild);
+            }
+        }else if(direction === 1){
+            if(jump > 1){
+                for(let i = 0; i < jump; i++){
+                    activeSlide--;
+                    carouselInner.prepend(carouselInner.lastElementChild);
+                }
+            }else{
+                activeSlide--;
+                carouselInner.prepend(carouselInner.lastElementChild);
+            }
+        };
+    
+        carouselInner.style.transition = 'none';
+        carouselInner.style.transform = 'translateX(0%)';
+        setTimeout(()=>{
+            jump = 1;
+            carouselInner.style.transition = 'all ease 1s';
+        });
+        updateIndicators();
+    });
+    
+    document.querySelectorAll('.carousel-indicators span').forEach(item=>{
+        item.addEventListener('click',(e)=>{
+            let slideTo = parseInt(e.target.dataset.slideTo);
+            
+            let indicators = document.querySelectorAll('.carousel-indicators span');
+    
+            indicators.forEach((item,index)=>{
+                if(item.classList.contains('active')){
+                    activeIndicator = index
+                }
+            })
+    
+            if(slideTo - activeIndicator > 1){
+                jump = slideTo - activeIndicator;
+                step = jump * step;
+                slideToNext();
+            }else if(slideTo - activeIndicator === 1){
+                slideToNext();
+            }else if(slideTo - activeIndicator < 0){
+    
+                if(Math.abs(slideTo - activeIndicator) > 1){
+                    jump = Math.abs(slideTo - activeIndicator);
+                    step = jump * step;
+                    slideToPrev();
+                }
+                    slideToPrev();
+            }
+            step = 100 / totalSlides; 
+        })
+    });
+    
+    carousel.addEventListener('mouseover',()=>{
+        loop(false);
+    })
+    
+    carousel.addEventListener('mouseout',()=>{
+        loop(true);
+    })
+    
+    //Carousel functions
+    function loadIndicators(){
+        slides.forEach((slide,index)=>{
+            if(index === 0){
+                document.querySelector('.carousel-indicators').innerHTML +=
+                `<span data-slide-to="${index}" class="active"></span>`;
+            }else{
+                document.querySelector('.carousel-indicators').innerHTML +=
+                `<span data-slide-to="${index}"></span>`;
+            }
+        }); 
+    };
+    
+    function updateIndicators(){
+        if(activeSlide > (totalSlides - 1)){
+            activeSlide = 0;
+        }else if(activeSlide < 0){
+            activeSlide = (totalSlides - 1);
+        }
+        document.querySelector('.carousel-indicators span.active').classList.remove('active');
+        document.querySelectorAll('.carousel-indicators span')[activeSlide].classList.add('active');
+    };
+    
+    function slideToNext(){
+        if(direction === 1){
+            direction = -1;
+            carouselInner.prepend(carouselInner.lastElementChild);
+        };
+        
+        carousel.style.justifyContent = 'flex-start';
+        carouselInner.style.transform = `translateX(-${step}%)`;
+    };
+    
+    function slideToPrev(){
+        if(direction === -1){
+            direction = 1;
+            carouselInner.append(carouselInner.firstElementChild);
+        };
+        carousel.style.justifyContent = 'flex-end'
+        carouselInner.style.transform = `translateX(${step}%)`;
+    };
+    
+    function loop(status) {
+      if(status === true){
+          time = setInterval(()=>{
+              slideToNext();
+          },interval);
+      }else{
+          clearInterval(time);
+      }
+    }
+  </script>

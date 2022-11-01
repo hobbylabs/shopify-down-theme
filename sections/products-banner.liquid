@@ -1,225 +1,34 @@
 <div class="container-fluid">
-	<div class="row">
-		<div {% if section.settings.show_special_offers %} class="column-left" {% else %} class="column-left-no-offers" {% endif %}>
-			<h2 id="banner-title"> {{ section.settings.title }} </h2>
-			<div id="banner-message"> {{ section.settings.message }} </div>
-		</div>
-		<div {% if section.settings.show_special_offers %} class="column-right" {% else %} class="column-right-no-offers" {% endif %}>
+  <div class="row">
+    <div {% if section.settings.show_special_offers %}class="column-left"{% else %} class="column-left-no-offers"{% endif %}>
+      <h2 id="banner-title">
+        {{ section.settings.title }}
+      </h2>
+      <div id="banner-message">
+        {{ section.settings.message }}
+      </div>
+    </div>
+    <div {% if section.settings.show_special_offers %}class="column-right"{% else %} class="column-right-no-offers"{% endif %}>
       {% if section.settings.show_special_offers and collections[section.settings.feature_collection] != blank and collections[section.settings.feature_collection].products_count != 0 %}
-        <h2 id="offer-title"> {{ section.settings.offer-title }} </h2>
-        <div class="featured-cards">
-          <div class="carousel">
-            <div class="carousel-inner">
-              {% for product in collections[section.settings.feature_collection].products %}
-                <div class="carousel-item">
-                  <div class="product-card">
-                    {% comment %} <div class="badge">Hot</div> {% endcomment %}
-                    <div class="product-tumb">
-                      <img src="{{ product.featured_image | image_url }}" loading="lazy" width="100" height="100"/>
-                    </div>
-                    <div class="product-details">
-                      <h4><a href="{{ product.url}}">{{ product.title }}</a></h4>
-                      <div class="product-bottom-details">
-                        <div class="product-price" style="overflow:auto">
-                          <small class = "ellipsis">{{ product.compare_at_price | money_without_trailing_zeros }}</small>
-                          <div class="big-price ellipsis">{{ product.price | money_without_trailing_zeros }}</div>
-                        </div>
-                      </div>
-
-                      <div class="card__badge {{ settings.badge_position }}">
-                        {%- if product.available == false -%}
-                          <span
-                            id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}"
-                            class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-                          >
-                            {{- 'products.product.sold_out' | t -}}
-                          </span>
-                        {%- elsif product.compare_at_price > product.price and product.available -%}
-                          <span
-                            id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}"
-                            class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-                          >
-                            {{- 'products.product.on_sale' | t -}}
-                          </span>
-                        {%- endif -%}
-                      </div>
-                      {% comment %} <div class="go-to-button">
-                        <a href="{{ product.url}}" class="go-to-product-button">
-                          {% render 'icon-arrow' %}
-                        </a>
-                      </div> {% endcomment %}
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-          </div>
-            <div class="carousel-controls">
-                <span class="prev">
-                  <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M12 16a.997.997 0 01-.707-.293l-5-5a.999.999 0 010-1.414l5-5a.999.999 0 111.414 1.414L8.414 10l4.293 4.293A.999.999 0 0112 16z" fill="{{ section.settings.products_button_color }}"/></svg>
-                </span>
-                <span class="next">
-                  <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 16a.999.999 0 01-.707-1.707L11.586 10 7.293 5.707a.999.999 0 111.414-1.414l5 5a.999.999 0 010 1.414l-5 5A.997.997 0 018 16z" fill="{{ section.settings.products_button_color }}"/></svg>
-                </span>
-            </div>
-            <div class="carousel-indicators"></div>
-        </div>
+        <h2 id="offer-title">
+          {{ section.settings.offer-title }}
+        </h2>
+        {% render 'collection-carousel', feature_collection: section.settings.feature_collection, navigator_icon_color: section.settings.products_button_color, products_hover_button_color: section.settings.products_hover_button_color, carousel_button_icon_ocacity: section.settings.carousel_button_icon_ocacity, carousel_button_icon_color: section.settings.carousel_button_icon_color, offers_product_title_font: section.settings.offers_product_title_font, offers_product_price_font: section.settings.offers_product_price_font, offers_product_price_small_font: section.settings.offers_product_price_small_font, carousel_background_color: section.settings.carousel_background_color, product_title_size: section.settings.product_title_size, products_title_color: section.settings.products_title_color, products_price_color: section.settings.products_price_color, products_price_no_discount_color: section.settings.products_price_no_discount_color, product_big_price_size: section.settings.product_big_price_size, products_button_color: section.settings.products_button_color, products_icon_color: section.settings.products_icon_color, products_hover_icon_color: section.settings.products_hover_icon_color%}
       {% endif %}
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
 
 
 <style>
-  .carousel{
-    width: inherit;
-    overflow-x: hidden;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    border-radius: 13px;
-  }
-
-  .carousel-inner{
-      height: 100%;
-      /* min-width: 400%; */
-      display: flex;
-      transition: all ease .5s;
-  }
-
-  button.previous:active{
-    color: {{ section.settings.products_hover_button_color }};
-    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
-  }
-
-  button.previous:hover{
-    color: {{ section.settings.products_hover_button_color }};;
-    background: linear-gradient(to right, rgba(0,0,0,0.60), rgba(0,0,0,0.40), rgba(0,0,0,0));
-  }
-
-  button.next:active{
-    color: {{ section.settings.products_hover_button_color }};;
-    background: linear-gradient(to right, rgba(0,0,0,0.0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
-  }
-
-  button.next:hover{
-    color: {{ section.settings.products_hover_button_color }};;
-    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.40), rgba(0,0,0,0.60));
-  }
-
-  .carousel-controls {
-    position: absolute;
-    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0));
-    border: none;
-    color: #3330;
-    min-width: 100%;
-    top: 50%;
-  }
-
-  .carousel-controls .prev{
-      display: inline-block;
-      height: 32px;
-      width: 32px;
-      position: absolute;
-      left: 0px;
-      top: 50%;
-      transform: translateY(-50%);
-      {% comment %} background-image: url({{ 'ChevronLeftMinor.svg' | asset_url }}); {% endcomment %}
-      background-position: center;
-      background-size: auto 100%;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      opacity: calc({{ section.settings.carousel_button_icon_ocacity }}/100);
-  }
-
-  .carousel-controls .next{
-      display: inline-block;
-      height: 32px;
-      width: 32px;
-      position: absolute;
-      right: 0px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-position: center;
-      background-size: auto 100%;
-      background-repeat: no-repeat;
-      cursor: pointer;
-      opacity: calc({{ section.settings.carousel_button_icon_ocacity }}/100);
-  }
-
-  .prev:hover, .next:hover{
-      opacity: 1;
-  }
-
-  .carousel-controls svg path {
-    fill: {{ section.settings.carousel_button_icon_color }};
-  }
-
-  .carousel-indicators{
-    display: none;
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-
-  .carousel-indicators span{
-      display: inline-block;
-      background-color: white;
-      width: 4px;
-      height: 4px;
-      border-radius: 2px;
-      opacity: .5;
-      cursor: pointer;
-      margin: 3px;
-  }
-
-  .carousel-indicators span.active{
-      opacity: 1;
-  }
-
   {% assign banner_title_font = section.settings.banner_title_font %}
   {{ banner_title_font | font_face }}
-  
+
   {% assign banner_message_font = section.settings.banner_message_font %}
   {{ banner_message_font | font_face }}
-  
+
   {% assign offer_title_font = section.settings.offer_title_font %}
   {{ offer_title_font | font_face }}
-  
-  {% assign offers_product_title_font = section.settings.offers_product_title_font %}
-  {{ offers_product_title_font | font_face }}
-  
-  {% assign offers_product_price_font = section.settings.offers_product_price_font %}
-  {{ offers_product_price_font | font_face }}
-  
-  {% assign offers_product_price_small_font = section.settings.offers_product_price_small_font %}
-  {{ offers_product_price_small_font | font_face }}
-
-  .featured-cards {
-    padding-bottom: 0px;
-    padding: 0px;
-    margin-top: 25px;
-  }
-
-  .featured-cards .carousel-item{
-    border-radius: 16px;
-    margin: 8px 32px;
-    
-    {% comment %} min-width: calc(48% - 0px); {% endcomment %}
-    background: #fff0;
-    
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hot-offers-container {
-    background-color: #C2C2C2;
-  }
 
   .row {
     display: flex;
@@ -235,14 +44,14 @@
     flex: 60%;
     width: 60%;
     align-self: {{ section.settings.banner_alignment_vertically }};
-    padding: {{ section.settings.banner_padding_top }}px {{ section.settings.banner_padding_right }}px {{ section.settings.banner_padding_bottom }}px {{ section.settings.banner_padding_left }}px;
+    padding: {{ section.settings.banner_padding_top }}px{{ section.settings.banner_padding_right }}px{{ section.settings.banner_padding_bottom }}px{{ section.settings.banner_padding_left }}px;
   }
 
   .column-right {
     flex: 40%;
     width: 40%;
     align-self: {{ section.settings.offers_alignment_vertically }};
-    padding: {{ section.settings.offers_padding_top }}px {{ section.settings.offers_padding_right }}px {{ section.settings.offers_padding_bottom }}px {{ section.settings.offers_padding_left }}px;
+    padding: {{ section.settings.offers_padding_top }}px{{ section.settings.offers_padding_right }}px{{ section.settings.offers_padding_bottom }}px{{ section.settings.offers_padding_left }}px;
   }
 
   .column-left-no-offers {
@@ -250,7 +59,7 @@
   }
 
   .column-right-no-offers {
-    flex: 0%;
+    flex: 0;
   }
 
   .container-fluid {
@@ -258,12 +67,12 @@
     background-size: cover;
     min-height: {{ section.settings.height }}vh;
     display: flex;
-    justify-content:center;
+    justify-content: center;
   }
 
   #banner-title {
     font-size: calc(var(--font-heading-scale) * {{ section.settings.banner_title_size }}rem);
-    text-align:{{ section.settings.left_col_title_alignment }};
+    text-align: {{ section.settings.left_col_title_alignment }};
     color: {{ section.settings.banner_title_color }};
     margin: auto;
   }
@@ -273,9 +82,9 @@
     font-family: {{ offer_title_font.family }};
     font-style: {{ offer_title_font.style }};
     font-weight: {{ offer_title_font.weight }};
-    text-align:{{ section.settings.offer_title_alignment }};
+    text-align: {{ section.settings.offer_title_alignment }};
     color: {{ section.settings.offer-color }};
-    margin: 0px 32px;
+    margin: 0 32px;
   }
 
   #banner-message {
@@ -286,7 +95,7 @@
     color: {{ section.settings.banner_message_color }};
     margin: auto;
     align-self: center;
-    text-align:{{ section.settings.left_col_message_alignment }};
+    text-align: {{ section.settings.left_col_message_alignment }};
   }
 
   h2 p {
@@ -296,964 +105,511 @@
     font-weight: {{ banner_title_font.weight }};
   }
 
-  /* Product Card */
-  .product-card {
-    width: 100%;
-    border-radius: 16px;
-    margin: auto;
-    position: relative;
-    box-shadow: 0px 1px 10px 1px hwb(0deg 100% 0% / 50%);
-    background: {{ section.settings.carousel_background_color }}; 
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 
-  }
-
-  .product-details h4 {
-    white-space: normal;
-    font-size: 14px;
-    color: #fff;
-    line-height: normal;
-    margin: 10px 0px 10px 0px;
-    display: flex;
-    align-items: center;
-  } 
-
-  .badge {
-    margin-top: 10px;
-  }
-
-  .product-tumb {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    {% comment %} min-height: 20vh; {% endcomment %}
-    padding: 0px;
-    background: #f0f0f0;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 0px;
-  }
-
-  .product-tumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-height: 181px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 0px;
-    {% comment %} box-shadow: 0 1px 2px #d7fdfdf; {% endcomment %}
-  }
-
-  .product-details {
-    padding: 0px 10px;
-    width: 50%;
-  }
-
-  .product-catagory {
-      display: block;
-      font-size: 12px; 
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #ccc;
-      margin-bottom: 18px;
-  }
-
-  .flickity-enabled.is-draggable .flickity-viewport {
-    cursor: initial;
-  }
-
-  .product-details h4 a {
-    font-size: calc(var(--font-heading-scale) * {{ section.settings.product_title_size }}rem);
-    font-family: {{ offers_product_title_font.family }};
-    font-style: {{ offers_product_title_font.style }};
-    font-weight: {{ offers_product_title_font.weight }};
-    margin-bottom: 0px;
-    margin-top: 0px;
-    text-transform: uppercase;
-    color: {{ section.settings.products_title_color }};
-    text-decoration: none;
-    transition: 0.3s;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    cursor: default;
-  }
-
-  .product-details h4 a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    {% comment %} color: #fbb72c; {% endcomment %}
-  }
-
-  .product-details p {
-      font-size: 15px;
-      line-height: 22px;
-      margin-bottom: 18px;
-      color: #999;
-  }
-
-  .product-bottom-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    {% comment %} border-top: 1px solid #eee; {% endcomment %}
-    padding-top: 10px;
-  }
-
-  .product-bottom-details div {
-      float: left;
-      width: 100%;
-  }
-
-  .product-price {
-    color: {{ section.settings.products_price_color }};
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    line-height: normal;
-  }
-
-  .product-price small {
-      font-size: 80%;
-      {% comment %} font-size: calc(var(--font-heading-scale) * {{ section.settings.product_small_price_size }}rem); {% endcomment %}
-      font-family: {{ offers_product_price_small_font.family }};
-      font-style: {{ offers_product_price_small_font.style }};
-      font-weight: {{ offers_product_price_small_font.weight }};
-      font-weight: 400;
-      text-decoration: line-through;
-      margin-right: 5px;
-      color: {{ section.settings.products_price_no_discount_color }};
-      margin: 0 1rem 0 0;
-  }
-
-  .product-price .big-price {
-    width:auto;
-    font-size: calc({{ section.settings.product_big_price_size }}rem);
-    font-family: {{ offers_product_price_font.family }};
-    font-style: {{ offers_product_price_font.style }};
-    font-weight: {{ offers_product_price_font.weight }};
-  }
-
-  .ellipsis {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .go-to-button {
-    display: block;
-    {% comment %} text-align: -webkit-right; {% endcomment %}
-    padding: 0.8rem 0rem;
-    min-width: 100%;
-  }
-
-  .go-to-product-button {
-    width: 100%;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-radius:17px;
-    background: {{ section.settings.products_button_color }};
-    color: {{ section.settings.products_icon_color }};
-    {% comment %} cursor: auto; {% endcomment %}
-  }
-
-
-  .go-to-product-button:hover {
-    background: {{ section.settings.products_hover_button_color }};
-    color: {{ section.settings.products_hover_icon_color }};
-  }
-
-  .go-to-product-button:active {
-    background: {{ section.settings.products_hover_button_color }};
-    color: {{ section.settings.products_hover_icon_color }};
-  }
 
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {
     .column-left {
       flex: 100%;
-      padding: {{ section.settings.mobile_banner_padding_top }}px {{ section.settings.mobile_banner_padding_right }}px {{ section.settings.mobile_banner_padding_bottom }}px {{ section.settings.mobile_banner_padding_left }}px;
+      padding: {{ section.settings.mobile_banner_padding_top }}px{{ section.settings.mobile_banner_padding_right }}px{{ section.settings.mobile_banner_padding_bottom }}px{{ section.settings.mobile_banner_padding_left }}px;
       align-self: {{ section.settings.mobile_banner_alignment_vertically }};
     }
 
     .column-right {
       flex: 100%;
-      padding: {{ section.settings.mobile_offers_padding_top }}px {{ section.settings.mobile_offers_padding_right }}px {{ section.settings.mobile_offers_padding_bottom }}px {{ section.settings.mobile_offers_padding_left }}px;
+      padding: {{ section.settings.mobile_offers_padding_top }}px{{ section.settings.mobile_offers_padding_right }}px{{ section.settings.mobile_offers_padding_bottom }}px{{ section.settings.mobile_offers_padding_left }}px;
       align-self: {{ section.settings.mobile_offers_alignment_vertically }};
     }
 
     #banner-message {
       font-size: calc(var(--font-heading-scale) * {{ section.settings.mobile_banner_message_size }}rem);
-      text-align:{{ section.settings.mobile_left_col_message_alignment }};
+      text-align: {{ section.settings.mobile_left_col_message_alignment }};
     }
 
     #banner-title {
       font-size: calc(var(--font-heading-scale) * {{ section.settings.mobile_banner_title_size }}rem);
-      text-align:{{ section.settings.mobile_left_col_title_alignment }};
+      text-align: {{ section.settings.mobile_left_col_title_alignment }};
     }
 
     #offer-title {
       font-size: calc(var(--font-heading-scale) * {{ section.settings.offer_size }}rem);
-      text-align:{{ section.settings.mobile_offer_title_alignment }};
+      text-align: {{ section.settings.mobile_offer_title_alignment }};
     }
   }
 
   /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-  }
+  @media only screen and (min-width: 600px) {}
 
   /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-  }
+  @media only screen and (min-width: 768px) {}
 
   /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-  }
+  @media only screen and (min-width: 992px) {}
 
   /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-  }
-
+  @media only screen and (min-width: 1200px) {}
 </style>
 
-<script>
-  let carousel = document.querySelector('.carousel');
-
-  let carouselInner = document.querySelector('.carousel-inner');
-  
-  let prev = document.querySelector('.carousel-controls .prev');
-  
-  let next = document.querySelector('.carousel-controls .next');
-  
-  let slides =  document.querySelectorAll('.carousel-inner .carousel-item');
-  
-  let totalSlides = slides.length;
-  
-  let step = 100 / totalSlides;
-  
-  let activeSlide = 0;
-  
-  let activeIndicator = 0;
-  
-  let direction = -1;
-  
-  let jump = 1;
-  
-  let interval = 3000;
-  
-  let time;
-  
-  const mediaQueryMax600 = window.matchMedia('(max-width: 600px)');
-  const mediaQueryMin600 = window.matchMedia('(min-width: 600px)');
-  const mediaQueryMin768 = window.matchMedia('(min-width: 768px)');
-  const mediaQueryMin992 = window.matchMedia('(min-width: 992px)');
-  const mediaQueryMin1200 = window.matchMedia('(min-width: 1200px)');
-
-  function checkMediaQuery() {
-    carouselInner.style.minWidth = (totalSlides * 100) + '%';
-  }
-
-  //Init carousel
-  checkMediaQuery();
-  loadIndicators();
-  loop(true);
-
-  window.addEventListener('resize', checkMediaQuery);
-  
-  
-  //Carousel events
-  next.addEventListener('click',()=>{
-      slideToNext();
-  });
-  
-  prev.addEventListener('click',()=>{
-      slideToPrev();
-  });
-  
-  carouselInner.addEventListener('transitionend',()=>{
-      if(direction === -1){
-          if(jump > 1){
-              for(let i = 0; i < jump; i++){
-                  activeSlide++;
-                  carouselInner.append(carouselInner.firstElementChild);
-              }
-          }else{
-              activeSlide++;
-              carouselInner.append(carouselInner.firstElementChild);
-          }
-      }else if(direction === 1){
-          if(jump > 1){
-              for(let i = 0; i < jump; i++){
-                  activeSlide--;
-                  carouselInner.prepend(carouselInner.lastElementChild);
-              }
-          }else{
-              activeSlide--;
-              carouselInner.prepend(carouselInner.lastElementChild);
-          }
-      };
-  
-      carouselInner.style.transition = 'none';
-      carouselInner.style.transform = 'translateX(0%)';
-      setTimeout(()=>{
-          jump = 1;
-          carouselInner.style.transition = 'all ease 1s';
-      });
-      updateIndicators();
-  });
-  
-  document.querySelectorAll('.carousel-indicators span').forEach(item=>{
-      item.addEventListener('click',(e)=>{
-          let slideTo = parseInt(e.target.dataset.slideTo);
-          
-          let indicators = document.querySelectorAll('.carousel-indicators span');
-  
-          indicators.forEach((item,index)=>{
-              if(item.classList.contains('active')){
-                  activeIndicator = index
-              }
-          })
-  
-          if(slideTo - activeIndicator > 1){
-              jump = slideTo - activeIndicator;
-              step = jump * step;
-              slideToNext();
-          }else if(slideTo - activeIndicator === 1){
-              slideToNext();
-          }else if(slideTo - activeIndicator < 0){
-  
-              if(Math.abs(slideTo - activeIndicator) > 1){
-                  jump = Math.abs(slideTo - activeIndicator);
-                  step = jump * step;
-                  slideToPrev();
-              }
-                  slideToPrev();
-          }
-          step = 100 / totalSlides; 
-      })
-  });
-  
-  carousel.addEventListener('mouseover',()=>{
-      loop(false);
-  })
-  
-  carousel.addEventListener('mouseout',()=>{
-      loop(true);
-  })
-  
-  //Carousel functions
-  function loadIndicators(){
-      slides.forEach((slide,index)=>{
-          if(index === 0){
-              document.querySelector('.carousel-indicators').innerHTML +=
-              `<span data-slide-to="${index}" class="active"></span>`;
-          }else{
-              document.querySelector('.carousel-indicators').innerHTML +=
-              `<span data-slide-to="${index}"></span>`;
-          }
-      }); 
-  };
-  
-  function updateIndicators(){
-      if(activeSlide > (totalSlides - 1)){
-          activeSlide = 0;
-      }else if(activeSlide < 0){
-          activeSlide = (totalSlides - 1);
-      }
-      document.querySelector('.carousel-indicators span.active').classList.remove('active');
-      document.querySelectorAll('.carousel-indicators span')[activeSlide].classList.add('active');
-  };
-  
-  function slideToNext(){
-      if(direction === 1){
-          direction = -1;
-          carouselInner.prepend(carouselInner.lastElementChild);
-      };
-      
-      carousel.style.justifyContent = 'flex-start';
-      carouselInner.style.transform = `translateX(-${step}%)`;
-  };
-  
-  function slideToPrev(){
-      if(direction === -1){
-          direction = 1;
-          carouselInner.append(carouselInner.firstElementChild);
-      };
-      carousel.style.justifyContent = 'flex-end'
-      carouselInner.style.transform = `translateX(${step}%)`;
-  };
-  
-  function loop(status) {
-    if(status === true){
-        time = setInterval(()=>{
-            slideToNext();
-        },interval);
-    }else{
-        clearInterval(time);
-    }
-  }
-</script>
-
-
 {% schema %}
-{
-  "name": "Banner With Products",
-  "class": "section",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Banner"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_special_offers",
-      "label": "Show special offers",
-      "default": true
-    },
-    {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Image"
-    },
-    {
-      "type": "number",
-      "id": "height",
-      "label": "Height(vh)",
-      "default": 60
-    },
-    {
-      "type": "header",
-      "content": "Banner Layout"
-    },
-    {
-      "type": "select",
-      "id": "banner_alignment_vertically",
-      "label": "Banner Vertical Align",
-      "options": [
-        {
-          "value": "start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "End"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "mobile_banner_alignment_vertically",
-      "label": "Mobile Banner Vertical Align",
-      "options": [
-        {
-          "value": "start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "End"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "number",
-      "id": "banner_padding_top",
-      "label": "Top(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "banner_padding_right",
-      "label": "Right(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "banner_padding_bottom",
-      "label": "Bottom(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "banner_padding_left",
-      "label": "Left(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_padding_top",
-      "label": "Mobile Top(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_padding_right",
-      "label": "Mobile Right(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_padding_bottom",
-      "label": "Mobile Bottom(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_padding_left",
-      "label": "Mobile Left(px)",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Offers Layout"
-    },
-    {
-      "type": "select",
-      "id": "offers_alignment_vertically",
-      "label": "Offers Vertical Align",
-      "options": [
-        {
-          "value": "start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "End"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "mobile_offers_alignment_vertically",
-      "label": "Mobile Offers Vertical Align",
-      "options": [
-        {
-          "value": "start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "End"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "number",
-      "id": "offers_padding_top",
-      "label": "Top(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "offers_padding_right",
-      "label": "Right(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "offers_padding_bottom",
-      "label": "Bottom(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "offers_padding_left",
-      "label": "Left(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_offers_padding_top",
-      "label": "Mobile Top(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_offers_padding_right",
-      "label": "Mobile Right(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_offers_padding_bottom",
-      "label": "Mobile Bottom(px)",
-      "default": 0
-    },
-    {
-      "type": "number",
-      "id": "mobile_offers_padding_left",
-      "label": "Mobile Left(px)",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Banner Title"
-    },
-    {
-      "type": "richtext",
-      "id": "title",
-      "label": "Title"
-    },
-    {
-      "type": "font_picker",
-      "id": "banner_title_font",
-      "label": "Banner Title Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "color",
-      "id": "banner_title_color",
-      "label": "Title Color",
-      "default": "#000000"
-    },
-    {
-      "type": "number",
-      "id": "banner_title_size",
-      "label": "Banner Title Size(rem)",
-      "default": 2
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_title_size",
-      "label": "Mobile Banner Title Size(rem)",
-      "default": 2
-    },
-    {
-      "type": "select",
-      "id": "left_col_title_alignment",
-      "label": "Title alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "select",
-      "id": "mobile_left_col_title_alignment",
-      "label": "Mobile title alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "header",
-      "content": "Banner Message"
-    },
-    {
-      "type": "richtext",
-      "id": "message",
-      "label": "Message"
-    },
-    {
-      "type": "font_picker",
-      "id": "banner_message_font",
-      "label": "Banner Message Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "color",
-      "id": "banner_message_color",
-      "label": "Message Color",
-      "default": "#000000"
-    },
-    {
-      "type": "number",
-      "id": "banner_message_size",
-      "label": "Banner Message Size(rem)",
-      "default": 1
-    },
-    {
-      "type": "number",
-      "id": "mobile_banner_message_size",
-      "label": "Mobile Banner Message Size(rem)",
-      "default": 1
-    },
-    {
-      "type": "select",
-      "id": "left_col_message_alignment",
-      "label": "Message alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "select",
-      "id": "mobile_left_col_message_alignment",
-      "label": "Mobile message alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "header",
-      "content": "Carousel"
-    },
-    {
-      "type": "text",
-      "id": "offer-title",
-      "label": "Offer Title"
-    },
-    {
-      "type": "font_picker",
-      "id": "offer_title_font",
-      "label": "Offer Title Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "number",
-      "id": "offer_size",
-      "label": "Offer Title Size(rem)",
-      "default": 1
-    },
-    {
-      "type": "number",
-      "id": "offer-padding",
-      "label": "Offer Pading(px)",
-      "default": 0
-    },
-    {
-      "type": "color",
-      "id": "offer-color",
-      "label": "Offer Text Color",
-      "default": "#000000"
-    },
-    {
-      "type": "select",
-      "id": "offer_title_alignment",
-      "label": "Offer Alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "select",
-      "id": "mobile_offer_title_alignment",
-      "label": "Mobile Offer Alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
-    {
-      "type": "collection",
-      "id": "feature_collection",
-      "label": "Chose Collection to show on slideshow"
-    },
-    {
-      "type": "header",
-      "content": "Product Layout"
-    },
-    {
-      "type": "font_picker",
-      "id": "offers_product_title_font",
-      "label": "Product Title Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "number",
-      "id": "product_title_size",
-      "label": "Product Title Size(rem)",
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "products_title_color",
-      "label": "Change color of title",
-      "default": "#fff"
-    },
-    {
-      "type": "font_picker",
-      "id": "offers_product_price_font",
-      "label": "Product Big Price Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "number",
-      "id": "product_big_price_size",
-      "label": "Product Price Size(rem)",
-      "default": 2
-    },
-    {
-      "type": "color",
-      "id": "products_price_color",
-      "label": "Change color of price",
-      "default": "#fed700"
-    },
-    {
-      "type": "font_picker",
-      "id": "offers_product_price_small_font",
-      "label": "Product Small Price Font",
-      "default": "helvetica_n4"
-    },
-    {
-      "type": "number",
-      "id": "product_small_price_size",
-      "label": "Product Small Price Size(rem)",
-      "default": 1
-    },
-    {
-      "type": "color",
-      "id": "products_price_no_discount_color",
-      "label": "Change color of price without discount",
-      "default": "#848484"
-    },
-    {
-      "type": "color",
-      "id": "products_button_color",
-      "label": "Change color of button",
-      "default": "#495057"
-    },
-    {
-      "type": "color",
-      "id": "products_hover_button_color",
-      "label": "Change color for hovered button",
-      "default": "#fed700"
-    },
-    {
-      "type": "color",
-      "id": "products_icon_color",
-      "label": "Change color of icon",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "products_hover_icon_color",
-      "label": "Change color for hovered icon",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "carousel_button_icon_color",
-      "label": "Change navigator buttons color",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "carousel_background_color",
-      "label": "Carousel background color",
-      "default": "transparent"
-    },
-    {
-      "type": "range",
-      "id": "carousel_button_icon_ocacity",
-      "min": 10,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Navigator buttins opacity color",
-      "default": 50
-    }
-  ],
-  "presets": [
-    {
-      "category": "Banners",
-      "name": "Banner With Products"
-    }
-  ]
-}
+  {
+    "name": "Banner With Products",
+    "class": "section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Banner"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_special_offers",
+        "label": "Show special offers",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Image"
+      },
+      {
+        "type": "number",
+        "id": "height",
+        "label": "Height(vh)",
+        "default": 60
+      }, {
+        "type": "header",
+        "content": "Banner Layout"
+      }, {
+        "type": "select",
+        "id": "banner_alignment_vertically",
+        "label": "Banner Vertical Align",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "End"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "mobile_banner_alignment_vertically",
+        "label": "Mobile Banner Vertical Align",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "End"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "number",
+        "id": "banner_padding_top",
+        "label": "Top(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "banner_padding_right",
+        "label": "Right(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "banner_padding_bottom",
+        "label": "Bottom(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "banner_padding_left",
+        "label": "Left(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_banner_padding_top",
+        "label": "Mobile Top(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_banner_padding_right",
+        "label": "Mobile Right(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_banner_padding_bottom",
+        "label": "Mobile Bottom(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_banner_padding_left",
+        "label": "Mobile Left(px)",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "Offers Layout"
+      }, {
+        "type": "select",
+        "id": "offers_alignment_vertically",
+        "label": "Offers Vertical Align",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "End"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "mobile_offers_alignment_vertically",
+        "label": "Mobile Offers Vertical Align",
+        "options": [
+          {
+            "value": "start",
+            "label": "Start"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "End"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "number",
+        "id": "offers_padding_top",
+        "label": "Top(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "offers_padding_right",
+        "label": "Right(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "offers_padding_bottom",
+        "label": "Bottom(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "offers_padding_left",
+        "label": "Left(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_offers_padding_top",
+        "label": "Mobile Top(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_offers_padding_right",
+        "label": "Mobile Right(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_offers_padding_bottom",
+        "label": "Mobile Bottom(px)",
+        "default": 0
+      }, {
+        "type": "number",
+        "id": "mobile_offers_padding_left",
+        "label": "Mobile Left(px)",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "Banner Title"
+      }, {
+        "type": "richtext",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "font_picker",
+        "id": "banner_title_font",
+        "label": "Banner Title Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "color",
+        "id": "banner_title_color",
+        "label": "Title Color",
+        "default": "#000000"
+      }, {
+        "type": "number",
+        "id": "banner_title_size",
+        "label": "Banner Title Size(rem)",
+        "default": 2
+      }, {
+        "type": "number",
+        "id": "mobile_banner_title_size",
+        "label": "Mobile Banner Title Size(rem)",
+        "default": 2
+      }, {
+        "type": "select",
+        "id": "left_col_title_alignment",
+        "label": "Title alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "select",
+        "id": "mobile_left_col_title_alignment",
+        "label": "Mobile title alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "header",
+        "content": "Banner Message"
+      }, {
+        "type": "richtext",
+        "id": "message",
+        "label": "Message"
+      }, {
+        "type": "font_picker",
+        "id": "banner_message_font",
+        "label": "Banner Message Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "color",
+        "id": "banner_message_color",
+        "label": "Message Color",
+        "default": "#000000"
+      }, {
+        "type": "number",
+        "id": "banner_message_size",
+        "label": "Banner Message Size(rem)",
+        "default": 1
+      }, {
+        "type": "number",
+        "id": "mobile_banner_message_size",
+        "label": "Mobile Banner Message Size(rem)",
+        "default": 1
+      }, {
+        "type": "select",
+        "id": "left_col_message_alignment",
+        "label": "Message alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "select",
+        "id": "mobile_left_col_message_alignment",
+        "label": "Mobile message alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "header",
+        "content": "Carousel"
+      }, {
+        "type": "text",
+        "id": "offer-title",
+        "label": "Offer Title"
+      }, {
+        "type": "font_picker",
+        "id": "offer_title_font",
+        "label": "Offer Title Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "number",
+        "id": "offer_size",
+        "label": "Offer Title Size(rem)",
+        "default": 1
+      }, {
+        "type": "number",
+        "id": "offer-padding",
+        "label": "Offer Pading(px)",
+        "default": 0
+      }, {
+        "type": "color",
+        "id": "offer-color",
+        "label": "Offer Text Color",
+        "default": "#000000"
+      }, {
+        "type": "select",
+        "id": "offer_title_alignment",
+        "label": "Offer Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "select",
+        "id": "mobile_offer_title_alignment",
+        "label": "Mobile Offer Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "left"
+      }, {
+        "type": "collection",
+        "id": "feature_collection",
+        "label": "Chose Collection to show on slideshow"
+      }, {
+        "type": "header",
+        "content": "Product Layout"
+      }, {
+        "type": "font_picker",
+        "id": "offers_product_title_font",
+        "label": "Product Title Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "number",
+        "id": "product_title_size",
+        "label": "Product Title Size(rem)",
+        "default": 1
+      }, {
+        "type": "color",
+        "id": "products_title_color",
+        "label": "Change color of title",
+        "default": "#fff"
+      }, {
+        "type": "font_picker",
+        "id": "offers_product_price_font",
+        "label": "Product Big Price Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "number",
+        "id": "product_big_price_size",
+        "label": "Product Price Size(rem)",
+        "default": 2
+      }, {
+        "type": "color",
+        "id": "products_price_color",
+        "label": "Change color of price",
+        "default": "#fed700"
+      }, {
+        "type": "font_picker",
+        "id": "offers_product_price_small_font",
+        "label": "Product Small Price Font",
+        "default": "helvetica_n4"
+      }, {
+        "type": "number",
+        "id": "product_small_price_size",
+        "label": "Product Small Price Size(rem)",
+        "default": 1
+      }, {
+        "type": "color",
+        "id": "products_price_no_discount_color",
+        "label": "Change color of price without discount",
+        "default": "#848484"
+      }, {
+        "type": "color",
+        "id": "products_button_color",
+        "label": "Change color of button",
+        "default": "#495057"
+      }, {
+        "type": "color",
+        "id": "products_hover_button_color",
+        "label": "Change color for hovered button",
+        "default": "#fed700"
+      }, {
+        "type": "color",
+        "id": "products_icon_color",
+        "label": "Change color of icon",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "products_hover_icon_color",
+        "label": "Change color for hovered icon",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "carousel_button_icon_color",
+        "label": "Change navigator buttons color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "carousel_background_color",
+        "label": "Carousel background color",
+        "default": "transparent"
+      }, {
+        "type": "range",
+        "id": "carousel_button_icon_ocacity",
+        "min": 10,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Navigator buttins opacity color",
+        "default": 50
+      }
+    ],
+    "presets": [
+      {
+        "category": "Banners",
+        "name": "Banner With Products"
+      }
+    ]
+  }
 {% endschema %}
