@@ -8,6 +8,7 @@
         {{ section.settings.message }}
       </div>
     </div>
+
     <div {% if section.settings.show_special_offers %}class="column-right"{% else %} class="column-right-no-offers"{% endif %}>
       {% if section.settings.show_special_offers and collections[section.settings.feature_collection] != blank and collections[section.settings.feature_collection].products_count != 0 %}
         <h2 id="offer-title">
