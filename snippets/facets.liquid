@@ -63,7 +63,7 @@ else
 
                         {% assign isFoundActive = false %}
                         {% for llSublink1 in ll.links %}
-                          {% assign foundActiveLinkOnParrent = llSublink1.url %}
+                          {% assign foundActiveLinkOnParrent = ll.url %}
                           {% if llSublink1.current %}
                             {% assign isFoundActive = true %}
                             {% break %}
