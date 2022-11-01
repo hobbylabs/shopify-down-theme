@@ -94,7 +94,7 @@ else
 
                     {{foundActiveLinkOnParrent}}
 
-                    {% if isFound%}
+                    {% if isFound %}
                       {% if used_parrent_category contains link.title %}
                       {%- else -%}
                         {% assign use_title = link.title | split: ", " %}
@@ -102,6 +102,7 @@ else
                         {%- if link.links != empty -%}
                           {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
+                            {{sublink1.url}}
                             {%- if sublink1.url == foundActiveLinkOnParrent -%}
                               <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                               {% comment %} {{ sublink1.links }} {% endcomment %}
