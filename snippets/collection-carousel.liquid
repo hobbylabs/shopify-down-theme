@@ -49,16 +49,18 @@
                 </div>
               </div>
 
-              <div class="card__badge {{ settings.badge_position }}">
-                {%- if product.available == false -%}
-                  <span id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}" class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">
-                    {{- 'products.product.sold_out' | t -}}
-                  </span>
-                {%- elsif product.compare_at_price > product.price and product.available -%}
-                  <span id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}" class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
-                    {{- 'products.product.on_sale' | t -}}
-                  </span>
-                {%- endif -%}
+              <div class="bottom-part">
+                <div class="card__badge {{ settings.badge_position }}">
+                  {%- if product.available == false -%}
+                    <span id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}" class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">
+                      {{- 'products.product.sold_out' | t -}}
+                    </span>
+                  {%- elsif product.compare_at_price > product.price and product.available -%}
+                    <span id="NoMediaStandardBadge-{{ section.id }}-{{ product.id }}" class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+                      {{- 'products.product.on_sale' | t -}}
+                    </span>
+                  {%- endif -%}
+                </div>
               </div>
 
               {% comment %}
@@ -264,6 +266,8 @@
     margin: 10px 0;
     display: flex;
     align-items: center;
+    height: 20%;
+    background: antiquewhite;
   }
 
   .product-details h4 a {
@@ -297,11 +301,18 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 10px;
+    height: 20%;
+    background: aliceblue;
   }
 
   .product-bottom-details div {
     float: left;
     width: 100%;
+  }
+
+  .bottom-part {
+    height: 20%;
+    background: beige;
   }
 
   .product-price {
