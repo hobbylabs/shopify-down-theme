@@ -89,9 +89,14 @@ else
                         {% break %}
                       {% endif %}
                     {% endfor %} 
-
-                    <p>found:{{foundActiveLinkOnParrent}}</p></br></br>
+                    <p>found:{{foundActiveLinkOnParrent}}</p>
+                    {% if isFoundActive %}
+                      {% break %}
+                    {% endif %}
                   {% endfor %}
+                  {% if isFoundActive %}
+                    {% break %}
+                  {% endif %}
                 {% endfor %}
 
 
