@@ -120,16 +120,16 @@
                   <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
                 {%- endcomment -%}
                 {%- if sublink1.url == foundActiveUrlLevel1 -%}
-                  <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
+                  <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}">{{ sublink1.title | link_to: sublink1.url }}</div>
                   {%- comment -%}
                     {{ sublink1.links }}
                   {%- endcomment -%}
                   {%- if sublink1.links != empty -%}
                     {% for sublink2 in sublink1.links %}
-                      <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
+                      <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}">{{ sublink2.title | link_to: sublink2.url }}</div>
                       {%- if sublink2.links != empty -%}
                         {% for sublink3 in sublink2.links %}
-                          <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}" style="padding-left:30px;">{{ sublink3.title | link_to: sublink3.url }}</div>
+                          <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}">{{ sublink3.title | link_to: sublink3.url }}</div>
                         {% endfor %}
                       {%- endif -%}
                     {% endfor %}
@@ -159,6 +159,18 @@
   .categories-wrapper a:hover {
     text-decoration: underline;
     color: rgba(var(--color-foreground), 1);
+  }
+
+  .categories-level-1 {
+    padding-left: 0;
+  }
+
+  .categories-level-1 {
+    padding-left: 10px;
+  }
+
+  .categories-level-1 {
+    padding-left: 20px;
   }
 
   @media screen and (min-width: 750px) {
