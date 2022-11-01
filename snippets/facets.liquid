@@ -120,7 +120,7 @@ else
                             {{sublink1.url}}</br>
                             {%- if sublink1.url == foundActiveLinkOnParrent -%}
                               <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
-                              {% comment %} {{ sublink1.links }} {% endcomment %}
+                              {{ sublink1.links }}
                               {%- if sublink1.links != empty -%}
                                 {% for sublink2 in sublink1.links %}
                                   <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}" style="padding-left:20px;">{{ sublink2.title | link_to: sublink2.url }}</div>
