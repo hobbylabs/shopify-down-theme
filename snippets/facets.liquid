@@ -47,7 +47,7 @@ else
                 {% comment %} <ul> {% endcomment %}
                 {% assign used_top_categories = "" | split: "," %}
                 {% assign found_top_categories = "" | split: "," %}
-                {% assign foundActiveLinkOnParrent = "" %}
+                {% assign foundActiveUrlLevel1 = "" %}
 
                 {% for catalog_collection in catalog_collection_list %}
                   {% for link in catalog_menu.links %}
@@ -63,7 +63,7 @@ else
 
                         {% assign isFoundActive = false %}
                         {% for llSublink1 in ll.links %}
-                          {% assign foundActiveLinkOnParrent = ll.url %}
+                          {% assign foundActiveUrlLevel1 = ll.url %}
                           {% if llSublink1.current %}
                             {% assign isFoundActive = true %}
                             {% break %}
@@ -93,12 +93,12 @@ else
                         {% if isFoundActive %}
                           {% break %}
                         {% else %}
-                          {% assign foundActiveLinkOnParrent="" %}
+                          {% assign foundActiveUrlLevel1="" %}
                         {% endif %}
                         {% break %}
                       {% endif %}
                     {% endfor %} 
-                    <p>found:{{ foundActiveLinkOnParrent }}</p>
+                    {%- comment -%} <p>found:{{ foundActiveUrlLevel1 }}</p> {%- endcomment -%}
                     {% if isFoundActive %}
                       {% break %}
                     {% endif %}
@@ -127,8 +127,8 @@ else
                           {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
                             <p>sublink1:{{ sublink1.url }}</p>
-                            <p>foundActiveLinkOnParrent:{{ foundActiveLinkOnParrent }}</p>
-                            {%- if sublink1.url == foundActiveLinkOnParrent -%}
+                            <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+                            {%- if sublink1.url == foundActiveUrlLevel1 -%}
                               <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                               {{ sublink1.links }}
                               {%- if sublink1.links != empty -%}
