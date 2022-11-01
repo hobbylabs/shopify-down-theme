@@ -16,7 +16,6 @@
   {% assign used_top_categories = "" | split: "," %}
   {% assign found_top_categories = "" | split: "," %}
   {% assign foundActiveUrlLevel1 = "" %}
-
   {% for catalog_collection in catalog_collection_list %}
     {% for link in catalog_menu.links %}
       {% for ll in link.links %}
@@ -148,6 +147,14 @@
 {%- style -%}
   .subcategory-current-link {
     font-weight: bold;
+  }
+
+  .categories-wrapper a {
+    text-decoration: auto;
+  }
+
+  .categories-wrapper a:hover {
+    text-decoration: underline;
   }
 {%- endstyle -%}
 

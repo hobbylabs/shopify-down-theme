@@ -43,8 +43,7 @@ else
             {%- endif -%}
             {% comment %} Pills are right below the title for filter type vertical {% endcomment %}
             {%- if filter_type == 'vertical' -%}
-              {% render 'facets-category', catalog_menu: catalog_menu , catalog_collection_list: catalog_collection_list  %}
-test
+              {% render 'facets-category', catalog_menu: catalog_menu , catalog_collection_list: catalog_collection_list %}
               <div class="active-facets active-facets-desktop">
                 <div class="active-facets-vertical-filter">
                   {%- unless results.filters == empty -%}
