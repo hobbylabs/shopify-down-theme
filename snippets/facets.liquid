@@ -67,7 +67,7 @@
                         {% assign use_title = link.title | split: ", " %}
                         {% assign used_parrent_category = used_parrent_category | concat: use_title %}
                         {%- if link.links != empty -%}
-                          <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+                          {%- comment -%} <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div> {%- endcomment -%}
                           {% for sublink1 in link.links %}
                             <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:10px;">{{ sublink1.title | link_to: sublink1.url }}</div>
                             {% comment %} {{ sublink1.links }} {% endcomment %}
