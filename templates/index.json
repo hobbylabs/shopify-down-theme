@@ -90,7 +90,7 @@
         "show_vendor": false,
         "show_rating": true,
         "enable_quick_add": true,
-        "show_sidebar_control_buttons": false,
+        "show_sidebar_control_buttons": true,
         "columns_mobile": "2",
         "swipe_on_mobile": true,
         "padding_top": 28,
