@@ -22,7 +22,7 @@
 
 {%- style -%}
 
-  .card-heading-ellipsis {
+  .section-{{ section_id }}-card-heading-ellipsis {
     display: -webkit-box;
     -webkit-line-clamp: {{card_title_max_lines}};
     -webkit-box-orient: vertical;
@@ -151,7 +151,7 @@
       <div class="card__content">
         <div class="card__information">
           <h3
-            class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %} card-heading-ellipsis"
+            class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %} section-{{ section_id }}-card-heading-ellipsis"
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id="title-{{ section_id }}-{{ card_product.id }}"
             {% endif %}
