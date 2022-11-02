@@ -20,7 +20,7 @@
 
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
-<style>
+{%- style -%}
 
   {% assign max_lines = card_title_max_lines %}
   $color-link: {{ card_title_max_lines }};
@@ -33,7 +33,7 @@
     text-overflow: ellipsis;
   }
 
-</style>
+{%- endstyle -%}
 
 {{ card_title_max_lines }}
 {%- if card_product and card_product != empty -%}
