@@ -13,6 +13,21 @@
 
 {%- style -%}
 
+  .collection-top-row {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .collection-top-row-left {
+    background: lightblue;
+    flex-grow: 1;
+  }
+
+  .collection-top-row-right {
+    background: coral;
+  }
+
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -53,17 +68,26 @@
   <div class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
     <div class="collection-top">
       <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
-        {%- if section.settings.title != blank -%}
-          <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
-        {%- endif -%}
 
-        {%- if section.settings.show_view_all and more_in_collection -%}
-          <div class="center collection__view-all">
-            <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}">
-              {{ 'sections.featured_collection.view_all' | t }}
-            </a>
+        <div class="collection-top-row">
+
+          <div class="collection-top-row-left">
+            {%- if section.settings.title != blank -%}
+              <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.title | escape }}</h2>
+            {%- endif -%}
           </div>
-        {%- endif -%}
+
+          <div class="collection-top-row-right">
+            {%- if section.settings.show_view_all and more_in_collection -%}
+              <div class="center collection__view-all">
+                <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}">
+                  {{ 'sections.featured_collection.view_all' | t }}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+
+        </div>
 
         {%- if section.settings.description != blank or section.settings.show_description and section.settings.collection.description != empty -%}
           <div class="collection__description {{ section.settings.description_style }}">
