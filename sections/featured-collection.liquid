@@ -26,7 +26,9 @@
     flex-grow: 1;
   }
 
-  .collection-top-row-right {}
+  .collection-top-row-right .collection__view-all a:not(.link) {
+    margin-top: 0;
+  }
 
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
