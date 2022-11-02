@@ -12,6 +12,7 @@
   - show_quick_add: {Boolean} Show the quick add button.
   - section_id: {String} The ID of the section that contains this card.
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false
+  - card_title_max_lines: {Number} Default: 3
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -23,7 +24,7 @@
 
   .card-heading-ellipsis {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: {{ card_title_max_lines }};
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;

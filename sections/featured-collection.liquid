@@ -76,6 +76,7 @@
              , show_rating: section.settings.show_rating
              , show_quick_add: section.settings.enable_quick_add
              , section_id: section.id
+             , card_title_max_lines: section.card_title_max_lines
              %}
           </li>
         {%- else -%}
@@ -332,6 +333,15 @@
         "unit": "px",
         "label": "t:sections.all.padding.padding_bottom",
         "default": 36
+      }, {
+        "type": "range",
+        "id": "card_title_max_lines",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "unit": "px",
+        "label": "Product title maximum no. of lines",
+        "default": 3
       }
     ],
     "presets": [
