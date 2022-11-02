@@ -44,6 +44,9 @@
   if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
     assign show_desktop_slider = true
   endif
+
+  assign show_sidebar_control_buttons = section.settings.show_sidebar_control_buttons
+
 -%}
 
 <div class="color-{{ section.settings.color_scheme }} isolate gradient">
@@ -88,18 +91,20 @@
         {%- endfor -%}
       </ul>
       {%- if show_mobile_slider or show_desktop_slider -%}
-        <div class="slider-buttons no-js-hidden">
-          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
-          <div class="slider-counter caption">
-            <span class="slider-counter--current">1</span>
-            <span aria-hidden="true">
-              /
-            </span>
-            <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
-            <span class="slider-counter--total">{{ products_to_display }}</span>
+        {%- if show_sidebar_control_buttons -%}
+          <div class="slider-buttons no-js-hidden">
+            <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
+            <div class="slider-counter caption">
+              <span class="slider-counter--current">1</span>
+              <span aria-hidden="true">
+                /
+              </span>
+              <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+              <span class="slider-counter--total">{{ products_to_display }}</span>
+            </div>
+            <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
           </div>
-          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}" aria-controls="Slider-{{ section.id }}">{% render 'icon-caret' %}</button>
-        </div>
+        {%- endif -%}
       {%- endif -%}
     </slider-component>
 
@@ -298,6 +303,11 @@
         "id": "enable_quick_add",
         "default": false,
         "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_sidebar_control_buttons",
+        "default": true,
+        "label": "Show sidebar control buttons"
       }, {
         "type": "header",
         "content": "t:sections.featured-collection.settings.header_mobile.content"
