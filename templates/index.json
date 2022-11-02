@@ -93,7 +93,7 @@
         "swipe_on_mobile": true,
         "padding_top": 28,
         "padding_bottom": 36,
-        "card_title_max_lines": 2
+        "card_title_max_lines": 1
       }
     },
     "3af2f1bc-a43b-4213-abae-767da6109712": {
