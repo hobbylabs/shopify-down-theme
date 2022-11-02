@@ -80,7 +80,7 @@
           </div>
 
           <div class="collection-top-row-right">
-            {%- if section.settings.show_view_all and more_in_collection -%}
+            {%- if section.settings.show_view_all and more_in_collection and section.settings.show_view_all_on_bottom == false -%}
               <div class="center collection__view-all">
                 <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}">
                   {{ 'sections.featured_collection.view_all' | t }}
@@ -143,15 +143,13 @@
       {%- endif -%}
     </slider-component>
 
-    {%- comment -%}
-      {%- if section.settings.show_view_all and more_in_collection -%}
+    {%- if section.settings.show_view_all and more_in_collection and section.settings.show_view_all_on_bottom -%}
       <div class="center collection__view-all">
-      <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}">
-      {{ 'sections.featured_collection.view_all' | t }}
-      </a>
+        <a href="{{ section.settings.collection.url }}" class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}" aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title }}">
+          {{ 'sections.featured_collection.view_all' | t }}
+        </a>
       </div>
-      {%- endif -%}
-    {%- endcomment -%}
+    {%- endif -%}
   </div>
 </div>
 
@@ -250,6 +248,11 @@
         "id": "show_view_all",
         "default": true,
         "label": "t:sections.featured-collection.settings.show_view_all.label"
+      }, {
+        "type": "checkbox",
+        "id": "show_view_all_on_bottom",
+        "default": true,
+        "label": "Show View All button in bottom? (else top)"
       }, {
         "type": "select",
         "id": "view_all_style",
