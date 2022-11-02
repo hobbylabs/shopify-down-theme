@@ -78,7 +78,7 @@
     <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
-        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
+        {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type, catalog_menu: section.settings.catalog_menu, catalog_collection_list: section.settings.catalog_collection_list %}
       </aside>
     {%- endif -%}
 
@@ -286,7 +286,33 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
-    }
-  ]
-}
+      },
+      {
+        "type": "header",
+        "content": "Vertical Categories"
+      },
+      {
+        "type": "link_list",
+        "id": "catalog_menu",
+        "label": "Menu That contains the catalog"
+      },
+      {
+        "type": "collection_list",
+        "id": "catalog_collection_list",
+        "label": "Choose Parrent Catalog Collections",
+        "limit": 8
+      }
+    ],
+    "presets": [
+      {
+        "name": "Sidebar With Content"
+      }
+    ]
+  }
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
