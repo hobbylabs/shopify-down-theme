@@ -22,9 +22,11 @@
 
 <style>
 
+  {% assign max_lines = card_title_max_lines %}
+
   .card-heading-ellipsis {
     display: -webkit-box;
-    -webkit-line-clamp: {{ card_title_max_lines }};
+    -webkit-line-clamp: max_lines;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
