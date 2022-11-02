@@ -82,7 +82,7 @@
         {%- else -%}
           {%- for i in (1..4) -%}
             <li class="grid__item">
-              {% render 'card-product', show_vendor: section.settings.show_vendor, card_title_max_lines: section.settings.card_title_max_lines %}
+              {% render 'card-product', show_vendor: section.settings.show_vendor %}
             </li>
           {%- endfor -%}
         {%- endfor -%}
@@ -291,6 +291,15 @@
         "default": false,
         "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
       }, {
+        "type": "range",
+        "id": "card_title_max_lines",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "unit": "no.",
+        "label": "Product title maximum no. of lines",
+        "default": 2
+      }, {
         "type": "header",
         "content": "t:sections.featured-collection.settings.header_mobile.content"
       }, {
@@ -333,15 +342,6 @@
         "unit": "px",
         "label": "t:sections.all.padding.padding_bottom",
         "default": 36
-      }, {
-        "type": "range",
-        "id": "card_title_max_lines",
-        "min": 1,
-        "max": 4,
-        "step": 1,
-        "unit": "no.",
-        "label": "Product title maximum no. of lines",
-        "default": 3
       }
     ],
     "presets": [
