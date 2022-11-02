@@ -98,36 +98,6 @@
         "padding_bottom": 36
       }
     },
-    "3af2f1bc-a43b-4213-abae-767da6109712": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Produse",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "oferta-zilei",
-        "products_to_show": 10,
-        "columns_desktop": 5,
-        "card_title_max_lines": 2,
-        "full_width": false,
-        "show_view_all": true,
-        "show_view_all_on_bottom": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": true,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "enable_quick_add": true,
-        "show_sidebar_control_buttons": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "80a45f82-b990-4159-b577-ce12812b8d5a": {
       "type": "featured-collection",
       "settings": {
@@ -227,7 +197,6 @@
   "order": [
     "f3738064-f21d-443a-b19a-662fc06bd6fc",
     "featured_collection",
-    "3af2f1bc-a43b-4213-abae-767da6109712",
     "80a45f82-b990-4159-b577-ce12812b8d5a",
     "95300521-53a5-441e-8f27-790c5b79ef73",
     "94ae25b9-03da-4603-8d72-376081f9a40e",
