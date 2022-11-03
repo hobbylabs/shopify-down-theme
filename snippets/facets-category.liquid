@@ -19,7 +19,9 @@
       {% for link in catalog_menu.links %}
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
-            <p>{{ll.title}}</p>
+            {%- comment -%}
+              <p>{{ll.title}}</p>
+            {%- endcomment -%}
             {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
@@ -32,7 +34,9 @@
             {% assign isFoundActive = false %}
             {% for llSublink1 in ll.links %}
               {% assign foundActiveUrlLevel1 = ll.url %}
-              <p>{{llSublink1.title}}</p>
+              {%- comment -%}
+                <p>{{llSublink1.title}}</p>
+              {%- endcomment -%}
               {% if llSublink1.current %}
                 {% assign isFoundActive = true %}
                 {% break %}
@@ -109,9 +113,7 @@
               {% assign use_title = link.title | split: ", " %}
               {% assign used_top_categories = used_top_categories | concat: use_title %}
               {%- if link.links != empty -%}
-                {%- comment -%}
-                  <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
-                {%- endcomment -%}
+                <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
                 {% for sublink1 in link.links %}
 
                   {%- comment -%}
