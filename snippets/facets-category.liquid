@@ -151,7 +151,7 @@
 
                 {% for catalog_category in link_no_use.links %}
 
-                  {%- if catalog_category.url == foundActiveUrlCategory -%}
+                  {%- if catalog_category.url == foundActiveUrlCategory or true -%}
                     <div class="categories-level{% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ catalog_category.title | link_to: catalog_category.url }}</div>
 
                     {% for sublink1 in catalog_category.links %}
