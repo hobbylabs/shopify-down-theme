@@ -149,30 +149,21 @@
 
                 {% for catalog_category in link_no_use.links %}
 
-                  <summary class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                    <div class="row-level-left">
-                      {{ catalog_category.title | link_to: catalog_category.url }}
-                    </div>
 
-                    <div class="row-level-right" open>
-                      <div>
-                        <span>{{ filter.label | escape }}</span>
-                        {% render 'icon-caret' %}
-                      </div>
-                    </div>
-                  </summary>
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-                    {%- comment -%}
-                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                    <summary class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       <div class="row-level-left">
-                      {{ catalog_category.title | link_to: catalog_category.url }}
+                        {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
-                      {%- if catalog_category.url != foundActiveUrlCategory -%}
-                      {% render 'icon-caret' %}
-                      {%- endif -%}
+
+                      <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory-%} open{% endif %}>
+                        <div>
+                          <span>{{ filter.label | escape }}</span>
+                          {% render 'icon-caret' %}
+                        </div>
                       </div>
-                    {%- endcomment -%}
+                    </summary>
 
                     {% for sublink1 in catalog_category.links %}
                       {%- if sublink1.url == foundActiveUrlLevel1 or catalog_category.url == foundActiveUrlCategory -%}
