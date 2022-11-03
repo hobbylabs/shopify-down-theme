@@ -158,10 +158,7 @@
                       </div>
 
                       <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory-%} open{% endif %}>
-                        <div>
-                          <span>{{ filter.label | escape }}</span>
-                          {% render 'icon-caret' %}
-                        </div>
+                        {% render 'icon-caret' %}
                       </div>
                     </div>
 
