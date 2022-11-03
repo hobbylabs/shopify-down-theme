@@ -19,6 +19,7 @@
     {% for catalog_collection in catalog_collection_list %}
       <p>cc: {{catalog_collection.title}}</p>
       {% for link_no_use in catalog_menu.links %}
+        {% assign isFoundActive = false %}
         {%- comment -%}
           This level is for Menu visible items: Home | Catalog | ...
         {%- endcomment -%}
@@ -42,8 +43,6 @@
                 {% assign use_title = catalog_category.title | split: ", " %}
                 {% assign found_top_categories = found_top_categories | concat: use_title %}
             {% endif %}
-
-            {% assign isFoundActive = false %}
             {% assign foundActiveUrlLevel1 = catalog_category.url %}
             {% for llSublink1 in catalog_category.links %}
               {%- comment -%}
