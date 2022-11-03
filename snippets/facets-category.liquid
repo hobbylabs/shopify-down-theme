@@ -48,7 +48,7 @@
             {% if found_top_categories contains catalog_category.title %}
               {%- else -%}
                 {% assign use_title = catalog_category.title | split: ", " %}
-                {% assign found_top_categories = found_top_categories | concat: use_title %}
+                {{ found_top_categories | append: ', ' | append: use_title }}
             {% endif %}
             {% assign foundActiveUrlCategory = catalog_category.url %}
 
