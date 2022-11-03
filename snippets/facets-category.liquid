@@ -148,34 +148,22 @@
               {%- if link_no_use.links != empty -%}
 
                 {% for catalog_category in link_no_use.links %}
-                  {%- comment -%}
-                    <summary class="facets__summary caption-large focus-offset">
-                    <div>
-                    <span class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                    {% render 'icon-caret' %}
-                    </span>
-                    </summary>
-                  {%- endcomment -%}
 
-                  {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-
+                  <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}
-                          <span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}">
-                            {{ catalog_category.title | link_to: catalog_category.url }}
-                          {% endif %}
-                      </span>
+                      <span>{{ filter.label | escape }}</span>
                       {% render 'icon-caret' %}
                     </div>
+                  </summary>
 
-
-
+                  {%- if catalog_category.url == foundActiveUrlCategory or true -%}
                     {%- comment -%}
                       <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       <div class="row-level-left">
                       {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
                       {%- if catalog_category.url != foundActiveUrlCategory -%}
+                      {% render 'icon-caret' %}
                       {%- endif -%}
                       </div>
                     {%- endcomment -%}
