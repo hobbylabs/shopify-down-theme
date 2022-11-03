@@ -18,26 +18,30 @@
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
       <p>cc: {{catalog_collection.title}}</p>
-      {% for link in catalog_menu.links %}
-        <p>
-          cml: {{link.title}}</p>
-        {% for ll in link.links %}
-          {% if ll.title == catalog_collection.title %}
+      {% for link_no_use in catalog_menu.links %}
+        {%- comment -%}
+          This level is for Menu visible items: Home | Catalog | ...
+        {%- endcomment -%}
+        <p>cml: {{link_no_use.title}}</p>
+        {% for catalog_category in link_no_use.links %}
+          {%- comment -%}
+            This level is for catalog Categories
+          {%- endcomment -%}
+          {% if catalog_category.title == catalog_collection.title %}
             <p>
-              cmls: {{ll.title}}</p>
+              cmls: {{catalog_category.title}}</p>
             {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
-            {% if found_top_categories contains link.title %}
+            {% if found_top_categories contains catalog_category.title %}
               {%- else -%}
-                {% assign use_title = link.title | split: ", " %}
+                {% assign use_title = catalog_category.title | split: ", " %}
                 {% assign found_top_categories = found_top_categories | concat: use_title %}
             {% endif %}
 
             {% assign isFoundActive = false %}
-            {% assign foundActiveUrlCategory = link.url %}
-            {% assign foundActiveUrlLevel1 = ll.url %}
-            {% for llSublink1 in ll.links %}
+            {% assign foundActiveUrlLevel1 = catalog_category.url %}
+            {% for llSublink1 in catalog_category.links %}
               {%- comment -%}
                 <p>{{llSublink1.title}}</p>
               {%- endcomment -%}
