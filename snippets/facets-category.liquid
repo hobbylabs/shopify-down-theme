@@ -71,12 +71,11 @@
               {% assign foundActiveUrlLevel1="" %}
               {% assign foundActiveUrlCategory = "" %}
             {% endif %}
-            {% break %}
+            {%- comment -%}
+              {% break %}
+            {%- endcomment -%}
           {% endif %}
         {% endfor %}
-        {%- comment -%}
-          <p>found:{{ foundActiveUrlLevel1 }}</p>
-        {%- endcomment -%}
         {% if isFoundActive %}
           {% break %}
         {% endif %}
