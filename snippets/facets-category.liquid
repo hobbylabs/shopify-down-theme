@@ -17,14 +17,14 @@
     {% assign foundActiveUrlCategory = "" %}
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
-      <p>{{catalog_collection.title}}</p>
+      <p>cc: {{catalog_collection.title}}</p>
       {% for link in catalog_menu.links %}
         <p>
-          {{link.title}}</p>
+          cml: {{link.title}}</p>
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
             <p>
-              {{ll.title}}</p>
+              cmls: {{ll.title}}</p>
             {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
