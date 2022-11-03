@@ -32,7 +32,7 @@
             {% assign isFoundActive = false %}
             {% for llSublink1 in ll.links %}
               {% assign foundActiveUrlLevel1 = ll.url %}
-              <p>{{llSublink1.url}}</p>
+              <p>{{llSublink1.title}}</p>
               {% if llSublink1.current %}
                 {% assign isFoundActive = true %}
                 {% break %}
