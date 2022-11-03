@@ -118,6 +118,10 @@
       {% endif %}
     {% endfor %}
 
+    <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}
+    </p>
+    <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+
 
     {% for catalog_collection in catalog_collection_list %}
       {% comment %}
@@ -155,10 +159,6 @@
                 {% for sublink1 in link.links %}
                   <div class="categories-level{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
 
-                  <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}
-                  </p>
-                  <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
-                  <p>sublink1:{{ sublink1.url }}</p>
 
 
                   {%- if sublink1.url == foundActiveUrlLevel1 -%}
