@@ -19,7 +19,7 @@
       {% for link in catalog_menu.links %}
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
-
+            <p>{{ll.title}}</p>
             {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
