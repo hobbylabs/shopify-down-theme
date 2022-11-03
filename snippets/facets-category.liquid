@@ -152,8 +152,7 @@
                   <summary class="facets__summary caption-large focus-offset">
                     <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       {{ catalog_category.title | link_to: catalog_category.url }}
-                      <div>
-                        <span>{{ filter.label | escape }}</span>
+                      <div class="row-level-right" open>
                         {% render 'icon-caret' %}
                       </div>
                     </div>
@@ -250,6 +249,10 @@
   }
 
   .row-level-right {}
+
+  .row-level-right[open] {
+    transform: rotate(180deg);
+  }
 
   @media screen and (min-width: 750px) {
     .categories-wrapper {
