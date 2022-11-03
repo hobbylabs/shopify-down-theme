@@ -118,7 +118,7 @@
                   <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
                 {%- endcomment -%}
                 {% for sublink1 in link.links %}
-                  <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
+                  <div class="categories-level{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
 
                   {%- comment -%}
                     <p>sublink1:{{ sublink1.url }}</p>
