@@ -120,10 +120,10 @@
                 {% for sublink1 in link.links %}
                   <div class="categories-level{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
 
-                  {%- comment -%}
-                    <p>sublink1:{{ sublink1.url }}</p>
-                    <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
-                  {%- endcomment -%}
+
+                  <p>sublink1:{{ sublink1.url }}</p>
+                  <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+
 
                   {%- if sublink1.url == foundActiveUrlLevel1 -%}
                     <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}">{{ sublink1.title | link_to: sublink1.url }}</div>
