@@ -14,9 +14,11 @@
   <div class="categories-wrapper">
     {% assign used_top_categories = "" | split: "," %}
     {% assign found_top_categories = "" | split: "," %}
+    {% assign foundActiveUrlCategory = "" %}
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
       {% for link in catalog_menu.links %}
+        {% assign foundActiveUrlCategory = link.url %}
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
             {%- comment -%}
@@ -32,8 +34,8 @@
             {% endif %}
 
             {% assign isFoundActive = false %}
+            {% assign foundActiveUrlLevel1 = ll.url %}
             {% for llSublink1 in ll.links %}
-              {% assign foundActiveUrlLevel1 = ll.url %}
               {%- comment -%}
                 <p>{{llSublink1.title}}</p>
               {%- endcomment -%}
@@ -67,6 +69,7 @@
               {% break %}
             {% else %}
               {% assign foundActiveUrlLevel1="" %}
+              {% assign foundActiveUrlCategory = "" %}
             {% endif %}
             {% break %}
           {% endif %}
@@ -120,9 +123,9 @@
                 {% for sublink1 in link.links %}
                   <div class="categories-level{% if sublink1.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
 
-
-                  <p>sublink1:{{ sublink1.url }}</p>
+                  <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}</p>
                   <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+                  <p>sublink1:{{ sublink1.url }}</p>
 
 
                   {%- if sublink1.url == foundActiveUrlLevel1 -%}
