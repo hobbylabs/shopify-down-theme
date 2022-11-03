@@ -150,7 +150,10 @@
                 {% for catalog_category in link_no_use.links %}
 
                   <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                    {{ catalog_category.title | link_to: catalog_category.url }}
+                    <div class="row-level-left">
+                      {{ catalog_category.title | link_to: catalog_category.url }}
+                    </div>
+
                     <div class="row-level-right" open>
                       {% render 'icon-caret' %}
                     </div>
