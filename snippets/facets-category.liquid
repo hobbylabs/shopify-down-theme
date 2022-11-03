@@ -113,8 +113,12 @@
               {% assign use_title = link.title | split: ", " %}
               {% assign used_top_categories = used_top_categories | concat: use_title %}
               {%- if link.links != empty -%}
-                <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+                {%- comment -%}
+                  // Catalog
+                  <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ link.title | link_to: link.url }}</div>
+                {%- endcomment -%}
                 {% for sublink1 in link.links %}
+                  <div class="categories-level{% if link.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ sublink1.title | link_to: sublink1.url }}</div>
 
                   {%- comment -%}
                     <p>sublink1:{{ sublink1.url }}</p>
