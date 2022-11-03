@@ -152,7 +152,14 @@
                 {% for catalog_category in link_no_use.links %}
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-                    <div class="categories-level{% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ catalog_category.title | link_to: catalog_category.url }}</div>
+                    <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                      <div class="row-level-left">
+                        {{ catalog_category.title | link_to: catalog_category.url }}
+                      </div>
+                      <div class="row-level-right">
+                        +
+                      </div>
+                    </div>
 
                     {% for sublink1 in catalog_category.links %}
                       {%- if sublink1.url == foundActiveUrlLevel1 or catalog_category.url == foundActiveUrlCategory -%}
@@ -221,6 +228,17 @@
   .categories-level-3 {
     padding-left: 30px;
   }
+
+  .row-level {
+    width: 100%;
+    display: flex;
+  }
+
+  .row-level-left {
+    flex-grow: 1;
+  }
+
+  .row-level-right {}
 
   @media screen and (min-width: 750px) {
     .categories-wrapper {
