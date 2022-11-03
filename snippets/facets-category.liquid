@@ -151,20 +151,19 @@
 
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                      <span class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                         {% render 'icon-caret' %}
-                    </div>
+                    </span>
                   </summary>
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-                    <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                    {%- comment -%} <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       <div class="row-level-left">
                         {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
                       {%- if catalog_category.url != foundActiveUrlCategory -%}
-                        {%- comment -%} {% render 'icon-caret' %} {%- endcomment -%}
                       {%- endif -%}
-                    </div>
+                    </div> {%- endcomment -%}
 
                     {% for sublink1 in catalog_category.links %}
                       {%- if sublink1.url == foundActiveUrlLevel1 or catalog_category.url == foundActiveUrlCategory -%}
