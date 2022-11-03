@@ -22,6 +22,7 @@
         {%- comment -%}
           This level is for Menu visible items: Home | Catalog | ...
         {%- endcomment -%}
+        <p>isFoundActive cml: {{isFoundActive}}</p>
         {% if isFoundActive %}
           {% break %}
         {% endif %}
@@ -83,6 +84,7 @@
             {%- comment -%}
               {% break %}
             {%- endcomment -%}
+            <p>isFoundActive cmls: {{isFoundActive}}</p>
           {% else %}
             {% assign foundActiveUrlLevel1="" %}
             {% assign foundActiveUrlCategory = "" %}
