@@ -16,6 +16,8 @@
     {% assign found_top_categories = "" | split: "," %}
     {% assign foundActiveUrlCategory = "" %}
     {% assign foundActiveUrlLevel1 = "" %}
+    {% assign foundActiveUrlLevel2 = "" %}
+    {% assign foundActiveUrlLevel3 = "" %}
     {% for catalog_collection in catalog_collection_list %}
       {% assign isFoundActive = false %}
       {%- comment -%}
@@ -40,9 +42,6 @@
           {%- endcomment -%}
           {% if catalog_category.title == catalog_collection.title %}
             {%- comment -%}
-              <p> cmls: {{catalog_category.title}}</p>
-            {%- endcomment -%}
-            {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
             {% if found_top_categories contains catalog_category.title %}
@@ -54,25 +53,22 @@
 
             {% if catalog_category.current %}
               {% assign isFoundActive = true %}
-              {%- comment -%}
-                <p>isFoundActive cmls: {{isFoundActive}}</p>
-              {%- endcomment -%}
               {% break %}
             {%- else -%}
               {% for llSublink1 in catalog_category.links %}
-                {%- comment -%}
-                  <p>{{llSublink1.title}}</p>
-                {%- endcomment -%}
+                {% assign foundActiveUrlLevel1 = llSublink1.url %}
                 {% if llSublink1.current %}
                   {% assign isFoundActive = true %}
                   {% break %}
                 {% else %}
                   {% for llSublink2 in llSublink1.links %}
+                    {% assign foundActiveUrlLevel2 = llSublink2.url %}
                     {% if llSublink2.current %}
                       {% assign isFoundActive = true %}
                       {% break %}
                     {% else %}
                       {% for llSublink3 in llSublink1.links %}
+                        {% assign foundActiveUrlLevel3 = llSublink3.url %}
                         {% if llSublink3.current %}
                           {% assign isFoundActive = true %}
                           {% break %}
@@ -93,8 +89,10 @@
               {% if isFoundActive %}
                 {% break %}
               {% else %}
-                {% assign foundActiveUrlLevel1="" %}
                 {% assign foundActiveUrlCategory = "" %}
+                {% assign foundActiveUrlLevel1="" %}
+                {% assign foundActiveUrlLevel2="" %}
+                {% assign foundActiveUrlLevel3="" %}
               {% endif %}
 
             {% endif %}
@@ -121,6 +119,8 @@
     <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}
     </p>
     <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+    <p>foundActiveUrlLevel2:{{ foundActiveUrlLevel2 }}</p>
+    <p>foundActiveUrlLevel3:{{ foundActiveUrlLevel3 }}</p>
     <p>found_top_categories:{{ found_top_categories | join: ", "  }}</p>
 
 
