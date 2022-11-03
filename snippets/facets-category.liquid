@@ -47,6 +47,7 @@
 
             {% if catalog_category.current %}
               {% assign isFoundActive = true %}
+              <p>isFoundActive cmls: {{isFoundActive}}</p>
               {% break %}
             {%- else -%}
               {% for llSublink1 in catalog_category.links %}
@@ -79,17 +80,19 @@
                   {% endif %}
                 {% endif %}
               {% endfor %}
+
               {% if isFoundActive %}
                 {% break %}
               {% else %}
                 {% assign foundActiveUrlLevel1="" %}
                 {% assign foundActiveUrlCategory = "" %}
               {% endif %}
+
             {% endif %}
             {%- comment -%}
               {% break %}
             {%- endcomment -%}
-            <p>isFoundActive cmls: {{isFoundActive}}</p>
+            <p>isFoundActive cmls bottom: {{isFoundActive}}</p>
           {% else %}
             {% assign foundActiveUrlLevel1="" %}
             {% assign foundActiveUrlCategory = "" %}
