@@ -17,9 +17,9 @@
     {% assign foundActiveUrlCategory = "" %}
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
+      {% assign isFoundActive = false %}
       <p>cc: {{catalog_collection.title}}</p>
       {% for link_no_use in catalog_menu.links %}
-        {% assign isFoundActive = false %}
         {%- comment -%}
           This level is for Menu visible items: Home | Catalog | ...
         {%- endcomment -%}
