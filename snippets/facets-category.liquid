@@ -22,10 +22,13 @@
         {%- comment -%}
           This level is for Menu visible items: Home | Catalog | ...
         {%- endcomment -%}
+        {% if isFoundActive %}
+          {% break %}
+        {% endif %}
         <p>cml: {{link_no_use.title}}</p>
         {% for catalog_category in link_no_use.links %}
           {%- comment -%}
-            This level is for catalog Categories
+            This level is for catalog Category names
           {%- endcomment -%}
           {% if catalog_category.title == catalog_collection.title %}
             <p>
@@ -89,9 +92,6 @@
           {% break %}
         {% endif %}
       {% endfor %}
-      {% if isFoundActive %}
-        {% break %}
-      {% endif %}
     {% endfor %}
 
 
