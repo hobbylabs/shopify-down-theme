@@ -9,6 +9,8 @@
   {% render 'facets-category', catalog_menu: , catalog_collection_list:  %}
 {% endcomment %}
 
+{% assign no_of_sublevels = 0 %}
+
 {% if catalog_collection_list != empty %}
 
   <div class="categories-wrapper">
@@ -116,13 +118,26 @@
       {% endif %}
     {% endfor %}
 
-    <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}
-    </p>
-    <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
-    <p>foundActiveUrlLevel2:{{ foundActiveUrlLevel2 }}</p>
-    <p>foundActiveUrlLevel3:{{ foundActiveUrlLevel3 }}</p>
-    <p>found_top_categories:{{ found_top_categories | join: ", "  }}</p>
+    {%- comment -%}
+      <p>foundActiveUrlCategory:{{ foundActiveUrlCategory }}
+      </p>
+      <p>foundActiveUrlLevel1:{{ foundActiveUrlLevel1 }}</p>
+      <p>foundActiveUrlLevel2:{{ foundActiveUrlLevel2 }}</p>
+      <p>foundActiveUrlLevel3:{{ foundActiveUrlLevel3 }}</p>
+      <p>found_top_categories:{{ found_top_categories | join: ", "  }}</p>
+    {%- endcomment -%}
 
+    {%- comment -%}
+      {% if foundActiveUrlLevel1 != null and foundActiveUrlLevel1 != "" %}
+      {% increment no_of_sublevels %}
+      {% endif %}
+      {% if foundActiveUrlLevel2 != null and foundActiveUrlLevel2 != "" %}
+      {% increment no_of_sublevels %}
+      {% endif %}
+      {% if foundActiveUrlLevel3 != null and foundActiveUrlLevel3 != "" %}
+      {% increment no_of_sublevels %}
+      {% endif %}
+    {%- endcomment -%}
 
     {% for catalog_collection in catalog_collection_list %}
       <div>catalog_collection: {{ catalog_collection.title }}</div>
@@ -195,15 +210,15 @@
   }
 
   .categories-level-1 {
-    padding-left: 0;
-  }
-
-  .categories-level-2 {
     padding-left: 10px;
   }
 
-  .categories-level-3 {
+  .categories-level-2 {
     padding-left: 20px;
+  }
+
+  .categories-level-3 {
+    padding-left: 30px;
   }
 
   @media screen and (min-width: 750px) {
