@@ -152,11 +152,12 @@
                   <summary class="facets__summary caption-large focus-offset">
                     <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       {{ catalog_category.title | link_to: catalog_category.url }}
+                      <div>
+                        <span>{{ filter.label | escape }}</span>
+                        {% render 'icon-caret' %}
+                      </div>
                     </div>
-                    <div>
-                      <span>{{ filter.label | escape }}</span>
-                      {% render 'icon-caret' %}
-                    </div>
+
                   </summary>
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
