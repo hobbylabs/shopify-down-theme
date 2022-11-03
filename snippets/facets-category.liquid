@@ -140,7 +140,6 @@
     {%- endcomment -%}
 
     {% for catalog_collection in catalog_collection_list %}
-      <div>catalog_collection: {{ catalog_collection.title }}</div>
       {% if found_top_categories contains catalog_collection.title %}
         {% for link_no_use in catalog_menu.links %}
           {% if used_top_categories contains link_no_use.title %}
@@ -152,31 +151,33 @@
 
                 {% for catalog_category in link_no_use.links %}
 
-                  <div class="categories-level{% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ catalog_category.title | link_to: catalog_category.url }}</div>
+                  {%- if catalog_category.url == foundActiveUrlCategory -%}
+                    <div class="categories-level{% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">{{ catalog_category.title | link_to: catalog_category.url }}</div>
 
-                  {% for sublink1 in catalog_category.links %}
-                    {%- if sublink1.url == foundActiveUrlLevel1 -%}
-                      <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}">{{ sublink1.title | link_to: sublink1.url }}</div>
-                      {%- if sublink1.links != empty -%}
-                        {% for sublink2 in sublink1.links %}
+                    {% for sublink1 in catalog_category.links %}
+                      {%- if sublink1.url == foundActiveUrlLevel1 -%}
+                        <div class="categories-level-1{% if sublink1.current %} subcategory-current-link{% endif %}">{{ sublink1.title | link_to: sublink1.url }}</div>
+                        {%- if sublink1.links != empty -%}
+                          {% for sublink2 in sublink1.links %}
 
-                          {%- if sublink2.url == foundActiveUrlLevel2 -%}
-                            <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}">{{ sublink2.title | link_to: sublink2.url }}</div>
-                            {%- if sublink2.links != empty -%}
-                              {% for sublink3 in sublink2.links %}
+                            {%- if sublink2.url == foundActiveUrlLevel2 -%}
+                              <div class="categories-level-2{% if sublink2.current %} subcategory-current-link{% endif %}">{{ sublink2.title | link_to: sublink2.url }}</div>
+                              {%- if sublink2.links != empty -%}
+                                {% for sublink3 in sublink2.links %}
 
-                                {%- if sublink2.url == foundActiveUrlLevel2 -%}
-                                  <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}">{{ sublink3.title | link_to: sublink3.url }}</div>
-                                {%- endif -%}
+                                  {%- if sublink2.url == foundActiveUrlLevel2 -%}
+                                    <div class="categories-level-3{% if sublink3.current %} subcategory-current-link{% endif %}">{{ sublink3.title | link_to: sublink3.url }}</div>
+                                  {%- endif -%}
 
-                              {% endfor %}
+                                {% endfor %}
+                              {%- endif -%}
                             {%- endif -%}
-                          {%- endif -%}
 
-                        {% endfor %}
+                          {% endfor %}
+                        {%- endif -%}
                       {%- endif -%}
-                    {%- endif -%}
-                  {% endfor %}
+                    {% endfor %}
+                  {%- endif -%}
 
                 {% endfor %}
 
