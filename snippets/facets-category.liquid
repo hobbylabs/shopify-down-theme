@@ -9,8 +9,6 @@
   {% render 'facets-category', catalog_menu: , catalog_collection_list:  %}
 {% endcomment %}
 
-{% assign no_of_sublevels = 0 %}
-
 {% if catalog_collection_list != empty %}
 
   <div class="categories-wrapper">
@@ -158,7 +156,7 @@
                       </div>
                       {%- if catalog_category.url != foundActiveUrlCategory -%}
                         <div class="row-level-right">
-                          +
+                          {% render 'icon-close-small' %}
                         </div>
                       {%- endif -%}
                     </div>
