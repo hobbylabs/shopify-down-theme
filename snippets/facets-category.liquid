@@ -12,9 +12,9 @@
 {% if catalog_collection_list != empty %}
 
   <div class="categories-wrapper">
-    {% assign used_top_categories = "" | split: "," %}
-    {% assign found_top_categories = "" | split: "," %}
-    {% assign foundActiveUrlLevel1 = "" %}
+    {% assign used_top_categories = "" | split: "," 
+     assign found_top_categories = "" | split: ","
+     assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
       {% for link in catalog_menu.links %}
         {% for ll in link.links %}
