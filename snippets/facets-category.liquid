@@ -18,7 +18,6 @@
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
       {% for link in catalog_menu.links %}
-        {% assign foundActiveUrlCategory = link.url %}
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
             {%- comment -%}
@@ -34,6 +33,7 @@
             {% endif %}
 
             {% assign isFoundActive = false %}
+            {% assign foundActiveUrlCategory = link.url %}
             {% assign foundActiveUrlLevel1 = ll.url %}
             {% for llSublink1 in ll.links %}
               {%- comment -%}
