@@ -17,12 +17,14 @@
     {% assign foundActiveUrlCategory = "" %}
     {% assign foundActiveUrlLevel1 = "" %}
     {% for catalog_collection in catalog_collection_list %}
+      <p>{{catalog_collection.title}}</p>
       {% for link in catalog_menu.links %}
+        <p>
+          {{link.title}}</p>
         {% for ll in link.links %}
           {% if ll.title == catalog_collection.title %}
-            {%- comment -%}
-              <p>{{ll.title}}</p>
-            {%- endcomment -%}
+            <p>
+              {{ll.title}}</p>
             {%- comment -%}
               Add found title to list if missing
             {%- endcomment -%}
@@ -74,6 +76,9 @@
             {%- comment -%}
               {% break %}
             {%- endcomment -%}
+          {% else %}
+            {% assign foundActiveUrlLevel1="" %}
+            {% assign foundActiveUrlCategory = "" %}
           {% endif %}
         {% endfor %}
         {% if isFoundActive %}
