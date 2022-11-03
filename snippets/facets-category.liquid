@@ -156,7 +156,7 @@
                       <div class="row-level-left">
                         {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
-                      {%- if catalog_category.url != foundActiveUrlCategory -%}
+                      {%- if catalog_category.url == foundActiveUrlCategory -%}
                         <div class="row-level-right">
                           +
                         </div>
