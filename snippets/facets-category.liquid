@@ -149,6 +149,15 @@
 
                 {% for catalog_category in link_no_use.links %}
 
+
+                  <div class="select">
+                    <select name="sort_by" class="facet-filters__sort select__select caption-large" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+
+                    </select>
+                    {% render 'icon-caret' %}
+                  </div>
+
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
                     <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       <div class="row-level-left">
