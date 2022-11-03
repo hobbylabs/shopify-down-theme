@@ -44,41 +44,47 @@
                 {% assign found_top_categories = found_top_categories | concat: use_title %}
             {% endif %}
             {% assign foundActiveUrlLevel1 = catalog_category.url %}
-            {% for llSublink1 in catalog_category.links %}
-              {%- comment -%}
-                <p>{{llSublink1.title}}</p>
-              {%- endcomment -%}
-              {% if llSublink1.current %}
-                {% assign isFoundActive = true %}
+
+            {% if catalog_category.current %}
+              {% assign isFoundActive = true %}
+              {% break %}
+            {%- else -%}
+              {% for llSublink1 in catalog_category.links %}
+                {%- comment -%}
+                  <p>{{llSublink1.title}}</p>
+                {%- endcomment -%}
+                {% if llSublink1.current %}
+                  {% assign isFoundActive = true %}
+                  {% break %}
+                {% else %}
+                  {% for llSublink2 in llSublink1.links %}
+                    {% if llSublink2.current %}
+                      {% assign isFoundActive = true %}
+                      {% break %}
+                    {% else %}
+                      {% for llSublink3 in llSublink1.links %}
+                        {% if llSublink3.current %}
+                          {% assign isFoundActive = true %}
+                          {% break %}
+                          {% else %}
+                        {% endif %}
+                      {% endfor %}
+                      {% if isFoundActive %}
+                        {% break %}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if isFoundActive %}
+                    {% break %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              {% if isFoundActive %}
                 {% break %}
               {% else %}
-                {% for llSublink2 in llSublink1.links %}
-                  {% if llSublink2.current %}
-                    {% assign isFoundActive = true %}
-                    {% break %}
-                  {% else %}
-                    {% for llSublink3 in llSublink1.links %}
-                      {% if llSublink3.current %}
-                        {% assign isFoundActive = true %}
-                        {% break %}
-                        {% else %}
-                      {% endif %}
-                    {% endfor %}
-                    {% if isFoundActive %}
-                      {% break %}
-                    {% endif %}
-                  {% endif %}
-                {% endfor %}
-                {% if isFoundActive %}
-                  {% break %}
-                {% endif %}
+                {% assign foundActiveUrlLevel1="" %}
+                {% assign foundActiveUrlCategory = "" %}
               {% endif %}
-            {% endfor %}
-            {% if isFoundActive %}
-              {% break %}
-            {% else %}
-              {% assign foundActiveUrlLevel1="" %}
-              {% assign foundActiveUrlCategory = "" %}
             {% endif %}
             {%- comment -%}
               {% break %}
