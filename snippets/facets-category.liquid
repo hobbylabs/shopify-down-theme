@@ -158,7 +158,9 @@
                       </div>
 
                       <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory-%} open{% endif %}>
-                        {% render 'icon-caret' %}
+                        {%- comment -%}
+                          {% render 'icon-caret' %}
+                        {%- endcomment -%}
                       </div>
                     </div>
 
