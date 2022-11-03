@@ -151,8 +151,8 @@
 
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <span>{{ filter.label | escape }}</span>
-                      {% render 'icon-caret' %}
+                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                        {% render 'icon-caret' %}
                     </div>
                   </summary>
 
@@ -162,7 +162,7 @@
                         {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
                       {%- if catalog_category.url != foundActiveUrlCategory -%}
-                        {% render 'icon-caret' %}
+                        {%- comment -%} {% render 'icon-caret' %} {%- endcomment -%}
                       {%- endif -%}
                     </div>
 
