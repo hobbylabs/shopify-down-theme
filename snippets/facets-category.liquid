@@ -148,33 +148,37 @@
               {%- if link_no_use.links != empty -%}
 
                 {% for catalog_category in link_no_use.links %}
-{%- comment -%} 
-                  <summary class="facets__summary caption-large focus-offset">
+                  {%- comment -%}
+                    <summary class="facets__summary caption-large focus-offset">
                     <div>
-                      <span class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                        {% render 'icon-caret' %}
+                    <span class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                    {% render 'icon-caret' %}
                     </span>
-                  </summary> {%- endcomment -%}
+                    </summary>
+                  {%- endcomment -%}
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-                   
-                    <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
-                      <span class="active-facets__button-inner button button--tertiary">
-                        <span class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                          {% render 'icon-close-small' %}
-                        <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
+
+                    <div>
+                      <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}
+                          <span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}">
+                            {{ catalog_category.title | link_to: catalog_category.url }}
+                          {% endif %}
                       </span>
-                    </a>
-                    
-                    
-                    
-                    {%- comment -%} <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                      {% render 'icon-caret' %}
+                    </div>
+
+
+
+                    {%- comment -%}
+                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                       <div class="row-level-left">
-                        {{ catalog_category.title | link_to: catalog_category.url }}
+                      {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
                       {%- if catalog_category.url != foundActiveUrlCategory -%}
                       {%- endif -%}
-                    </div> {%- endcomment -%}
+                      </div>
+                    {%- endcomment -%}
 
                     {% for sublink1 in catalog_category.links %}
                       {%- if sublink1.url == foundActiveUrlLevel1 or catalog_category.url == foundActiveUrlCategory -%}
