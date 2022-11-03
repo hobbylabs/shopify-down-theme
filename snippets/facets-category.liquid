@@ -151,6 +151,8 @@
 
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
+                      <div class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+
                       <span>{{ filter.label | escape }}</span>
                       {% render 'icon-caret' %}
                     </div>
