@@ -149,7 +149,7 @@
 
                 {% for catalog_category in link_no_use.links %}
 
-                  <summary class="caption-large categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
+                  <summary class="facets__summary categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
                     <div class="row-level-left">
                       {{ catalog_category.title | link_to: catalog_category.url }}
                     </div>
