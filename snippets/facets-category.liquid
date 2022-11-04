@@ -152,16 +152,14 @@
 
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
-                    <summary class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                      <a href="{{ catalog_category.url }}">
-                        <div class="row-level-left">
-                          {{ catalog_category.title | link_to: catalog_category.url }}
-                        </div>
+                    <summary class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" onclick="location.href='{{ catalog_category.url }}';">
+                      <div class="row-level-left">
+                        {{ catalog_category.title | link_to: catalog_category.url }}
+                      </div>
 
-                        <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory -%} open{% endif %}>
-                          {% render 'icon-caret' %}
-                        </div>
-                      </a>
+                      <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory -%} open{% endif %}>
+                        {% render 'icon-caret' %}
+                      </div>
                     </summary>
 
                     {% for sublink1 in catalog_category.links %}
