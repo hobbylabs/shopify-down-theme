@@ -157,7 +157,7 @@
                         {{ catalog_category.title | link_to: catalog_category.url }}
                       </div>
 
-                      <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory-%} open{% endif %}>
+                      <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory -%} open{% endif %}>
                         {% render 'icon-caret' %}
                       </div>
                     </summary>
@@ -248,9 +248,9 @@
     right: 0;
   }
 
-  /* .row-level-right[open] {
+  .row-level-right[open] {
     transform: rotate(180deg);
-  } */
+  }
 
   @media screen and (min-width: 750px) {
     .categories-wrapper {
