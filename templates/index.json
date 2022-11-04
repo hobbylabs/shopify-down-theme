@@ -76,7 +76,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
+        "collection": "componente-electronice",
         "products_to_show": 8,
         "columns_desktop": 4,
         "card_title_max_lines": 2,
