@@ -153,13 +153,15 @@
 
                   {%- if catalog_category.url == foundActiveUrlCategory or true -%}
                     <summary class="categories-level row-level {% if catalog_category.current %} subcategory-current-link{% endif %}" style="padding-left:0px;">
-                      <div class="row-level-left">
-                        {{ catalog_category.title | link_to: catalog_category.url }}
-                      </div>
+                      <a href="{{ catalog_category.url }}">
+                        <div class="row-level-left">
+                          {{ catalog_category.title | link_to: catalog_category.url }}
+                        </div>
 
-                      <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory -%} open{% endif %}>
-                        {% render 'icon-caret' %}
-                      </div>
+                        <div class="row-level-right" {%- if catalog_category.url == foundActiveUrlCategory -%} open{% endif %}>
+                          {% render 'icon-caret' %}
+                        </div>
+                      </a>
                     </summary>
 
                     {% for sublink1 in catalog_category.links %}
@@ -238,14 +240,10 @@
     width: 100%;
     display: flex;
     padding: 0 1.75rem 0 0;
-    /* margin-bottom: 0; */
-    /* color: rgba(var(--color-foreground), 0.75); */
-    /* font-size: 1.4rem; */
   }
 
   .row-level-left {
     flex-grow: 1;
-    /* background: blue; */
   }
 
   .row-level-right .icon-caret {
