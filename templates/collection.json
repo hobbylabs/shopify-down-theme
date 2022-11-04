@@ -26,8 +26,10 @@
         "padding_bottom": 36,
         "catalog_menu": "main-menu",
         "catalog_collection_list": [
-          "placi-de-dezvoltare",
+          "componente-electronice",
+          "imprimante-3d",
           "motoare-și-drivere",
+          "placi-de-dezvoltare",
           "senzori-și-module"
         ]
       }
