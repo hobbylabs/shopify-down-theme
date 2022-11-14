@@ -221,28 +221,6 @@
         "include_margins": true
       }
     },
-    "ba097fa0-1a02-4675-8b37-6000682fca93": {
-      "type": "rich-text",
-      "blocks": {
-        "template--16736375210294__ba097fa0-1a02-4675-8b37-6000682fca93-1668421280bd9cbdc1-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ product.metafields.product.disclaimer | metafield_tag }}<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "template--16736375210294__ba097fa0-1a02-4675-8b37-6000682fca93-1668421280bd9cbdc1-1"
-      ],
-      "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "background-2",
-        "full_width": false,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
     "5a796066-bce7-487d-8026-0aec9880ee9f": {
       "type": "custom-rich-text",
       "blocks": {
@@ -272,7 +250,6 @@
     "multicolumn",
     "product-recommendations",
     "166680194420e1fa6d",
-    "ba097fa0-1a02-4675-8b37-6000682fca93",
     "5a796066-bce7-487d-8026-0aec9880ee9f"
   ]
 }
