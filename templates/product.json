@@ -257,8 +257,8 @@
         "template--16736375210294__ba097fa0-1a02-4675-8b37-6000682fca93-1668421280bd9cbdc1-2"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
         "color_scheme": "background-1",
         "full_width": true,
         "padding_top": 40,
