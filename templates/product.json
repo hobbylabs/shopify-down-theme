@@ -201,7 +201,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "You may also like",
+        "heading": "S-ar putea să vă placă și",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
