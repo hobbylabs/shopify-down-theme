@@ -44,11 +44,13 @@
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
           }
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Materials",
             "icon": "leather",
@@ -58,6 +60,7 @@
         },
         "collapsible-row-1": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
@@ -67,6 +70,7 @@
         },
         "collapsible-row-2": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Dimensions",
             "icon": "ruler",
@@ -76,6 +80,7 @@
         },
         "collapsible-row-3": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Care Instructions",
             "icon": "heart",
@@ -115,6 +120,30 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "0e3bc2df-6a6e-4c31-93f9-3f15d9573f9a": {
+      "type": "main-product-description",
+      "blocks": {
+        "9c664a2c-982b-4bd4-bff7-4cd04652a560": {
+          "type": "description",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "9c664a2c-982b-4bd4-bff7-4cd04652a560"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_position": "left",
+        "gallery_layout": "stacked",
+        "media_size": "large",
+        "mobile_thumbnails": "hide",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "image-with-text": {
@@ -221,6 +250,7 @@
   },
   "order": [
     "main",
+    "0e3bc2df-6a6e-4c31-93f9-3f15d9573f9a",
     "image-with-text",
     "multicolumn",
     "product-recommendations",
