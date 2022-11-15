@@ -2979,5 +2979,5 @@ details-disclosure > details {
 }
 
 tr:nth-child(even) {
-  background-color: rgba(var(--color-background), 0.04);
+  background-color: rgba(var(--color-base-background-3), 0.04);
 }
