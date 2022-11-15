@@ -2978,9 +2978,6 @@ details-disclosure > details {
   }
 }
 
-.tblAlternate tr:nth-child(1){
-  background:red;
-}
-.tblAlternate tr:nth-child(4){
-  background:green;
+tr:nth-child(even) {
+  background-color: Lightgreen;
 }
