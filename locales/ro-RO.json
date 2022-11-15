@@ -8,7 +8,7 @@
       "login_form_error": "Parolă incorectă!",
       "login_form_submit": "Accesați",
       "admin_link_html": "Sunteți proprietarul magazinului? <a href=\"\/admin\" class=\"link underlined-link\">Conectați-vă aici<\/a>",
-      "powered_by_shopify_html": "Acest magazin va fi pe platforma {{ shopify }}"
+      "powered_by_shopify_html": " "
     },
     "social": {
       "alt_text": {
@@ -475,6 +475,11 @@
       "signup_form_email_label": "Email",
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
+    }
+  },
+  "shopify": {
+    "links": {
+      "powered_by_shopify": " "
     }
   }
 }
