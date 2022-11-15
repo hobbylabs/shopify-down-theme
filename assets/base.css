@@ -2977,3 +2977,10 @@ details-disclosure > details {
     outline: transparent solid 1px;
   }
 }
+
+.tblAlternate tr:nth-child(1){
+  background:red;
+}
+.tblAlternate tr:nth-child(4){
+  background:green;
+}
