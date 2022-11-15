@@ -132,7 +132,7 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Welcome to our store",
+              "text": "Bine ați venit în magazinul nostru",
               "text_alignment": "left",
               "color_scheme": "background-3",
               "link": ""
