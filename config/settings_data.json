@@ -185,7 +185,7 @@
           "footer-1": {
             "type": "link_list",
             "settings": {
-              "heading": "Informații legale",
+              "heading": "Informații",
               "menu": "footer"
             }
           },
