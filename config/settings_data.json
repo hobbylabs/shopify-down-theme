@@ -170,9 +170,16 @@
           "67eaa066-92c8-4c18-b800-39722d910d79": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Arduin_long_banner_color.png",
-              "image_width": 200,
+              "image": "shopify:\/\/shop_images\/Arduin_long_banner_color_sqare.png",
+              "image_width": 165,
               "alignment": "center"
+            }
+          },
+          "cb53a87d-2757-4bf3-8517-dea0dacd7ea6": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Catalog",
+              "menu": "footer-1"
             }
           },
           "footer-1": {
@@ -192,13 +199,14 @@
         },
         "block_order": [
           "67eaa066-92c8-4c18-b800-39722d910d79",
+          "cb53a87d-2757-4bf3-8517-dea0dacd7ea6",
           "footer-1",
           "23837ddf-3ffc-49ff-b924-6f6debd0629b"
         ],
         "settings": {
           "color_scheme": "accent-1",
           "newsletter_enable": true,
-          "newsletter_heading": "Subscribe to our emails",
+          "newsletter_heading": "Abonează-te pentru a fi la curent cu cele mai noi articole și promoții",
           "show_social": true,
           "enable_country_selector": false,
           "enable_language_selector": false,
