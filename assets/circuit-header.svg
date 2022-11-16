@@ -1,5 +1,5 @@
 <?xml-stylesheet href="circuit-style.css" type="text/css"?>
-<svg class="circuit-header" width="2400px" height="50px"  viewBox="0 0 2400 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg class="circuit-header" width="2400px" height="50px"  viewBox="0 0 2400 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#148BB12E"/>
