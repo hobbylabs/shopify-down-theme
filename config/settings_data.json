@@ -178,14 +178,30 @@
           "footer-1": {
             "type": "link_list",
             "settings": {
-              "heading": "Info",
+              "heading": "Informații legale",
               "menu": "footer"
+            }
+          },
+          "23837ddf-3ffc-49ff-b924-6f6debd0629b": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Contact",
+              "menu": "footer"
+            }
+          },
+          "dd4f893c-9203-4780-b899-aa8d4df8783a": {
+            "type": "text",
+            "settings": {
+              "heading": "Contact",
+              "subtext": "<p>contact@arduin.ro<\/p>"
             }
           }
         },
         "block_order": [
           "67eaa066-92c8-4c18-b800-39722d910d79",
-          "footer-1"
+          "footer-1",
+          "23837ddf-3ffc-49ff-b924-6f6debd0629b",
+          "dd4f893c-9203-4780-b899-aa8d4df8783a"
         ],
         "settings": {
           "color_scheme": "accent-1",
