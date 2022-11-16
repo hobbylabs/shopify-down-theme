@@ -149,9 +149,9 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-3",
-          "logo": "shopify:\/\/shop_images\/arduin-logo_white-sqare-120.png",
-          "logo_width": 50,
-          "logo_position": "middle-left",
+          "logo": "shopify:\/\/shop_images\/Arduin_long_banner_color_smaller.png",
+          "logo_width": 100,
+          "logo_position": "middle-center",
           "menu": "main-menu",
           "menu_type_desktop": "mega",
           "show_line_separator": false,
