@@ -589,14 +589,12 @@
   };
 
   function loop(status) {
-    {%- comment -%}
-      if (status === true) {
-        time = setInterval(() => {
-          slideToNext();
-        }, interval);
-      } else {
-        clearInterval(time);
-      }
-    {%- endcomment -%}
+    if (status === true) {
+      time = setInterval(() => {
+        slideToNext();
+      }, interval);
+    } else {
+      clearInterval(time);
+    }
   }
 </script>
