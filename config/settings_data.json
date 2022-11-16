@@ -131,6 +131,7 @@
         "blocks": {
           "announcement-bar-0": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "Bine ați venit în magazinul nostru",
               "text_alignment": "left",
@@ -150,8 +151,8 @@
         "settings": {
           "color_scheme": "background-3",
           "logo": "shopify:\/\/shop_images\/Arduin_long_banner_color_smaller.png",
-          "logo_width": 100,
-          "logo_position": "top-left",
+          "logo_width": 250,
+          "logo_position": "middle-center",
           "menu": "main-menu",
           "menu_type_desktop": "mega",
           "show_line_separator": false,
