@@ -2,8 +2,8 @@
 <svg class="circuit-header" width="2400px" height="80px"  viewBox="0 150 4400 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#148BB117"/>
-      <stop offset="100%" stop-color="#DBE2E817"/>
+      <stop offset="0%"   stop-color="#148BB140"/>
+      <stop offset="100%" stop-color="#DBE2E840"/>
     </linearGradient>
   </defs>
   <style>
