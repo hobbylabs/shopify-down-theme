@@ -480,6 +480,11 @@
   "shopify": {
     "links": {
       "powered_by_shopify": " "
+    },
+    "email_marketing": {
+      "unsubscribed": {
+        "disclaimer": "Nu vei mai primi actualizări de marketing de la noi. Te poți abona din nou în orice moment."
+      }
     }
   }
 }
