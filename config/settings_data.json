@@ -195,22 +195,13 @@
               "heading": "Contact",
               "menu": "footer-menu-contact"
             }
-          },
-          "20594411-65b3-4a38-96bd-b380a1ddb38b": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Frame_196.png",
-              "image_width": 100,
-              "alignment": "center"
-            }
           }
         },
         "block_order": [
           "67eaa066-92c8-4c18-b800-39722d910d79",
           "cb53a87d-2757-4bf3-8517-dea0dacd7ea6",
           "footer-1",
-          "23837ddf-3ffc-49ff-b924-6f6debd0629b",
-          "20594411-65b3-4a38-96bd-b380a1ddb38b"
+          "23837ddf-3ffc-49ff-b924-6f6debd0629b"
         ],
         "settings": {
           "color_scheme": "accent-1",
