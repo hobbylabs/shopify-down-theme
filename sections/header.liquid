@@ -128,7 +128,7 @@
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 {%- if settings.cart_type == "drawer" -%}
   <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-  
+
 {%- endif -%}
 {% comment %} 
 Customization
@@ -136,7 +136,7 @@ Change the variables below to customize your shipping bar
 {% endcomment %}
 
 {% assign gd_text_before_price = " Only " %}
-{% assign free_shipping = 60 %}
+{% assign free_shipping = 200 %}
 {% assign gd_text_after_price = " to go before FREE shipping " %}
 {% assign gd_text_free_shipping = " You have free shipping " %}
 
