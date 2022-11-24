@@ -130,6 +130,15 @@
   <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 {%- endif -%}
+
+<script>
+  element.addEventListener("click", myFunction);
+
+  function myFunction() {
+    alert ("Hello World!");
+  }
+</script>
+
 {% comment %} 
 Customization
 Change the variables below to customize your shipping bar
