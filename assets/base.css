@@ -2981,3 +2981,6 @@ details-disclosure > details {
 tr:nth-child(even) {
   background-color: rgba(var(--color-base-background-3), 0.04);
 }
+
+.gd-free-shipping-bar{background-color:#ff6600;text-align:center;width:100%;display:block;padding:15px 10px;margin:0 auto 5px;}
+.gd-free-shipping-bar p, .gd-free-shipping-bar-on {color:#ffffff;}

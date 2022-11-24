@@ -128,7 +128,30 @@
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 {%- if settings.cart_type == "drawer" -%}
   <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  
 {%- endif -%}
+{% comment %} 
+Customization
+Change the variables below to customize your shipping bar
+{% endcomment %}
+
+{% assign gd_text_before_price = " Only " %}
+{% assign free_shipping = 60 %}
+{% assign gd_text_after_price = " to go before FREE shipping " %}
+{% assign gd_text_free_shipping = " You have free shipping " %}
+
+{% comment %} 
+End of the customizable zone
+{% endcomment %}
+
+{% assign shipping_price_before = free_shipping | times: 100.0 | minus: cart.total_price %}
+<div class="gd-free-shipping-bar {% if shipping_price_before > 0 %}{% endif %}">
+{% if shipping_price_before > 0 %} 
+<p>{{ gd_text_before_price }} <strong class="gd-free-shipping-bar-number">{{shipping_price_before | money }}</strong> {{ gd_text_after_price }} </p>
+{% else %}
+<span class="gd-free-shipping-bar-on">{{ gd_text_free_shipping }}</span>
+{% endif %}
+</div>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
   <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
