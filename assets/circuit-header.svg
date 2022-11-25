@@ -7,34 +7,36 @@
     </linearGradient>
   </defs>
   <style>
-	.circuit-header .path {
-	  animation: draw 20s infinite;
-	  animation-timing-function: linear;
-	}
-	.circuit-header .path-01 {
-	  animation-delay: 0s;
-	}
-	.circuit-header .path-02 {
-	  animation-delay: 1s;
-	}
-	.circuit-header .path-03 {
-	  animation-delay: 2s;
-	}
-	.circuit-header .path-04 {
-	  animation-delay: 3s;
-	}
-	.circuit-header .path-05 {
-	  animation-delay: 4s;
-	}
+   @media screen and (min-width: 750px) {
+    .circuit-header .path {
+      animation: draw 20s infinite;
+      animation-timing-function: linear;
+    }
+    .circuit-header .path-01 {
+      animation-delay: 0s;
+    }
+    .circuit-header .path-02 {
+      animation-delay: 1s;
+    }
+    .circuit-header .path-03 {
+      animation-delay: 2s;
+    }
+    .circuit-header .path-04 {
+      animation-delay: 3s;
+    }
+    .circuit-header .path-05 {
+      animation-delay: 4s;
+    }
 
-	@keyframes draw {
-	  0% {
-	  }
-	  100% {
-		stroke-dashoffset: 0;
-		stroke-opacity: 1;
-	  }
-	}
+    @keyframes draw {
+      0% {
+      }
+      100% {
+      stroke-dashoffset: 0;
+      stroke-opacity: 1;
+      }
+    }
+  }
   </style>
   <g id="module-01" transform="translate(-1.000000, 0.000000)" class="path path-01" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
     <g id="C23" transform="translate(177.000000, 0.000000)">
