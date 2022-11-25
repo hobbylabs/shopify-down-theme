@@ -7,7 +7,7 @@
     </linearGradient>
   </defs>
   <style>
-  @media screen and (min-width: 750px) {
+  <!-- @media screen and (min-width: 750px) {
     .circuit .path {
       animation: draw 20s infinite;
       animation-timing-function: linear;
@@ -36,7 +36,7 @@
       stroke-opacity: 1;
       }
     }
-  }
+  } -->
   </style>
   <g id="module-01" transform="translate(-1.000000, 0.000000)" class="path path-01" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
     <g id="C23" transform="translate(177.000000, 0.000000)">
