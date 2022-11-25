@@ -33,7 +33,7 @@
   }
 
   .header {
-    {%- comment -%} background-image: url('{{ 'circuit-header.svg' | asset_url }}'); {%- endcomment -%}
+    background-image: url('{{ 'circuit-header.svg' | asset_url }}');
   }
 
   .mega-menu__content {
@@ -93,6 +93,15 @@
     .list-menu__item--link {
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .header {
+      background-image: none;
+    }
+    .mega-menu__content {
+      background-image: none;
     }
   }
 
