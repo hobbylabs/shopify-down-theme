@@ -1,1 +1,90 @@
-{"sections":{"cart-items":{"type":"main-cart-items","settings":{"padding_top":36,"padding_bottom":36}},"cart-footer":{"type":"main-cart-footer","blocks":{"subtotal":{"type":"subtotal","settings":{}},"buttons":{"type":"buttons","settings":{}}},"block_order":["subtotal","buttons"],"settings":{}},"featured-collection":{"type":"featured-collection","settings":{"title":"Featured collection","heading_size":"h2","description":"","show_description":false,"description_style":"body","collection":"all","products_to_show":4,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"background-1","image_ratio":"square","show_secondary_image":false,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["cart-items","cart-footer","featured-collection"]}
+{
+  "sections": {
+    "cart-items": {
+      "type": "main-cart-items",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "ae55c323-0a08-49f6-ae02-6d2c8ff984e5": {
+      "type": "custom-rich-text",
+      "blocks": {
+        "template--16736375341366__ae55c323-0a08-49f6-ae02-6d2c8ff984e5-1671695169838a2f72-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vom relua trimiterea coletelor pe data de <strong>02.01.2023<\/strong>.<\/p><p>Sarbatori fericite!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--16736375341366__ae55c323-0a08-49f6-ae02-6d2c8ff984e5-1671695169838a2f72-1"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "cart-footer": {
+      "type": "main-cart-footer",
+      "blocks": {
+        "subtotal": {
+          "type": "subtotal",
+          "settings": {
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "subtotal",
+        "buttons"
+      ],
+      "settings": {
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "card_title_max_lines": 2,
+        "full_width": false,
+        "show_view_all": true,
+        "show_view_all_on_bottom": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "show_sidebar_control_buttons": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "cart-items",
+    "ae55c323-0a08-49f6-ae02-6d2c8ff984e5",
+    "cart-footer",
+    "featured-collection"
+  ]
+}
